@@ -5,8 +5,9 @@
         <attribute name="cityLat" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cityLong" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="cityName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isCurrentLocation" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <elements>
-        <element name="City" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="City" positionX="-63" positionY="-18" width="128" height="120"/>
     </elements>
 </model>

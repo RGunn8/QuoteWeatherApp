@@ -18,10 +18,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        var pageController = UIPageControl.appearance()
-        pageController.pageIndicatorTintColor = UIColor.lightGrayColor()
-        pageController.currentPageIndicatorTintColor = UIColor.blackColor()
-        pageController.backgroundColor = UIColor.whiteColor()
+        window = UIWindow(frame: UIScreen.mainScreen().bounds)
+
+        let containerViewController = ContainerViewController()
+
+        window!.rootViewController = containerViewController
+        window!.makeKeyAndVisible()
 
        
         

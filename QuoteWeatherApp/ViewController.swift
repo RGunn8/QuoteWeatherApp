@@ -10,11 +10,21 @@ import UIKit
 import CoreLocation
 import CoreData
 
-@IBDesignable
+@objc
+protocol CenterViewControllerDelegate {
+
+    optional func toggleRightPanel()
+    optional func collapseSidePanels()
+}
+
+
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     
     @IBOutlet weak var theDegreeLabel: DegreeLabel!
+
+    var locationManager = CLLocationManager()
+    let regionRadius: CLLocationDistance = 1000
 
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var degreeLabel: UILabel!
@@ -22,15 +32,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var celsiusTemp = [Int]()
     var currentCelsius = Int()
     var currentFahrenheit = Int()
-    var locationManager = CLLocationManager()
-    let regionRadius: CLLocationDistance = 1000
+
     var cityInfo = CityInfo()
     var lat = Double()
     var long = Double()
     var cityName = String()
     var pageIndex = Int()
-    var isCurrentLocation = false
+    var isCurrentLocation = true
     var isFahrenheitTemp = true
+     var delegate: CenterViewControllerDelegate?
+    var CBarButtonItem:UIBarButtonItem = UIBarButtonItem()
+    var FBarButtonItem:UIBarButtonItem = UIBarButtonItem()
+    var cities = [City]()
     
 
     @IBOutlet weak var indicator: UIActivityIndicatorView!
@@ -48,8 +61,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     override func viewDidLoad() {
         super.viewDidLoad()
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeToFahrenheit:", name:"FTapped", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "ChangeToCelsius:", name:"CTapped", object: nil)
+        CBarButtonItem = UIBarButtonItem(title: "C", style: UIBarButtonItemStyle.Plain, target: self, action: "CTapped:")
+        // 2
+        FBarButtonItem = UIBarButtonItem(title: "F", style: UIBarButtonItemStyle.Plain, target: self, action: "FTapped:")
+        3
+        self.navigationItem.leftBarButtonItem = CBarButtonItem
+        fetchCities()
+        updateLocation()
 
 
     }
@@ -58,19 +76,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if !isCurrentLocation{
         setName(lat, long: long)
 
+
         setWeather(lat, long: long)
         }
-       println("\(isFahrenheitTemp)")
+       //println("\(isFahrenheitTemp)")
 
-        //setupLocationManager()
-       //checkLocationAuthorizationStatus()
-       
+           }
 
-    }
-
-    func ChangeToFahrenheit(notification: NSNotification){
-        println("F tapped")
-         self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
+    func FTapped(sender:UIButton) {
+        //println("F pressed")
+        self.navigationItem.leftBarButtonItem = CBarButtonItem
+        //self.viewControllerFarenheitTemp(true, index: 0)
+        self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
         self.dayOneDegreeLabel.text = "\(self.fahrenheitTemp[1])"
         self.dayTwoDegreeLabel.text = "\(self.fahrenheitTemp[2])"
         self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])"
@@ -78,16 +95,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])"
     }
 
-    func ChangeToCelsius(notification: NSNotification){
-        println("C tapped")
-         self.theDegreeLabel.curValue = CGFloat(self.currentCelsius)
+    func CTapped(sender:UIButton) {
+        //println("c pressed")
+        self.theDegreeLabel.curValue = CGFloat(self.currentCelsius)
         self.dayOneDegreeLabel.text = "\(self.celsiusTemp[1])"
         self.dayTwoDegreeLabel.text = "\(self.celsiusTemp[2])"
         self.dayThreeDegreeLabel.text = "\(self.celsiusTemp[3])"
         self.dayFourDegreeLabel.text = "\(self.celsiusTemp[4])"
         self.dayFiveDegreeLabel.text = "\(self.celsiusTemp[5])"
+
+        self.navigationItem.leftBarButtonItem = FBarButtonItem
+        //self.viewControllerFarenheitTemp(false, index: 0)
+
     }
-    func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
+
+
+    func ChangeToFahrenheit(notification: NSNotification){
+        println("F tapped")
+
+
+    }
+
+      func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
         println("Location Manager failed with the following error: \(error)")
     }
 
@@ -125,13 +154,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func setWeather(lat:Double, long:Double){
+   
         cityInfo.getFiveDay(lat, long: long) { (temp, dates, error) -> () in
             if error != nil{
                 println("\(error)")
             }else {
                 if let temp = temp{
-                   
+                   self.fahrenheitTemp.removeAll(keepCapacity: true)
+                    self.celsiusTemp.removeAll(keepCapacity: true)
                     for fah in temp{
+
                         let fahDouble = Double(fah)
                         let theFah = fahDouble * (9/5) - 459.67
                         let fahInt = Int(theFah)
@@ -150,6 +182,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                     self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])"
                     self.dayFourDegreeLabel.text = "\(self.fahrenheitTemp[4])"
                     self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])"
+
                 }
 
                 if let dates = dates {
@@ -164,6 +197,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
+    @IBAction func CitiyTapped(sender: AnyObject) {
+        delegate?.toggleRightPanel?()
+    }
 
        func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
@@ -174,20 +210,122 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         }
     }
+    func fetchCities(){
+        let fetchRequest = NSFetchRequest(entityName: "City")
+        let sortDescriptor = NSSortDescriptor(key: "isCurrentLocation", ascending: false)
+        fetchRequest.sortDescriptors = [sortDescriptor]
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [City] {
+            cities = fetchResults
+
+        }
+    }
+
+
+    func updateLocation() {
+        if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
+            self.locationManager.delegate = self
+            self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            //self.locationManager.distanceFilter = 10
+
+            self.locationManager.startUpdatingLocation()
+
+        } else {
+            locationManager.requestWhenInUseAuthorization()
+
+        }
+        
+        
+    }
+
+
+    @IBAction func plusButtonPressed(sender: UIBarButtonItem) {
+        NSNotificationCenter.defaultCenter().postNotificationName("plusButtonPressed", object: nil)
+    }
+
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var locValue:CLLocationCoordinate2D = manager.location.coordinate
-        //fetchStudio(manager.location, radiusInMeters: 10000)
+
         locationManager.stopUpdatingLocation()
         println("locations = \(locValue.latitude) \(locValue.longitude)")
-        if isCurrentLocation{
-        setName(locValue.latitude, long: locValue.longitude)
 
-        setWeather(locValue.latitude, long: locValue.longitude)
+        let currentLocationCityInfo = CityInfo()
+        currentLocationCityInfo.getCityInfo(locValue.latitude, long: locValue.longitude) { (theCity, error) -> () in
+
+            if self.cities.count == 0 {
+                 //var ThecurrentLocation = City()
+                var cityInfo = CityInfo()
+                cityInfo.createCity("Current Location", cityLat: locValue.latitude, cityLong: locValue.longitude, cityAtIndex: 0, isCurrentLocation: true)
+//                ThecurrentLocation.setValue(locValue.latitude, forKey: "cityLat")
+//                ThecurrentLocation.setValue(locValue.longitude, forKey: "cityLong")
+//                ThecurrentLocation.setValue(theCity?.name, forKey: "cityName")
+//                ThecurrentLocation.setValue(true, forKey: "isCurrentLocation")
+//                println(ThecurrentLocation.cityName)
+//                self.managedObjectContext?.save(nil)
+            }else{
+                 var ThecurrentLocation:City = self.cities[0]
+                ThecurrentLocation.setValue(locValue.latitude, forKey: "cityLat")
+                ThecurrentLocation.setValue(locValue.longitude, forKey: "cityLong")
+                ThecurrentLocation.setValue(theCity?.name, forKey: "cityName")
+                ThecurrentLocation.setValue(true, forKey: "isCurrentLocation")
+                println(ThecurrentLocation.cityName)
+                self.managedObjectContext?.save(nil)
+            }
+
+
+            }
+
+        if self.isCurrentLocation{
+            self.setName(locValue.latitude, long: locValue.longitude)
+
+            self.setWeather(locValue.latitude, long: locValue.longitude)
+        }
+
+        }
+
+
+
     }
+
+
+extension ViewController: SidePanelViewControllerDelegate {
+    func citySelected(city: City) {
+
+//        println("city = \(city.cityLong), \(city.cityLat)")
+        cityName = city.cityName
+        lat = Double(city.cityLat)
+        long = Double(city.cityLong)
+        if city.isCurrentLocation == 0 {
+            isCurrentLocation = false
+        }else{
+            isCurrentLocation = true
+        }
+
+        println("\(isCurrentLocation)")
+        setWeather(lat, long: long)
+        setName(lat, long: long)
+
+        delegate?.collapseSidePanels?()
     }
 
 
 
 }
+
+extension ViewController: SearchViewControllerDelegate  {
+    func cityPicked(lat: Double, long: Double, name: String) {
+        self.lat = lat
+        self.long = long
+        self.cityName = name
+        isCurrentLocation = false
+
+        setWeather(lat, long: long)
+        setName(lat, long: long)
+        println("delgate called")
+
+        //delegate?.collapseSidePanels?()
+}
+}
+
+
 

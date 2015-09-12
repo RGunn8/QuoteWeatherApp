@@ -7,6 +7,10 @@
 //
 
 import UIKit
+@objc
+protocol SearchViewControllerDelegate {
+    func cityPicked(lat:Double, long:Double, name:String)
+}
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
 
@@ -15,6 +19,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var searchResultsCity = [CityInfo]()
     let city = CityInfo()
     var numOfCity = Int()
+    var delegate: SearchViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
         println("\(numOfCity)")
@@ -123,9 +128,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         }
        let newCityNumber = numOfCity + 1
 
-        city.createCity(theCityName, cityLat: theCityLat, cityLong: theCityLong, cityAtIndex: newCityNumber)
-       
-         navigationController?.popViewControllerAnimated(true)
+       city.createCity(theCityName, cityLat: theCityLat, cityLong: theCityLong, cityAtIndex: newCityNumber, isCurrentLocation: false)
+
+
+        delegate?.cityPicked(theCityLat, long: theCityLong, name: theCityName)
+
+       self.navigationController!.popViewControllerAnimated(true)
     }
 
     // MARK: - Navigation

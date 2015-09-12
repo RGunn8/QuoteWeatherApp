@@ -8,11 +8,17 @@
 
 import UIKit
 import CoreData
+
+@objc
+protocol SidePanelViewControllerDelegate {
+    func citySelected(city: City)
+}
 class YourCitiesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var numberOfCity = Int()
     var selectedCityIndex = 0
+    var delegate: SidePanelViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -79,11 +85,10 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) as! CityCell
 
          var theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
-        cell.textLabel?.text = theCity.cityName
-        println("\(theCity.cityAtIndex)")
+        cell.configureForCity(theCity)
         // Configure the cell...
 
         return cell
@@ -92,11 +97,7 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
      {
         var theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
-        println("\(indexPath.row)")
-        selectedCityIndex = indexPath.row
-         self.dismissViewControllerAnimated(true, completion: {});
-      
-
+        delegate?.citySelected(theCity)
 
     }
 
@@ -115,19 +116,14 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
           }
 
 
-    // MARK: - Navigation
-
-   
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "dimiss"{
-            let viewController:ParentViewController = segue.destinationViewController as! ParentViewController
+}
 
 
-            viewController.segueIndex = selectedCityIndex
-            viewController.didSegue = true
+class CityCell: UITableViewCell {
+    @IBOutlet var cityName: UILabel!
 
-        }
-        
+    func configureForCity(city:City){
+        cityName.text = city.cityName
 
     }
 

@@ -57,15 +57,17 @@ class CityInfo: NSObject {
 
     func getFiveDay(lat:Double, long:Double, completion: (Array<Int>?,Array<String>?,NSError?) -> ()) -> () {
 
+
         Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/forecast/daily", parameters: ["lat": "\(lat)", "lon":"\(long)", "cnt":6, "APPID":"b3d34aa21fbec905163da3d45d27db66"]).responseJSON {
 
             (request,response,data,error) in
             if let data: AnyObject = data{
                 let info = JSON(data)
-
+                self.weeklyTempArray.removeAll(keepCapacity: true)
                 if let weeklyArray = info["list"].array{
                     for temp in weeklyArray{
                         if let theTemp = temp["temp"]["max"].int{
+
                             self.weeklyTempArray.append(theTemp)
                             //println("\(theTemp)")
                         }
@@ -135,7 +137,7 @@ class CityInfo: NSObject {
         })
     }
 
-    func createCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber) {
+    func createCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber, isCurrentLocation:Bool) {
 
         let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:managedObjectContext!)
         let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
@@ -144,6 +146,7 @@ class CityInfo: NSObject {
         city.setValue(cityLat, forKey: "cityLat")
         city.setValue(cityLong, forKey: "cityLong")
         city.setValue(cityAtIndex, forKey: "cityAtIndex")
+        city.setValue(isCurrentLocation, forKey: "isCurrentLocation")
 
         var error:NSError?
         managedObjectContext?.save(nil)
@@ -151,6 +154,27 @@ class CityInfo: NSObject {
         println("\(city)")
         
     }
+
+    func returnCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber, isCurrentLocation:Bool) -> City {
+
+        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:managedObjectContext!)
+        let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+
+        city.setValue(cityName, forKey: "cityName")
+        city.setValue(cityLat, forKey: "cityLat")
+        city.setValue(cityLong, forKey: "cityLong")
+        city.setValue(cityAtIndex, forKey: "cityAtIndex")
+        city.setValue(isCurrentLocation, forKey: "isCurrentLocation")
+
+        var error:NSError?
+        managedObjectContext?.save(nil)
+
+        println("\(city)")
+
+        return city as! City
+        
+    }
+
 
 
    

@@ -10,14 +10,16 @@ import UIKit
 import CoreData
 import CoreLocation
 
-class ParentViewController: UIViewController, UIPageViewControllerDataSource, CLLocationManagerDelegate {
-    var pageViewController: UIPageViewController!
+
+
+class ParentViewController: UIViewController, CLLocationManagerDelegate {
+   
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     var cities = [City]()
     var didSegue = false
     var segueIndex = 1
-    var CBarButtonItem:UIBarButtonItem = UIBarButtonItem()
-    var FBarButtonItem:UIBarButtonItem = UIBarButtonItem()
+   
+   
    
 
     var locationManager = CLLocationManager()
@@ -25,58 +27,38 @@ class ParentViewController: UIViewController, UIPageViewControllerDataSource, CL
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       CBarButtonItem = UIBarButtonItem(title: "C", style: UIBarButtonItemStyle.Plain, target: self, action: "CTapped:")
-        // 2
-         FBarButtonItem = UIBarButtonItem(title: "F", style: UIBarButtonItemStyle.Plain, target: self, action: "FTapped:")
-         3
-        self.navigationItem.setRightBarButtonItems([FBarButtonItem,CBarButtonItem], animated: true)
-
-
+       
 
         fetchCities()
 
-        pageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
-        pageViewController.dataSource = self
-
-         //let ThecurrentLocation:City = self.cities[0]
-//        var theFirstVC = firstVC(ThecurrentLocation.cityLat, long: ThecurrentLocation.cityLong, name: ThecurrentLocation.cityName)
-//        var viewControllersArray = [theFirstVC]
-//        pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
-        pageViewController.view.frame = CGRectMake(0, 0, view.frame.width, view.frame.size.height)
-
-        addChildViewController(pageViewController)
-        pageViewController.didMoveToParentViewController(self)
-        view.addSubview(pageViewController.view)
+//        pageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
+//        pageViewController.dataSource = self
+//
+//         //let ThecurrentLocation:City = self.cities[0]
+////        var theFirstVC = firstVC(ThecurrentLocation.cityLat, long: ThecurrentLocation.cityLong, name: ThecurrentLocation.cityName)
+////        var viewControllersArray = [theFirstVC]
+////        pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
+//        pageViewController.view.frame = CGRectMake(0, 0, view.frame.width, view.frame.size.height)
+//
+//        addChildViewController(pageViewController)
+//        pageViewController.didMoveToParentViewController(self)
+//        view.addSubview(pageViewController.view)
+//    }
+//
+//   
+//    override func viewDidAppear(animated: Bool) {
+//        super.viewDidAppear(animated)
+//        updateLocation()
+//        println("\(didSegue), and the selected city is \(segueIndex)")
+//        if didSegue {
+//            let segueCity:City = self.cities[segueIndex]
+//            var segueVC = self.firstVC(segueCity.cityLat, long: segueCity.cityLong, name: segueCity.cityName)
+//            var viewControllersArray = [segueCity]
+//            pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
+//        }
     }
 
-   
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        updateLocation()
-        println("\(didSegue), and the selected city is \(segueIndex)")
-        if didSegue {
-            let segueCity:City = self.cities[segueIndex]
-            var segueVC = self.firstVC(segueCity.cityLat, long: segueCity.cityLong, name: segueCity.cityName)
-            var viewControllersArray = [segueCity]
-            pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
-        }
-    }
 
-    func FTapped(sender:UIButton) {
-        //println("F pressed")
-         self.navigationItem.rightBarButtonItem = CBarButtonItem
-        //self.viewControllerFarenheitTemp(true, index: 0)
-        NSNotificationCenter.defaultCenter().postNotificationName("FTapped", object: nil)
-    }
-
-    func CTapped(sender:UIButton) {
-        //println("c pressed")
-        NSNotificationCenter.defaultCenter().postNotificationName("CTapped", object: nil)
-
-        self.navigationItem.rightBarButtonItem = FBarButtonItem
-        //self.viewControllerFarenheitTemp(false, index: 0)
-        
-    }
 
     func viewControllerFarenheitTemp(isFarenheit:Bool, index:Int) -> ViewController {
 //        if cities.count == 0 || index >= cities.count {
@@ -214,24 +196,18 @@ class ParentViewController: UIViewController, UIPageViewControllerDataSource, CL
             ThecurrentLocation.setValue(locValue.latitude, forKey: "cityLat")
             ThecurrentLocation.setValue(locValue.longitude, forKey: "cityLong")
             ThecurrentLocation.setValue(theCity?.name, forKey: "cityName")
+            ThecurrentLocation.setValue(true, forKey: "isCurrentLocation")
             println(ThecurrentLocation.cityName)
              self.managedObjectContext?.save(nil)
-            var theFirstVC = self.firstVC(ThecurrentLocation.cityLat, long: ThecurrentLocation.cityLong, name: ThecurrentLocation.cityName)
-            var viewControllersArray = [theFirstVC]
-       self.pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
+
+//       self.pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
         }
-
-
-
-
-
-
     }
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             if cities.count == 0{
                 let city = CityInfo()
-                city.createCity("Current Location", cityLat: 41.5102, cityLong: -87.7406, cityAtIndex: 0)
+                city.createCity("Current Location", cityLat: 41.5102, cityLong: -87.7406, cityAtIndex: 0, isCurrentLocation:true)
                fetchCities()
             }
 
@@ -246,6 +222,22 @@ class ParentViewController: UIViewController, UIPageViewControllerDataSource, CL
         }
     }
 
+
+//    private extension UIStoryboard {
+//        class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
+//
+//        class func leftViewController() -> SidePanelViewController? {
+//            return mainStoryboard().instantiateViewControllerWithIdentifier("LeftViewController") as? SidePanelViewController
+//        }
+//
+//        class func rightViewController() -> SidePanelViewController? {
+//            return mainStoryboard().instantiateViewControllerWithIdentifier("RightViewController") as? SidePanelViewController
+//        }
+//
+//        class func centerViewController() -> CenterViewController? {
+//            return mainStoryboard().instantiateViewControllerWithIdentifier("CenterViewController") as? CenterViewController
+//        }
+//    }
 
 
 

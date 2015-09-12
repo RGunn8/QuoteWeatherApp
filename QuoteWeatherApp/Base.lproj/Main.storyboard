@@ -1,72 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="jkn-fv-g1W">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Parent View Controller-->
-        <scene sceneID="9pq-xH-vmN">
-            <objects>
-                <viewController id="tg0-5f-xlv" customClass="ParentViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="u8Z-s2-XMy"/>
-                        <viewControllerLayoutGuide type="bottom" id="5Gf-no-TKU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="jKW-89-Z6w">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gl5-h6-qam">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                                <items>
-                                    <barButtonItem title="+" width="373" id="iDa-c0-Cgi">
-                                        <connections>
-                                            <segue destination="Fwy-l5-a0B" kind="presentation" id="sar-6B-UBj"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="LbV-Hc-lsJ"/>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="Gl5-h6-qam" firstAttribute="leading" secondItem="jKW-89-Z6w" secondAttribute="leadingMargin" constant="-16" id="11i-Ly-9WS"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Gl5-h6-qam" secondAttribute="trailing" constant="-16" id="AgM-ty-QkL"/>
-                            <constraint firstItem="5Gf-no-TKU" firstAttribute="top" secondItem="Gl5-h6-qam" secondAttribute="bottom" id="JVt-6M-E6B"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Gl5-h6-qam"/>
-                            </mask>
-                            <mask key="constraints">
-                                <exclude reference="JVt-6M-E6B"/>
-                                <exclude reference="11i-Ly-9WS"/>
-                                <exclude reference="AgM-ty-QkL"/>
-                            </mask>
-                        </variation>
-                        <variation key="widthClass=compact">
-                            <mask key="subviews">
-                                <include reference="Gl5-h6-qam"/>
-                            </mask>
-                            <mask key="constraints">
-                                <include reference="JVt-6M-E6B"/>
-                                <include reference="11i-Ly-9WS"/>
-                                <include reference="AgM-ty-QkL"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <navigationItem key="navigationItem" id="yAb-fb-Ohm"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5iT-A3-Ftk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3225" y="359"/>
-        </scene>
-        <!--View Controller-->
+        <!--ViewController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="ContentViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentViewController" title="ViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -326,6 +269,17 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5mr-sw-vi8">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <items>
+                                    <barButtonItem title="+" width="377" id="ve9-Mc-6iu">
+                                        <connections>
+                                            <action selector="plusButtonPressed:" destination="vXZ-lx-hvc" id="eXn-RV-8cQ"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="1DO-ms-tEU"/>
+                                </items>
+                            </toolbar>
                         </subviews>
                         <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -349,12 +303,18 @@
                             <constraint firstItem="8SA-ha-8xa" firstAttribute="centerX" secondItem="Da6-RB-iJf" secondAttribute="centerX" id="QH0-vK-EzQ"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iCM-2i-BAM" secondAttribute="trailing" constant="-16" id="Qa3-6Q-pjZ"/>
                             <constraint firstItem="jB9-kM-eBZ" firstAttribute="top" secondItem="3ZM-fu-eAS" secondAttribute="bottom" constant="16" id="Qgg-k2-JoD"/>
-                            <constraint firstItem="3ZM-fu-eAS" firstAttribute="top" secondItem="vlU-1P-it1" secondAttribute="bottom" constant="37" id="SPG-hR-GWf"/>
+                            <constraint firstItem="3ZM-fu-eAS" firstAttribute="top" secondItem="vlU-1P-it1" secondAttribute="bottom" constant="37" id="SPG-hR-GWf">
+                                <variation key="widthClass=compact" constant="16"/>
+                            </constraint>
                             <constraint firstItem="ugx-pP-pia" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="31" id="Th0-gi-lJC"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="5mr-sw-vi8" secondAttribute="bottom" id="UcD-eh-Flj"/>
                             <constraint firstItem="iCM-2i-BAM" firstAttribute="top" secondItem="n16-ki-5u6" secondAttribute="bottom" constant="40" id="Uuz-CH-vsC"/>
                             <constraint firstItem="fJM-vY-HdW" firstAttribute="leading" secondItem="jB9-kM-eBZ" secondAttribute="trailing" constant="18" id="V3D-ld-h3m"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="5mr-sw-vi8" secondAttribute="trailing" constant="-16" id="X8E-sM-afu"/>
                             <constraint firstItem="Da6-RB-iJf" firstAttribute="leading" secondItem="n16-ki-5u6" secondAttribute="trailing" constant="33" id="Y6Z-SF-0Lb"/>
-                            <constraint firstItem="ugx-pP-pia" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="22" id="YZ2-6B-vSk"/>
+                            <constraint firstItem="ugx-pP-pia" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="22" id="YZ2-6B-vSk">
+                                <variation key="widthClass=compact" constant="19"/>
+                            </constraint>
                             <constraint firstItem="n16-ki-5u6" firstAttribute="top" secondItem="oSw-aj-4Ts" secondAttribute="bottom" constant="18" id="Z7T-rH-bsL"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ugx-pP-pia" secondAttribute="trailing" constant="31" id="Znb-sv-RJJ"/>
                             <constraint firstItem="Umd-un-JVC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="25" id="bdk-s7-R7l"/>
@@ -364,8 +324,9 @@
                             <constraint firstItem="jB9-kM-eBZ" firstAttribute="leading" secondItem="8SA-ha-8xa" secondAttribute="trailing" constant="17" id="iVX-dq-dfz"/>
                             <constraint firstItem="oSw-aj-4Ts" firstAttribute="top" secondItem="3ZM-fu-eAS" secondAttribute="bottom" constant="15" id="krh-LV-0NR"/>
                             <constraint firstItem="vlU-1P-it1" firstAttribute="top" secondItem="ugx-pP-pia" secondAttribute="bottom" constant="16" id="n4L-bO-gpl">
-                                <variation key="widthClass=compact" constant="43"/>
+                                <variation key="widthClass=compact" constant="23"/>
                             </constraint>
+                            <constraint firstItem="5mr-sw-vi8" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-16" id="nsD-YA-Ffk"/>
                             <constraint firstItem="iCM-2i-BAM" firstAttribute="top" secondItem="Da6-RB-iJf" secondAttribute="bottom" constant="40" id="pJe-hB-Zl4"/>
                             <constraint firstItem="oSw-aj-4Ts" firstAttribute="centerY" secondItem="fN5-ye-xcW" secondAttribute="centerY" id="pfD-ki-H3Q"/>
                             <constraint firstItem="fN5-ye-xcW" firstAttribute="top" secondItem="3ZM-fu-eAS" secondAttribute="bottom" constant="16" id="sjZ-fh-LqU"/>
@@ -383,6 +344,7 @@
                                 <exclude reference="3ZM-fu-eAS"/>
                                 <exclude reference="iCM-2i-BAM"/>
                                 <exclude reference="vlU-1P-it1"/>
+                                <exclude reference="5mr-sw-vi8"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="Th0-gi-lJC"/>
@@ -428,6 +390,9 @@
                                 <exclude reference="38R-9b-Goo"/>
                                 <exclude reference="IoK-pI-fsf"/>
                                 <exclude reference="bdk-s7-R7l"/>
+                                <exclude reference="X8E-sM-afu"/>
+                                <exclude reference="nsD-YA-Ffk"/>
+                                <exclude reference="UcD-eh-Flj"/>
                                 <exclude reference="zjO-9l-1LT"/>
                             </mask>
                         </variation>
@@ -436,6 +401,7 @@
                                 <include reference="3ZM-fu-eAS"/>
                                 <include reference="iCM-2i-BAM"/>
                                 <include reference="vlU-1P-it1"/>
+                                <include reference="5mr-sw-vi8"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="Th0-gi-lJC"/>
@@ -481,11 +447,21 @@
                                 <include reference="38R-9b-Goo"/>
                                 <include reference="IoK-pI-fsf"/>
                                 <include reference="bdk-s7-R7l"/>
+                                <include reference="X8E-sM-afu"/>
+                                <include reference="nsD-YA-Ffk"/>
+                                <include reference="UcD-eh-Flj"/>
                                 <include reference="zjO-9l-1LT"/>
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="Jh5-b2-QEW"/>
+                    <navigationItem key="navigationItem" title="Central Weahter                  " id="Jh5-b2-QEW">
+                        <barButtonItem key="rightBarButtonItem" title="Cities" id="Rmp-Xb-XkW">
+                            <connections>
+                                <action selector="CitiyTapped:" destination="vXZ-lx-hvc" id="DKb-eH-lWy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="cityLabel" destination="ugx-pP-pia" id="Glj-zk-kR8"/>
                         <outlet property="dayFiveDegreeLabel" destination="jB9-kM-eBZ" id="iZJ-Z5-OYV"/>
@@ -504,30 +480,60 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4459.5" y="366"/>
+            <point key="canvasLocation" x="2269.5" y="385"/>
         </scene>
-        <!--Page View Controller-->
-        <scene sceneID="mDa-s8-CB9">
-            <objects>
-                <pageViewController storyboardIdentifier="PageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="Klw-7G-cn3" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="I6s-ls-gT1" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5583" y="357"/>
-        </scene>
-        <!--Your Cities Table View Controller-->
+        <!--YourCities-->
         <scene sceneID="Axk-3k-gtw">
             <objects>
-                <tableViewController id="FIs-ak-1oh" customClass="YourCitiesTableViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="YourCities" title="YourCities" id="FIs-ak-1oh" customClass="YourCitiesTableViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aFU-Dv-aDr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="separatorColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellID" id="fSn-JO-rKd">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellID" id="iT8-bl-BEf" customClass="CityCell" customModule="QuoteWeatherApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fSn-JO-rKd" id="GXz-07-jVt">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iT8-bl-BEf" id="3kS-nF-q42">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hH3-6z-cDJ">
+                                            <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="hH3-6z-cDJ" firstAttribute="trailing" secondItem="3kS-nF-q42" secondAttribute="trailingMargin" id="GLd-Rc-fDT"/>
+                                        <constraint firstItem="hH3-6z-cDJ" firstAttribute="top" secondItem="3kS-nF-q42" secondAttribute="topMargin" constant="3" id="QLj-BI-Klm"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="hH3-6z-cDJ" secondAttribute="bottom" constant="3" id="Qbw-dA-cSM"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="hH3-6z-cDJ"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="GLd-Rc-fDT"/>
+                                            <exclude reference="QLj-BI-Klm"/>
+                                            <exclude reference="Qbw-dA-cSM"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="hH3-6z-cDJ"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="GLd-Rc-fDT"/>
+                                            <include reference="QLj-BI-Klm"/>
+                                            <include reference="Qbw-dA-cSM"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="cityName" destination="hH3-6z-cDJ" id="5gT-uA-Fe3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -536,25 +542,29 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="UiD-LB-bDO">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kh0-ZQ-Lbw">
-                            <connections>
-                                <segue destination="dZR-xi-nzl" kind="show" identifier="searchSegue" id="7Rx-Lz-yYJ"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Kh0-ZQ-Lbw"/>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gYu-lu-tjO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1278" y="1090"/>
+            <point key="canvasLocation" x="1851" y="1104"/>
         </scene>
-        <!--Search Table View Controller-->
+        <!--Search Cities-->
         <scene sceneID="EPE-fy-hsp">
             <objects>
-                <tableViewController id="dZR-xi-nzl" customClass="SearchTableViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchTableViewController" id="dZR-xi-nzl" customClass="SearchTableViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qyn-SJ-fkt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <navigationBar key="tableHeaderView" contentMode="scaleToFill" id="JBi-CT-tt5">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <items>
+                                <navigationItem title="Search Cities" id="pV8-O8-S0x"/>
+                            </items>
+                        </navigationBar>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellID" id="er5-mg-VYU">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -568,46 +578,11 @@
                             <outlet property="delegate" destination="dZR-xi-nzl" id="YIy-qE-FsK"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Search Cities" id="dxa-rQ-Yfd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2Iw-cc-UMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2242.5" y="1090"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="NIF-gO-Uue">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Fwy-l5-a0B" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="DrD-I0-R35">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="FIs-ak-1oh" kind="relationship" relationship="rootViewController" id="Lrw-lG-SM7"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dwF-0b-rSO" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="505.5" y="1090"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="asP-3Y-8gf">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jkn-fv-g1W" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="H4y-MC-0Xc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="tg0-5f-xlv" kind="relationship" relationship="rootViewController" id="Pkw-Ic-Y8Z"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FDp-DJ-9LU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2307" y="359"/>
+            <point key="canvasLocation" x="3105" y="1050"/>
         </scene>
     </scenes>
 </document>
