@@ -22,7 +22,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var delegate: SearchViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(numOfCity)")
+        print("\(numOfCity)")
         self.resultSearchController = ({
             let controller = UISearchController(searchResultsController: nil)
            controller.searchResultsUpdater = self
@@ -37,6 +37,9 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 
           self.tableView.reloadData()
     }
+
+ 
+
 
 
     // MARK: - Table view data source
@@ -62,13 +65,13 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) 
 
         // 3
         if (self.resultSearchController.active) {
 
 
-            var cityAtIndex:CityInfo = self.filteredTableData[indexPath.row]
+            let cityAtIndex:CityInfo = self.filteredTableData[indexPath.row]
 
 
             cell.textLabel?.text = cityAtIndex.name
@@ -85,37 +88,37 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     func updateSearchResultsForSearchController(searchController: UISearchController)
     {
 
-        city.searchCity(searchController.searchBar.text, completion: { (city, error) -> () in
-            if let cityArray = city{
-                self.filteredTableData = cityArray
-            }
+        city.searchCity(searchController.searchBar.text!, completionHandler: { (city) -> () in
+
+                self.filteredTableData = city
+
             //println("\(self.filteredTableData)")
             self.tableView.reloadData()
         })
 
-//
-//        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text)
-//        let array = (searchResultsCity as NSArray).filteredArrayUsingPredicate(searchPredicate)
-//        filteredTableData = array as! [CityInfo]
+
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (searchResultsCity as NSArray).filteredArrayUsingPredicate(searchPredicate)
+        filteredTableData = array as! [CityInfo]
 
 
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedItem = self.filteredTableData[indexPath.row]
-        var theCityID = String()
+//        var theCityID = String()
         var theCityName = String()
         var theCityLat = Double()
         var theCityLong = Double()
     
-        if let cityID = selectedItem.cityID{
-            theCityID = cityID
-        }
+//        if let cityID = selectedItem.cityID{
+//            theCityID = cityID
+//        }
         if let cityName = selectedItem.name{
              cityName
             var myArray = cityName.componentsSeparatedByCharactersInSet(NSCharacterSet (charactersInString: ",-"))
           
-            var theCity = myArray[0]
+            let theCity = myArray[0]
            theCityName  = theCity
         }
 

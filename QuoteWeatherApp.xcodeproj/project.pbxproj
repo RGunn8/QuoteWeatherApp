@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B38F94F27B8FCEB02508BC70 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3711F7B8CE8BA82B9BAC25F2 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		B38F94F27B8FCEB02508BC70 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3711F7B8CE8BA82B9BAC25F2 /* Pods.framework */; };
 		F74376C01B863FD9004BBCC5 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74376BF1B863FD9004BBCC5 /* SearchTableViewController.swift */; };
 		F74376C41B86DCFA004BBCC5 /* YourCitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74376C31B86DCFA004BBCC5 /* YourCitiesTableViewController.swift */; };
 		F7CAA5BA1B97723E00FD748E /* DegreeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CAA5B91B97723E00FD748E /* DegreeLabel.swift */; };
@@ -22,6 +22,7 @@
 		F7D1D2091B82664200722A1C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D1D2071B82664200722A1C /* LaunchScreen.xib */; };
 		F7D1D2151B82664200722A1C /* QuoteWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D2141B82664200722A1C /* QuoteWeatherAppTests.swift */; };
 		F7D1D2231B830BB700722A1C /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D2221B830BB700722A1C /* CityInfo.swift */; };
+		F7EA21B71BE31EA4005312FA /* OpenWeatherCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA21B61BE31EA4005312FA /* OpenWeatherCity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		F7D1D2131B82664200722A1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7D1D2141B82664200722A1C /* QuoteWeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWeatherAppTests.swift; sourceTree = "<group>"; };
 		F7D1D2221B830BB700722A1C /* CityInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
+		F7EA21B61BE31EA4005312FA /* OpenWeatherCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherCity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			children = (
 				F7CB343B1BA3E4D3004F6CC3 /* City.swift */,
 				F7D1D2221B830BB700722A1C /* CityInfo.swift */,
+				F7EA21B61BE31EA4005312FA /* OpenWeatherCity.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -223,7 +226,9 @@
 		F7D1D1EE1B82664200722A1C /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Ryan  Gunn";
 				TargetAttributes = {
 					F7D1D1F51B82664200722A1C = {
@@ -334,6 +339,7 @@
 				F7D1D2231B830BB700722A1C /* CityInfo.swift in Sources */,
 				F7D1D1FC1B82664200722A1C /* AppDelegate.swift in Sources */,
 				F74376C41B86DCFA004BBCC5 /* YourCitiesTableViewController.swift in Sources */,
+				F7EA21B71BE31EA4005312FA /* OpenWeatherCity.swift in Sources */,
 				F7CB343C1BA3E4D3004F6CC3 /* City.swift in Sources */,
 				F7CE13571B88F01A001E16FA /* ParentViewController.swift in Sources */,
 				F7CAA5BA1B97723E00FD748E /* DegreeLabel.swift in Sources */,
@@ -400,6 +406,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -415,7 +422,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -453,7 +460,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -468,6 +475,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QuoteWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -480,6 +488,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = QuoteWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -498,6 +507,7 @@
 				);
 				INFOPLIST_FILE = QuoteWeatherAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuoteWeatherApp.app/QuoteWeatherApp";
 			};
@@ -513,6 +523,7 @@
 				);
 				INFOPLIST_FILE = QuoteWeatherAppTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuoteWeatherApp.app/QuoteWeatherApp";
 			};

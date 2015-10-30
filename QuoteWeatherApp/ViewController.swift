@@ -64,7 +64,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         CBarButtonItem = UIBarButtonItem(title: "C", style: UIBarButtonItemStyle.Plain, target: self, action: "CTapped:")
         // 2
         FBarButtonItem = UIBarButtonItem(title: "F", style: UIBarButtonItemStyle.Plain, target: self, action: "FTapped:")
-        3
+
+       CBarButtonItem.setTitleTextAttributes([
+            NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 26)!,
+            NSForegroundColorAttributeName : UIColor.blackColor()],
+            forState: UIControlState.Normal)
+
         self.navigationItem.leftBarButtonItem = CBarButtonItem
         fetchCities()
         updateLocation()
@@ -111,54 +116,102 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 
     func ChangeToFahrenheit(notification: NSNotification){
-        println("F tapped")
+        print("F tapped")
 
 
     }
 
-      func locationManager(manager: CLLocationManager!, didFailWithError error: NSError!) {
-        println("Location Manager failed with the following error: \(error)")
+      func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("Location Manager failed with the following error: \(error)")
     }
 
     func setTemp(isFarh:Bool){
         isFahrenheitTemp = isFarh
     }
- 
-    func setName(lat:Double, long:Double){
-        indicator.startAnimating()
-        indicator.hidesWhenStopped = true
-        cityInfo.getCityInfo(lat, long: long) { (theCity, error) -> () in
-            if error != nil{
-                println("\(error)")
-            }else{
-                self.indicator.stopAnimating()
-                if let city = theCity{
 
-                    if self.isCurrentLocation {
-                        self.cityLabel.text = city.name
-                    }else{
-                        self.cityLabel.text = self.cityName
-                    }
+    func setName(lat:Double, long:Double) {
+        CityInfo.sharedInstance.getCityInfo(lat, long: long, completionHandler:  {(result) -> Void in
 
-                    var fah = city.currentTemp! * (9/5) - 459.67
-                    self.currentFahrenheit = Int(fah)
-                    var cels = city.currentTemp! - 273.15
-                    self.currentCelsius = Int(cels)
-//                    self.degreeLabel.text = "\(self.currentFahrenheit)"
-                    self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
-                    self.theDegreeLabel.range = CGFloat(100)
-
-                }
+            guard result.error == nil else {
+                print("Error has occur")
+                return
             }
-        }
+            guard let city = result.value else {
+                print("Error on result callded")
+                return
+            }
+
+            let fah = city.currentTemp! * (9/5) - 459.67
+            self.currentFahrenheit = Int(fah)
+            let cels = city.currentTemp! - 273.15
+            self.currentCelsius = Int(cels)
+
+
+            dispatch_async(dispatch_get_main_queue()){
+                //self.indicator.stopAnimating()
+
+                //                    self.degreeLabel.text = "\(self.currentFahrenheit)"
+                self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
+                self.theDegreeLabel.range = CGFloat(100)
+                self.cityLabel.text = city.name
+
+//                if city.weather == "Clear" {
+//                    self.quoteLabel.text = "The Weather is Clear"
+//                    print(city.weather)
+//                }else if city.weather == "Rain"{
+//                    self.quoteLabel.text = "It is Raining Outside"
+//                    print(city.weather)
+//                }else if city.weather == "Snow"{
+//                    self.quoteLabel.text = "It is snowing outside"
+//                    print(city.weather)
+//                }else if city.weather == "Clouds"{
+//                    self.quoteLabel.text = "It look like it going to rain"
+//                }else{
+//                    self.quoteLabel.text = "It not terrible"
+//                    print(city.weather)
+//                }
+
+                
+            }
+            
+            
+        })
+    
+
     }
+
+ 
+//    func setName(lat:Double, long:Double){
+//        //indicator.startAnimating()
+//        //indicator.hidesWhenStopped = true
+//        cityInfo.getCityInfo(lat, long: long) { (theCity) -> () in
+//
+//                //self.indicator.stopAnimating()
+//                if let city = theCity{
+//
+//                    if self.isCurrentLocation {
+//                        self.cityLabel.text = city.name
+//                    }else{
+//                        self.cityLabel.text = self.cityName
+//                    }
+//
+//                    let fah = city.currentTemp! * (9/5) - 459.67
+//                    self.currentFahrenheit = Int(fah)
+//                    let cels = city.currentTemp! - 273.15
+//                    self.currentCelsius = Int(cels)
+////                    self.degreeLabel.text = "\(self.currentFahrenheit)"
+//                    self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
+//                    self.theDegreeLabel.range = CGFloat(100)
+//
+//                }
+//            }
+//        
+//    }
 
     func setWeather(lat:Double, long:Double){
    
-        cityInfo.getFiveDay(lat, long: long) { (temp, dates, error) -> () in
-            if error != nil{
-                println("\(error)")
-            }else {
+        cityInfo.getFiveDay(lat, long: long) { (temp, dates ) -> () in
+
                 if let temp = temp{
                    self.fahrenheitTemp.removeAll(keepCapacity: true)
                     self.celsiusTemp.removeAll(keepCapacity: true)
@@ -194,14 +247,14 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
                 }
             }
-        }
+
     }
 
     @IBAction func CitiyTapped(sender: AnyObject) {
         delegate?.toggleRightPanel?()
     }
 
-       func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+       func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
 
 
@@ -214,7 +267,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let fetchRequest = NSFetchRequest(entityName: "City")
         let sortDescriptor = NSSortDescriptor(key: "isCurrentLocation", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [City] {
+        if let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [City] {
             cities = fetchResults
 
         }
@@ -243,33 +296,38 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
 
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var locValue:CLLocationCoordinate2D = manager.location.coordinate
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
 
         locationManager.stopUpdatingLocation()
-        println("locations = \(locValue.latitude) \(locValue.longitude)")
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
 
-        let currentLocationCityInfo = CityInfo()
-        currentLocationCityInfo.getCityInfo(locValue.latitude, long: locValue.longitude) { (theCity, error) -> () in
+
+        CityInfo.sharedInstance.getCityInfo(locValue.latitude, long: locValue.longitude) { (theCity) -> () in
+
+            guard let city = theCity.value else {
+                print("Error on result callded")
+                print(theCity.error)
+                return
+            }
+
 
             if self.cities.count == 0 {
                  //var ThecurrentLocation = City()
-                var cityInfo = CityInfo()
+                let cityInfo = CityInfo()
                 cityInfo.createCity("Current Location", cityLat: locValue.latitude, cityLong: locValue.longitude, cityAtIndex: 0, isCurrentLocation: true)
-//                ThecurrentLocation.setValue(locValue.latitude, forKey: "cityLat")
-//                ThecurrentLocation.setValue(locValue.longitude, forKey: "cityLong")
-//                ThecurrentLocation.setValue(theCity?.name, forKey: "cityName")
-//                ThecurrentLocation.setValue(true, forKey: "isCurrentLocation")
-//                println(ThecurrentLocation.cityName)
-//                self.managedObjectContext?.save(nil)
+
             }else{
-                 var ThecurrentLocation:City = self.cities[0]
+                 let ThecurrentLocation:City = self.cities[0]
                 ThecurrentLocation.setValue(locValue.latitude, forKey: "cityLat")
                 ThecurrentLocation.setValue(locValue.longitude, forKey: "cityLong")
-                ThecurrentLocation.setValue(theCity?.name, forKey: "cityName")
+                ThecurrentLocation.setValue(city.name, forKey: "cityName")
                 ThecurrentLocation.setValue(true, forKey: "isCurrentLocation")
-                println(ThecurrentLocation.cityName)
-                self.managedObjectContext?.save(nil)
+                print(ThecurrentLocation.cityName)
+                do {
+                    try self.managedObjectContext?.save()
+                } catch _ {
+                }
             }
 
 
@@ -301,7 +359,7 @@ extension ViewController: SidePanelViewControllerDelegate {
             isCurrentLocation = true
         }
 
-        println("\(isCurrentLocation)")
+        print("\(isCurrentLocation)")
         setWeather(lat, long: long)
         setName(lat, long: long)
 
@@ -321,7 +379,7 @@ extension ViewController: SearchViewControllerDelegate  {
 
         setWeather(lat, long: long)
         setName(lat, long: long)
-        println("delgate called")
+        print("delgate called")
 
         //delegate?.collapseSidePanels?()
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable
+@IBDesignable 
 class DegreeLabel: UIView {
 
     let bgLayer = CAShapeLayer()
@@ -67,7 +67,7 @@ class DegreeLabel: UIView {
        degreeLabel.font = UIFont(name: "Avenir Next", size: 26)
         degreeLabel.textColor = UIColor.whiteColor()
         degreeLabel.text = "0"
-        degreeLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
+        degreeLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(degreeLabel)
 
         // Setup caption label
@@ -125,9 +125,9 @@ class DegreeLabel: UIView {
         degreeLabel.text = String(format: "%.0f", curValue)
 
         var fromValue = fgLayer.strokeEnd
-        var toValue = curValue / range
+        let toValue = curValue / range
         if let presentationLayer = fgLayer.presentationLayer() as? CAShapeLayer {
-            fromValue = fgLayer.presentationLayer().strokeEnd
+            fromValue = fgLayer.presentationLayer()!.strokeEnd
         }
         let pctChange = abs(fromValue - toValue)
        

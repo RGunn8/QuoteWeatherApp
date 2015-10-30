@@ -12,6 +12,7 @@ import CoreData
 @objc
 protocol SidePanelViewControllerDelegate {
     func citySelected(city: City)
+
 }
 class YourCitiesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
@@ -25,7 +26,11 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
         fetchedResultController = getFetchedResultController()
         self.fetchedResultController.delegate = self
         let error = NSErrorPointer()
-        fetchedResultController.performFetch(error)
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error1 as NSError {
+            error.memory = error1
+        }
         navigationItem.leftBarButtonItem = editButtonItem()
 
 
@@ -35,7 +40,11 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
         fetchedResultController = getFetchedResultController()
 
         let error = NSErrorPointer()
-        fetchedResultController.performFetch(error)
+        do {
+            try fetchedResultController.performFetch()
+        } catch let error1 as NSError {
+            error.memory = error1
+        }
         self.tableView.reloadData()
 
     }
@@ -56,8 +65,11 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
     }
     func save() {
         var error:NSError?
-        if managedObjectContext!.save(&error){
-            println(error?.localizedDescription)
+        do {
+            try managedObjectContext!.save()
+            print(error?.localizedDescription)
+        } catch let error1 as NSError {
+            error = error1
         }
 
     }
@@ -87,7 +99,7 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) as! CityCell
 
-         var theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
+         let theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
         cell.configureForCity(theCity)
         // Configure the cell...
 
@@ -96,7 +108,7 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
      {
-        var theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
+        let theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
         delegate?.citySelected(theCity)
 
     }
@@ -111,7 +123,10 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
 
             // Delete it from the managedObjectContext
             managedObjectContext?.deleteObject(deleteCity)
-             managedObjectContext?.save(nil)
+            do {
+                try managedObjectContext?.save()
+            } catch _ {
+            }
             //tableView.reloadData()
           }
 
@@ -124,7 +139,7 @@ class CityCell: UITableViewCell {
 
     func configureForCity(city:City){
         cityName.text = city.cityName
-
+        print(city.cityName)
     }
 
 

@@ -31,31 +31,6 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
 
         fetchCities()
 
-//        pageViewController = storyboard?.instantiateViewControllerWithIdentifier("PageViewController") as! UIPageViewController
-//        pageViewController.dataSource = self
-//
-//         //let ThecurrentLocation:City = self.cities[0]
-////        var theFirstVC = firstVC(ThecurrentLocation.cityLat, long: ThecurrentLocation.cityLong, name: ThecurrentLocation.cityName)
-////        var viewControllersArray = [theFirstVC]
-////        pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
-//        pageViewController.view.frame = CGRectMake(0, 0, view.frame.width, view.frame.size.height)
-//
-//        addChildViewController(pageViewController)
-//        pageViewController.didMoveToParentViewController(self)
-//        view.addSubview(pageViewController.view)
-//    }
-//
-//   
-//    override func viewDidAppear(animated: Bool) {
-//        super.viewDidAppear(animated)
-//        updateLocation()
-//        println("\(didSegue), and the selected city is \(segueIndex)")
-//        if didSegue {
-//            let segueCity:City = self.cities[segueIndex]
-//            var segueVC = self.firstVC(segueCity.cityLat, long: segueCity.cityLong, name: segueCity.cityName)
-//            var viewControllersArray = [segueCity]
-//            pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
-//        }
     }
 
 
@@ -65,7 +40,7 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
 //            return ViewController()
 //        }
 //
-       var vc:ViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ViewController
+       let vc:ViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ViewController
 //        var cityAtIndex:City = cities[index]
 //        vc.lat = cityAtIndex.cityLat as Double
 //        vc.long = cityAtIndex.cityLong as Double
@@ -89,8 +64,8 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
             return ViewController()
         }
 
-        var vc:ViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ViewController
-        var cityAtIndex:City = cities[index]
+        let vc:ViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ViewController
+        let cityAtIndex:City = cities[index]
         vc.lat = cityAtIndex.cityLat as Double
         vc.long = cityAtIndex.cityLong as Double
         vc.cityName = cityAtIndex.cityName
@@ -98,7 +73,7 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
 
         if index == 0{
             vc.isCurrentLocation = true
-            println(vc.lat)
+            print(vc.lat)
         }else{
             vc.isCurrentLocation = false
         }
@@ -109,7 +84,7 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func firstVC(lat:NSNumber,long:NSNumber, name:String) -> ViewController{
-         var vc:ViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ViewController
+         let vc:ViewController = self.storyboard?.instantiateViewControllerWithIdentifier("ContentViewController") as! ViewController
        let latDouble = Double(lat)
         let longDouble = Double(long)
         vc.lat = latDouble
@@ -122,7 +97,7 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
         let fetchRequest = NSFetchRequest(entityName: "City")
         let sortDescriptor = NSSortDescriptor(key: "cityAtIndex", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-               if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [City] {
+               if let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [City] {
             cities = fetchResults
 
              
@@ -132,7 +107,7 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        var vc = viewController as! ViewController
+        let vc = viewController as! ViewController
         var index = vc.pageIndex as Int
 
         if index == 0 || index == NSNotFound {
@@ -144,7 +119,7 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
 
 
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        var vc = viewController as! ViewController
+        let vc = viewController as! ViewController
         var index = vc.pageIndex as Int
         if index == NSNotFound {
             return nil
@@ -185,25 +160,28 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
         
     }
     
-    func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
-        var locValue:CLLocationCoordinate2D = manager.location.coordinate
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         //fetchStudio(manager.location, radiusInMeters: 10000)
         locationManager.stopUpdatingLocation()
-        println("locations = \(locValue.latitude) \(locValue.longitude)")
+        print("locations = \(locValue.latitude) \(locValue.longitude)")
         let currentLocationCityInfo = CityInfo()
-        currentLocationCityInfo.getCityInfo(locValue.latitude, long: locValue.longitude) { (theCity, error) -> () in
+        currentLocationCityInfo.getCityInfo(locValue.latitude, long: locValue.longitude) { (theCity) -> () in
             let ThecurrentLocation:City = self.cities[0]
             ThecurrentLocation.setValue(locValue.latitude, forKey: "cityLat")
             ThecurrentLocation.setValue(locValue.longitude, forKey: "cityLong")
-            ThecurrentLocation.setValue(theCity?.name, forKey: "cityName")
+            ThecurrentLocation.setValue(theCity.value!.name, forKey: "cityName")
             ThecurrentLocation.setValue(true, forKey: "isCurrentLocation")
-            println(ThecurrentLocation.cityName)
-             self.managedObjectContext?.save(nil)
+            print(ThecurrentLocation.cityName)
+            do {
+                try self.managedObjectContext?.save()
+            } catch _ {
+            }
 
 //       self.pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
         }
     }
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             if cities.count == 0{
                 let city = CityInfo()
