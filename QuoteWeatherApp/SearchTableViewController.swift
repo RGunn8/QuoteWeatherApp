@@ -15,7 +15,7 @@ protocol SearchViewControllerDelegate {
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
 
     var filteredTableData = [CityInfo]()
-    var resultSearchController = UISearchController()
+    var resultSearchController:UISearchController!
     var searchResultsCity = [CityInfo]()
     let city = CityInfo()
     var numOfCity = Int()
@@ -23,16 +23,30 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("\(numOfCity)")
-        self.resultSearchController = ({
-            let controller = UISearchController(searchResultsController: nil)
-           controller.searchResultsUpdater = self
-            controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.sizeToFit()
+//        self.resultSearchController = ({
+//            let controller = UISearchController(searchResultsController: nil)
+//           controller.searchResultsUpdater = self
+//            controller.dimsBackgroundDuringPresentation = false
+//            controller.searchBar.sizeToFit()
+//
+//            self.tableView.tableHeaderView = controller.searchBar
+//
+//            return controller
+//        })()
 
-            self.tableView.tableHeaderView = controller.searchBar
-
-            return controller
-        })()
+        resultSearchController = UISearchController(searchResultsController: nil)
+        // 2
+        resultSearchController.searchResultsUpdater = self
+        // 3
+        resultSearchController.hidesNavigationBarDuringPresentation = false
+        // 4
+        resultSearchController.dimsBackgroundDuringPresentation = false
+        // 5
+        resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.Prominent
+        // 6
+        resultSearchController.searchBar.sizeToFit()
+        // 7
+        self.tableView.tableHeaderView = resultSearchController.searchBar
         definesPresentationContext = true
 
           self.tableView.reloadData()
