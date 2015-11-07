@@ -64,7 +64,7 @@ class DegreeLabel: UIView {
         layer.addSublayer(fgLayer)
 
         // Setup percent label
-       degreeLabel.font = UIFont(name: "Avenir Next", size: 26)
+       degreeLabel.font = UIFont(name: "Avenir Next", size: 34)
         degreeLabel.textColor = UIColor.whiteColor()
         degreeLabel.text = "0"
         degreeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -126,9 +126,7 @@ class DegreeLabel: UIView {
 
         var fromValue = fgLayer.strokeEnd
         let toValue = curValue / range
-        if let presentationLayer = fgLayer.presentationLayer() as? CAShapeLayer {
-            fromValue = fgLayer.presentationLayer()!.strokeEnd
-        }
+        fromValue = fgLayer.presentationLayer()!.strokeEnd
         let pctChange = abs(fromValue - toValue)
        
         // 1

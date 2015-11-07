@@ -25,7 +25,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         window!.rootViewController = containerViewController
         window!.makeKeyAndVisible()
 
-       
+
+        let defaults = NSUserDefaults.standardUserDefaults()
+        let isPreloaded = defaults.boolForKey("isPreloadedCold")
+        if !isPreloaded {
+            preloadDataCold()
+            defaults.setBool(true, forKey: "isPreloadedCold")
+        }
+
+
+        let isPreloadedHot = defaults.boolForKey("isPreloadedHot")
+        if !isPreloadedHot {
+            preloadDataHot()
+            defaults.setBool(true, forKey: "isPreloadedHot")
+        }
+
+
         
         return true
     }
@@ -128,6 +143,177 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             }
         }
     }
+
+    func parseCSV (contentsOfURL: NSURL, encoding: NSStringEncoding) throws -> [(type:String, quote:String)] {
+        var error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
+        // Load the CSV file and parse it
+        let delimiter = ","
+        var items:[(type:String, quote:String)]?
+
+        do {
+            let content = try String(contentsOfURL: contentsOfURL, encoding: encoding)
+            items = []
+            let lines:[String] = content.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()) as [String]
+
+            for line in lines {
+                var values:[String] = []
+                if line != "" {
+                    // For a line with double quotes
+                    // we use NSScanner to perform the parsing
+                    if line.rangeOfString("\"") != nil {
+                        var textToScan:String = line
+                        var value:NSString?
+                        var textScanner:NSScanner = NSScanner(string: textToScan)
+                        while textScanner.string != "" {
+
+                            if (textScanner.string as NSString).substringToIndex(1) == "\"" {
+                                textScanner.scanLocation += 1
+                                textScanner.scanUpToString("\"", intoString: &value)
+                                textScanner.scanLocation += 1
+                            } else {
+                                textScanner.scanUpToString(delimiter, intoString: &value)
+                            }
+
+                            // Store the value into the values array
+                            values.append(value as! String)
+
+                            // Retrieve the unscanned remainder of the string
+                            if textScanner.scanLocation < textScanner.string.characters.count {
+                                textToScan = (textScanner.string as NSString).substringFromIndex(textScanner.scanLocation + 1)
+                            } else {
+                                textToScan = ""
+                            }
+                            textScanner = NSScanner(string: textToScan)
+                        }
+
+                        // For a line without double quotes, we can simply separate the string
+                        // by using the delimiter (e.g. comma)
+                    } else  {
+                        values = line.componentsSeparatedByString(delimiter)
+                    }
+
+                    // Put the values into the tuple and add it to the items array
+                    let item = (type: values[0], quote: values[1])
+                    items?.append(item)
+                }
+            }
+        } catch let error1 as NSError {
+            error = error1
+        }
+
+        if let value = items {
+            return value
+        }
+        throw error
+    }
+
+
+
+    func preloadDataCold () {
+        // Retrieve data from the source file
+        if let contentsOfURL = NSBundle.mainBundle().URLForResource("Cold", withExtension: "csv") {
+
+            // Remove all the menu items before preloading
+            removeDataCold()
+
+
+            do {
+                let items = try parseCSV(contentsOfURL, encoding: NSUTF8StringEncoding)
+                // Preload the menu items
+                if let managedObjectContext = self.managedObjectContext {
+                    for item in items {
+                        let coldQuotesItem = NSEntityDescription.insertNewObjectForEntityForName("ColdQuotes", inManagedObjectContext: managedObjectContext) as! ColdQuotes
+
+                        coldQuotesItem.type = item.type
+                        coldQuotesItem.quote = item.quote
+
+                        try self.managedObjectContext!.save()
+
+
+                    }
+                }
+            } catch let error1 as NSError {
+                print("\(error1)")
+            }
+        }
+    }
+
+    func removeDataCold () {
+        // Remove the existing items
+        if let managedObjectContext = self.managedObjectContext {
+            let fetchRequest = NSFetchRequest(entityName: "ColdQuotes")
+
+            do{
+                let questionItems = (try! managedObjectContext.executeFetchRequest(fetchRequest)) as! [ColdQuotes]
+
+                for question in questionItems {
+                    managedObjectContext.deleteObject(question)
+                }
+                
+                try self.managedObjectContext!.save()
+                
+            }
+            catch{
+                print(error)
+            }
+            
+            
+        }
+    }
+
+
+    func preloadDataHot () {
+        // Retrieve data from the source file
+        if let contentsOfURL = NSBundle.mainBundle().URLForResource("Hot", withExtension: "csv") {
+
+            // Remove all the menu items before preloading
+            removeDataHot()
+
+
+            do {
+                let items = try parseCSV(contentsOfURL, encoding: NSUTF8StringEncoding)
+                // Preload the menu items
+                if let managedObjectContext = self.managedObjectContext {
+                    for item in items {
+                        let hotQuotesItem = NSEntityDescription.insertNewObjectForEntityForName("HotQuotes", inManagedObjectContext: managedObjectContext) as! HotQuotes
+
+                        hotQuotesItem.type = item.type
+                        hotQuotesItem.quote = item.quote
+
+                        try self.managedObjectContext!.save()
+
+
+                    }
+                }
+            } catch let error1 as NSError {
+                print("\(error1)")
+            }
+        }
+    }
+
+    func removeDataHot () {
+        // Remove the existing items
+        if let managedObjectContext = self.managedObjectContext {
+            let fetchRequest = NSFetchRequest(entityName: "HotQuotes")
+
+            do{
+                let questionItems = (try! managedObjectContext.executeFetchRequest(fetchRequest)) as! [HotQuotes]
+
+                for question in questionItems {
+                    managedObjectContext.deleteObject(question)
+                }
+
+                try self.managedObjectContext!.save()
+                
+            }
+            catch{
+                print(error)
+            }
+            
+            
+        }
+    }
+
 
 }
 

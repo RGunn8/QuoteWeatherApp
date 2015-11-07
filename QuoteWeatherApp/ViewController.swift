@@ -44,8 +44,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var CBarButtonItem:UIBarButtonItem = UIBarButtonItem()
     var FBarButtonItem:UIBarButtonItem = UIBarButtonItem()
     var cities = [City]()
+       let defaults = NSUserDefaults.standardUserDefaults()
     
 
+    @IBOutlet var quoteLabel: UILabel!
     @IBOutlet weak var indicator: UIActivityIndicatorView!
     @IBOutlet weak var dayOneDegreeLabel: UILabel!
 
@@ -58,6 +60,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var dayTwoLabel: UILabel!
     @IBOutlet weak var dayTwoDegreeLabel: UILabel!
     @IBOutlet weak var dayOneLabel: UILabel!
+
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,14 +68,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // 2
         FBarButtonItem = UIBarButtonItem(title: "F", style: UIBarButtonItemStyle.Plain, target: self, action: "FTapped:")
 
-       CBarButtonItem.setTitleTextAttributes([
-            NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 26)!,
-            NSForegroundColorAttributeName : UIColor.blackColor()],
-            forState: UIControlState.Normal)
 
-        self.navigationItem.leftBarButtonItem = CBarButtonItem
+
+//       CBarButtonItem.setTitleTextAttributes([
+//            NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 26)!,
+//            NSForegroundColorAttributeName : UIColor.blackColor()],
+//            forState: UIControlState.Normal)
+
         fetchCities()
-        updateLocation()
+
+          self.locationManager.delegate = self
+
 
 
     }
@@ -86,7 +92,48 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
        //println("\(isFahrenheitTemp)")
 
+        updateLocation()
+
+
            }
+
+    func setDegreeLable() {
+
+        let isCelsius = defaults.boolForKey("isCelsius")
+
+        if isCelsius{
+            self.theDegreeLabel.curValue = CGFloat(self.currentCelsius)
+
+        }else{
+            self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
+        }
+
+
+
+
+    }
+    func setWeatherLabels() {
+
+        let isCelsius = defaults.boolForKey("isCelsius")
+
+        if isCelsius {
+            self.theDegreeLabel.curValue = CGFloat(self.currentCelsius)
+            self.dayOneDegreeLabel.text = "\(self.celsiusTemp[1])"
+            self.dayTwoDegreeLabel.text = "\(self.celsiusTemp[2])"
+            self.dayThreeDegreeLabel.text = "\(self.celsiusTemp[3])"
+            self.dayFourDegreeLabel.text = "\(self.celsiusTemp[4])"
+            self.dayFiveDegreeLabel.text = "\(self.celsiusTemp[5])"
+
+        }else{
+            self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
+            self.dayOneDegreeLabel.text = "\(self.fahrenheitTemp[1])"
+            self.dayTwoDegreeLabel.text = "\(self.fahrenheitTemp[2])"
+            self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])"
+            self.dayFourDegreeLabel.text = "\(self.fahrenheitTemp[4])"
+            self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])"
+        }
+
+    }
 
     func FTapped(sender:UIButton) {
         //println("F pressed")
@@ -98,6 +145,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])"
         self.dayFourDegreeLabel.text = "\(self.fahrenheitTemp[4])"
         self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])"
+
+        let defaults = NSUserDefaults.standardUserDefaults()
+//        let isCelsius = defaults.boolForKey("isCelsius")
+
+            defaults.setBool(false, forKey: "isCelsius")
+
+
     }
 
     func CTapped(sender:UIButton) {
@@ -112,6 +166,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.navigationItem.leftBarButtonItem = FBarButtonItem
         //self.viewControllerFarenheitTemp(false, index: 0)
 
+        let defaults = NSUserDefaults.standardUserDefaults()
+        //        let isCelsius = defaults.boolForKey("isCelsius")
+
+        defaults.setBool(true, forKey: "isCelsius")
+
     }
 
 
@@ -119,7 +178,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         print("F tapped")
 
 
+
     }
+
+
+
 
       func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Location Manager failed with the following error: \(error)")
@@ -151,9 +214,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 //self.indicator.stopAnimating()
 
                 //                    self.degreeLabel.text = "\(self.currentFahrenheit)"
-                self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
+                self.setDegreeLable()
                 self.theDegreeLabel.range = CGFloat(100)
-                self.cityLabel.text = city.name
+              //self.cityLabel.text = self.cityName
+
+                if self.isCurrentLocation {
+                    self.cityLabel.text = city.name
+                }else{
+                    self.cityLabel.text = self.cityName
+                }
+
+                if self.currentFahrenheit >= 68 {
+                self.fetchHotQuote()
+                }else{
+                    self.fetchColdQuote()
+                }
+
 
 //                if city.weather == "Clear" {
 //                    self.quoteLabel.text = "The Weather is Clear"
@@ -230,20 +306,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                         self.celsiusTemp.append(celInt)
                     }
 
-                    self.dayOneDegreeLabel.text = "\(self.fahrenheitTemp[1])"
-                    self.dayTwoDegreeLabel.text = "\(self.fahrenheitTemp[2])"
-                    self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])"
-                    self.dayFourDegreeLabel.text = "\(self.fahrenheitTemp[4])"
-                    self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])"
+                    self.setWeatherLabels()
 
                 }
 
                 if let dates = dates {
+                      dispatch_async(dispatch_get_main_queue()){
                     self.dayOneLabel.text = dates[1]
                     self.dayTwoLabel.text = dates[2]
                     self.dayThreeLabel.text = dates[3]
                     self.dayFourLabel.text = dates[4]
-                    self.dayFiveLabel.text = dates[5]
+                        self.dayFiveLabel.text = dates[5]
+
+
+                        let isCelsius = self.defaults.boolForKey("isCelsius")
+                        if isCelsius{
+                            self.navigationItem.leftBarButtonItem = self.FBarButtonItem
+
+                        }else{
+                            self.navigationItem.leftBarButtonItem = self.CBarButtonItem
+                        }
+                    }
 
                 }
             }
@@ -257,10 +340,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
        func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
 
-
+            updateLocation()
 //            let city:CityWeather = CityWeather()
 //            city.getCurrentTemp(locValue.latitude, long: locValue.longitude, indicator:self.indicator)
 
+        }else{
+            manager.requestWhenInUseAuthorization()
         }
     }
     func fetchCities(){
@@ -273,10 +358,36 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
 
+    func fetchHotQuote() {
+        let fetchRequest = NSFetchRequest(entityName: "HotQuotes")
+
+        if let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [HotQuotes] {
+           let hotQuotes = fetchResults
+            let randomIndex = Int(arc4random_uniform(UInt32(hotQuotes.count)))
+
+            let theHotQuote = hotQuotes[randomIndex]
+            quoteLabel.text = theHotQuote.quote
+
+        }
+    }
+
+    func fetchColdQuote() {
+        let fetchRequest = NSFetchRequest(entityName: "ColdQuotes")
+
+        if let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [ColdQuotes] {
+            let coldQuotes = fetchResults
+            let randomIndex = Int(arc4random_uniform(UInt32(coldQuotes.count)))
+
+            let theColdQuote = coldQuotes[randomIndex]
+            quoteLabel.text = theColdQuote.quote
+            
+        }
+    }
+
 
     func updateLocation() {
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
-            self.locationManager.delegate = self
+
             self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
             //self.locationManager.distanceFilter = 10
 
@@ -315,7 +426,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             if self.cities.count == 0 {
                  //var ThecurrentLocation = City()
                 let cityInfo = CityInfo()
-                cityInfo.createCity("Current Location", cityLat: locValue.latitude, cityLong: locValue.longitude, cityAtIndex: 0, isCurrentLocation: true)
+                cityInfo.createCity(city.name!, cityLat: locValue.latitude, cityLong: locValue.longitude, cityAtIndex: 0, isCurrentLocation: true)
+                self.setName(locValue.latitude, long: locValue.longitude)
+
+                self.setWeather(locValue.latitude, long: locValue.longitude)
 
             }else{
                  let ThecurrentLocation:City = self.cities[0]

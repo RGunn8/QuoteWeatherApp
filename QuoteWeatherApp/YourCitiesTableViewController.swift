@@ -14,6 +14,7 @@ protocol SidePanelViewControllerDelegate {
     func citySelected(city: City)
 
 }
+
 class YourCitiesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
     let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
@@ -129,18 +130,5 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
             }
             //tableView.reloadData()
           }
-
-
-}
-
-
-class CityCell: UITableViewCell {
-    @IBOutlet var cityName: UILabel!
-
-    func configureForCity(city:City){
-        cityName.text = city.cityName
-        print(city.cityName)
-    }
-
 
 }

@@ -25,7 +25,7 @@ class ContainerViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     let centerPanelExpandedOffset: CGFloat = 100
-    var rightViewController: YourCitiesTableViewController?
+    var rightViewController: YourCitiesViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +41,8 @@ class ContainerViewController: UIViewController, CLLocationManagerDelegate {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"plusButtonPressed", object: nil)
 
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
-        centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
+//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
+//        centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
 
         // Do any additional setup after loading the view.
 
@@ -58,43 +58,43 @@ class ContainerViewController: UIViewController, CLLocationManagerDelegate {
 
 }
 
-extension ContainerViewController: UIGestureRecognizerDelegate {
-    // MARK: Gesture recognizer
-
-    func handlePanGesture(recognizer: UIPanGestureRecognizer) {
-        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
-
-        switch(recognizer.state) {
-        case .Began:
-            if (currentState == .RightCollapsed) {
-                if (!gestureIsDraggingFromLeftToRight) {
-                    addRightPanelViewController()
-                }
-                showShadowForCenterViewController(true)
-            }
-        case .Changed:
-            recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
-            recognizer.setTranslation(CGPointZero, inView: view)
-        case .Ended:
-            if (rightViewController != nil) {
-                let hasMovedGreaterThanHalfway = recognizer.view!.center.x < 0
-                animateRightPanel(shouldExpand: hasMovedGreaterThanHalfway)
-            }
-        default:
-            break
-        }
-    }
-
-    
-}
+//extension ContainerViewController: UIGestureRecognizerDelegate {
+//    // MARK: Gesture recognizer
+//
+//    func handlePanGesture(recognizer: UIPanGestureRecognizer) {
+//        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
+//
+//        switch(recognizer.state) {
+//        case .Began:
+//            if (currentState == .RightCollapsed) {
+//                if (!gestureIsDraggingFromLeftToRight) {
+//                    addRightPanelViewController()
+//                }
+//                showShadowForCenterViewController(true)
+//            }
+//        case .Changed:
+//            recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
+//            recognizer.setTranslation(CGPointZero, inView: view)
+//        case .Ended:
+//            if (rightViewController != nil) {
+//                let hasMovedGreaterThanHalfway = recognizer.view!.center.x < 0
+//                animateRightPanel(shouldExpand: hasMovedGreaterThanHalfway)
+//            }
+//        default:
+//            break
+//        }
+//    }
+//
+//    
+//}
 
 
     private extension UIStoryboard {
         class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
 
       
-        class func rightViewController() -> YourCitiesTableViewController? {
-            return mainStoryboard().instantiateViewControllerWithIdentifier("YourCities") as? YourCitiesTableViewController
+        class func rightViewController() -> YourCitiesViewController? {
+            return mainStoryboard().instantiateViewControllerWithIdentifier("YourCitesVC") as? YourCitiesViewController
         }
 
         class func centerViewController() -> ViewController? {
@@ -169,7 +169,7 @@ extension ContainerViewController: CenterViewControllerDelegate {
 
 
 
-    func addChildSidePanelController(sidePanelController: YourCitiesTableViewController) {
+    func addChildSidePanelController(sidePanelController: YourCitiesViewController) {
         sidePanelController.delegate = centerViewController
 
         view.insertSubview(sidePanelController.view, atIndex: 0)
