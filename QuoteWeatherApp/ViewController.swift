@@ -108,6 +108,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
         }
 
+        if self.currentCelsius < 0 || self.currentFahrenheit < 0 {
+            self.theDegreeLabel.curValue = 0
+        }
 
 
 

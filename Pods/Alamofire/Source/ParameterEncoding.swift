@@ -227,9 +227,9 @@ public enum ParameterEncoding {
         //
         //==========================================================================================================
 
-        if #available(iOS 8.3, OSX 10.10, *) {
-            escaped = string.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacterSet) ?? string
-        } else {
+//        if #available(iOS 9, OSX 10.10, *) {
+//            escaped = string.stringByAddingPercentEncodingWithAllowedCharacters(allowedCharacterSet) ?? string
+//        } else {
             let batchSize = 50
             var index = string.startIndex
 
@@ -244,7 +244,7 @@ public enum ParameterEncoding {
 
                 index = endIndex
             }
-        }
+        //}
 
         return escaped
     }
