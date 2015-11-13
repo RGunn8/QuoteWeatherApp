@@ -73,6 +73,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         fetchCities()
 
           self.locationManager.delegate = self
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateLocation", name: "updateWeather", object: nil)
 
 
 
@@ -87,7 +88,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
        //println("\(isFahrenheitTemp)")
 
-        updateLocation()
+        //updateLocation()
 
 
            }
