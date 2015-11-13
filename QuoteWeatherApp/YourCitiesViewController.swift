@@ -15,7 +15,7 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationBar!
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var coreDataStack = CoreDataStack()
     var numberOfCity = Int()
     var selectedCityIndex = 0
     var delegate: SidePanelViewControllerDelegate?
@@ -63,7 +63,7 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
 
 
     func getFetchedResultController() -> NSFetchedResultsController {
-        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchCity(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultController = NSFetchedResultsController(fetchRequest: fetchCity(), managedObjectContext: coreDataStack.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
         return fetchedResultController
     }
 
@@ -76,17 +76,17 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
 
         return fetchRequest
     }
-    func save() {
-        var error:NSError?
-        do {
-            try managedObjectContext!.save()
-            print(error?.localizedDescription)
-        } catch let error1 as NSError {
-            error = error1
-            print(error)
-        }
-
-    }
+//    func save() {
+//        var error:NSError?
+//        do {
+//            try managedObjectContext!.save()
+//            print(error?.localizedDescription)
+//        } catch let error1 as NSError {
+//            error = error1
+//            print(error)
+//        }
+//
+//    }
 
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
@@ -146,7 +146,7 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
 
 
             // Delete it from the managedObjectContext
-            managedObjectContext?.deleteObject(deleteAlarms)
+            coreDataStack.managedObjectContext.deleteObject(deleteAlarms)
 
 
             // Refresh the table view to indicate that it's deleted
@@ -156,11 +156,10 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
 
 
             do {
-                try managedObjectContext?.save()
-            } catch _ {
+               coreDataStack.saveMainContext()
             }
             //println("\(deleteAlarms.on)")
-            save()
+           
 
             let error = NSErrorPointer()
             do {

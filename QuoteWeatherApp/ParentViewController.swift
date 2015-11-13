@@ -14,7 +14,7 @@ import CoreLocation
 
 class ParentViewController: UIViewController, CLLocationManagerDelegate {
    
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var coreDataStack:CoreDataStack!
     var cities = [City]()
     var didSegue = false
     var segueIndex = 1
@@ -97,7 +97,7 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
         let fetchRequest = NSFetchRequest(entityName: "City")
         let sortDescriptor = NSSortDescriptor(key: "cityAtIndex", ascending: true)
         fetchRequest.sortDescriptors = [sortDescriptor]
-               if let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [City] {
+               if let fetchResults = (try? coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [City] {
             cities = fetchResults
 
              
@@ -174,9 +174,8 @@ class ParentViewController: UIViewController, CLLocationManagerDelegate {
             ThecurrentLocation.setValue(true, forKey: "isCurrentLocation")
             print(ThecurrentLocation.cityName)
             do {
-                try self.managedObjectContext?.save()
-            } catch _ {
-            }
+                self.coreDataStack.saveMainContext()
+            } 
 
 //       self.pageViewController.setViewControllers(viewControllersArray, direction: .Forward, animated: true, completion: nil)
         }

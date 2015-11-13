@@ -18,6 +18,7 @@ enum SlideOutState {
 class ContainerViewController: UIViewController, CLLocationManagerDelegate {
     var centerNavigationController:UINavigationController!
     var centerViewController:ViewController!
+    var coreDataStack: CoreDataStack!
     var currentState: SlideOutState = .RightCollapsed {
         didSet {
             let shouldShowShadow = currentState != .RightCollapsed
@@ -30,6 +31,7 @@ class ContainerViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         centerViewController = UIStoryboard.centerViewController()
+        centerViewController.coreDataStack = coreDataStack
         centerViewController.delegate = self
 
 
@@ -124,6 +126,7 @@ extension ContainerViewController: CenterViewControllerDelegate {
     func addRightPanelViewController() {
         if (rightViewController == nil) {
             rightViewController = UIStoryboard.rightViewController()
+            rightViewController?.coreDataStack = coreDataStack
             // rightViewController!.animals = Animal.allDogs()
 
             addChildSidePanelController(rightViewController!)

@@ -20,7 +20,7 @@ class CityInfo: NSObject {
     var currentTemp:Double?
     var weeklyTempArray = [Int]()
     var weeklyDate = [String]()
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+   var coreDataStack = CoreDataStack()
     var alamofireManager:Alamofire.Manager
     let apiKey = "b3d34aa21fbec905163da3d45d27db66"
 
@@ -172,8 +172,8 @@ class CityInfo: NSObject {
 
     func createCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber, isCurrentLocation:Bool) {
 
-        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:managedObjectContext!)
-        let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:coreDataStack.managedObjectContext)
+        let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: coreDataStack.managedObjectContext)
 
         city.setValue(cityName, forKey: "cityName")
         city.setValue(cityLat, forKey: "cityLat")
@@ -183,18 +183,17 @@ class CityInfo: NSObject {
 
 
         do {
-            try managedObjectContext?.save()
-        } catch _ {
+           coreDataStack.saveMainContext()
         }
 
-        print("\(city)")
-        
+//        print("\(city)")
+
     }
 
     func returnCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber, isCurrentLocation:Bool) -> City {
 
-        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:managedObjectContext!)
-        let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedObjectContext)
+        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:coreDataStack.managedObjectContext)
+        let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: coreDataStack.managedObjectContext)
 
         city.setValue(cityName, forKey: "cityName")
         city.setValue(cityLat, forKey: "cityLat")
@@ -204,10 +203,8 @@ class CityInfo: NSObject {
 
 
         do {
-            try managedObjectContext?.save()
-        } catch _ {
-        }
-
+            coreDataStack.saveMainContext()
+        } 
         print("\(city)")
 
         return city as! City

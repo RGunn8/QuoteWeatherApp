@@ -17,7 +17,7 @@ protocol SidePanelViewControllerDelegate {
 
 class YourCitiesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    var coreDataStack:CoreDataStack!
     var numberOfCity = Int()
     var selectedCityIndex = 0
     var delegate: SidePanelViewControllerDelegate?
@@ -51,7 +51,7 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
     }
 
     func getFetchedResultController() -> NSFetchedResultsController {
-    fetchedResultController = NSFetchedResultsController(fetchRequest: fetchCity(), managedObjectContext: managedObjectContext!, sectionNameKeyPath: nil, cacheName: nil)
+    fetchedResultController = NSFetchedResultsController(fetchRequest: fetchCity(), managedObjectContext: coreDataStack.managedObjectContext, sectionNameKeyPath: nil, cacheName: nil)
     return fetchedResultController
     }
 
@@ -64,17 +64,6 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
 
         return fetchRequest
     }
-    func save() {
-        var error:NSError?
-        do {
-            try managedObjectContext!.save()
-            print(error?.localizedDescription)
-        } catch let error1 as NSError {
-            error = error1
-        }
-
-    }
-
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
     }
@@ -123,12 +112,10 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
 
 
             // Delete it from the managedObjectContext
-            managedObjectContext?.deleteObject(deleteCity)
+           coreDataStack.managedObjectContext.deleteObject(deleteCity)
             do {
-                try managedObjectContext?.save()
-            } catch _ {
-            }
-            //tableView.reloadData()
+               coreDataStack.saveMainContext()
+            }             //tableView.reloadData()
           }
 
 }

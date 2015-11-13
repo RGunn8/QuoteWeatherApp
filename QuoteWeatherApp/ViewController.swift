@@ -45,6 +45,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     var FBarButtonItem:UIBarButtonItem = UIBarButtonItem()
     var cities = [City]()
        let defaults = NSUserDefaults.standardUserDefaults()
+    var coreDataStack:CoreDataStack!
     
 
     @IBOutlet var quoteLabel: UILabel!
@@ -61,19 +62,13 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var dayTwoDegreeLabel: UILabel!
     @IBOutlet weak var dayOneLabel: UILabel!
 
-    let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+
     override func viewDidLoad() {
         super.viewDidLoad()
         CBarButtonItem = UIBarButtonItem(title: "C", style: UIBarButtonItemStyle.Plain, target: self, action: "CTapped:")
         // 2
         FBarButtonItem = UIBarButtonItem(title: "F", style: UIBarButtonItemStyle.Plain, target: self, action: "FTapped:")
 
-
-
-//       CBarButtonItem.setTitleTextAttributes([
-//            NSFontAttributeName : UIFont(name: "Helvetica-Bold", size: 26)!,
-//            NSForegroundColorAttributeName : UIColor.blackColor()],
-//            forState: UIControlState.Normal)
 
         fetchCities()
 
@@ -111,8 +106,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if self.currentCelsius < 0 || self.currentFahrenheit < 0 {
             self.theDegreeLabel.curValue = 0
         }
-
-
 
     }
     func setWeatherLabels() {
@@ -180,12 +173,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func ChangeToFahrenheit(notification: NSNotification){
         print("F tapped")
 
-
-
     }
-
-
-
 
       func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("Location Manager failed with the following error: \(error)")
@@ -214,9 +202,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 
             dispatch_async(dispatch_get_main_queue()){
-                //self.indicator.stopAnimating()
 
-                //                    self.degreeLabel.text = "\(self.currentFahrenheit)"
                 self.setDegreeLable()
                 self.theDegreeLabel.range = CGFloat(100)
               //self.cityLabel.text = self.cityName
@@ -234,21 +220,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }
 
 
-//                if city.weather == "Clear" {
-//                    self.quoteLabel.text = "The Weather is Clear"
-//                    print(city.weather)
-//                }else if city.weather == "Rain"{
-//                    self.quoteLabel.text = "It is Raining Outside"
-//                    print(city.weather)
-//                }else if city.weather == "Snow"{
-//                    self.quoteLabel.text = "It is snowing outside"
-//                    print(city.weather)
-//                }else if city.weather == "Clouds"{
-//                    self.quoteLabel.text = "It look like it going to rain"
-//                }else{
-//                    self.quoteLabel.text = "It not terrible"
-//                    print(city.weather)
-//                }
 
                 
             }
@@ -260,32 +231,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
  
-//    func setName(lat:Double, long:Double){
-//        //indicator.startAnimating()
-//        //indicator.hidesWhenStopped = true
-//        cityInfo.getCityInfo(lat, long: long) { (theCity) -> () in
-//
-//                //self.indicator.stopAnimating()
-//                if let city = theCity{
-//
-//                    if self.isCurrentLocation {
-//                        self.cityLabel.text = city.name
-//                    }else{
-//                        self.cityLabel.text = self.cityName
-//                    }
-//
-//                    let fah = city.currentTemp! * (9/5) - 459.67
-//                    self.currentFahrenheit = Int(fah)
-//                    let cels = city.currentTemp! - 273.15
-//                    self.currentCelsius = Int(cels)
-////                    self.degreeLabel.text = "\(self.currentFahrenheit)"
-//                    self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
-//                    self.theDegreeLabel.range = CGFloat(100)
-//
-//                }
-//            }
-//        
-//    }
+
 
     func setWeather(lat:Double, long:Double){
    
@@ -355,16 +301,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         let fetchRequest = NSFetchRequest(entityName: "City")
         let sortDescriptor = NSSortDescriptor(key: "isCurrentLocation", ascending: false)
         fetchRequest.sortDescriptors = [sortDescriptor]
-        if let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [City] {
+
+        if let fetchResults = (try? coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [City] {
             cities = fetchResults
 
         }
+
+//        do {
+//            theCities = try coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest) as? [City]
+//            if let cityArray = theCities {
+//                cities = cityArray
+//            }
+//        }catch {
+//            theCities = nil
+//
+//
+//        }
+
+//        if let fetchResults = (try? coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [City] {
+//            cities = fetchResults
+//
+//        }
     }
 
     func fetchHotQuote() {
         let fetchRequest = NSFetchRequest(entityName: "HotQuotes")
 
-        if let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [HotQuotes] {
+        if let fetchResults = (try? coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [HotQuotes] {
            let hotQuotes = fetchResults
             let randomIndex = Int(arc4random_uniform(UInt32(hotQuotes.count)))
 
@@ -377,7 +340,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func fetchColdQuote() {
         let fetchRequest = NSFetchRequest(entityName: "ColdQuotes")
 
-        if let fetchResults = (try? managedObjectContext!.executeFetchRequest(fetchRequest)) as? [ColdQuotes] {
+        if let fetchResults = (try? coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [ColdQuotes] {
             let coldQuotes = fetchResults
             let randomIndex = Int(arc4random_uniform(UInt32(coldQuotes.count)))
 
@@ -442,8 +405,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 ThecurrentLocation.setValue(true, forKey: "isCurrentLocation")
                 print(ThecurrentLocation.cityName)
                 do {
-                    try self.managedObjectContext?.save()
-                } catch _ {
+                    self.coreDataStack.saveMainContext()
                 }
             }
 
