@@ -28,7 +28,6 @@
 		F7CAA5BA1B97723E00FD748E /* DegreeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CAA5B91B97723E00FD748E /* DegreeLabel.swift */; };
 		F7CB34381BA357B3004F6CC3 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB34371BA357B3004F6CC3 /* ContainerViewController.swift */; };
 		F7CB343C1BA3E4D3004F6CC3 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB343B1BA3E4D3004F6CC3 /* City.swift */; };
-		F7CE13571B88F01A001E16FA /* ParentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CE13561B88F01A001E16FA /* ParentViewController.swift */; };
 		F7CE7B0C1BF57FD400478455 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CE7B0B1BF57FD400478455 /* CoreDataStack.swift */; };
 		F7D1D1FC1B82664200722A1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D1FB1B82664200722A1C /* AppDelegate.swift */; };
 		F7D1D1FF1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D1FD1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld */; };
@@ -98,7 +97,6 @@
 		F7CAA5B91B97723E00FD748E /* DegreeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DegreeLabel.swift; sourceTree = "<group>"; };
 		F7CB34371BA357B3004F6CC3 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		F7CB343B1BA3E4D3004F6CC3 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
-		F7CE13561B88F01A001E16FA /* ParentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParentViewController.swift; sourceTree = "<group>"; };
 		F7CE7B0B1BF57FD400478455 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
 		F7D1D1F61B82664200722A1C /* QuoteWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuoteWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D1D1FA1B82664200722A1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -182,7 +180,6 @@
 			children = (
 				F7C872361BE6999A0036C37C /* YourCitiesViewController.swift */,
 				F7D1D2001B82664200722A1C /* ViewController.swift */,
-				F7CE13561B88F01A001E16FA /* ParentViewController.swift */,
 				F7CB34371BA357B3004F6CC3 /* ContainerViewController.swift */,
 				F74376C31B86DCFA004BBCC5 /* YourCitiesTableViewController.swift */,
 				F74376BF1B863FD9004BBCC5 /* SearchTableViewController.swift */,
@@ -492,7 +489,6 @@
 				F7CB343C1BA3E4D3004F6CC3 /* City.swift in Sources */,
 				F7CE7B0C1BF57FD400478455 /* CoreDataStack.swift in Sources */,
 				F7C872371BE6999A0036C37C /* YourCitiesViewController.swift in Sources */,
-				F7CE13571B88F01A001E16FA /* ParentViewController.swift in Sources */,
 				F7CAA5BA1B97723E00FD748E /* DegreeLabel.swift in Sources */,
 				F7D1D1FF1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld in Sources */,
 			);

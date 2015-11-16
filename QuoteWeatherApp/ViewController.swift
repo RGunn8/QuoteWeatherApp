@@ -71,9 +71,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
 
         fetchCities()
+        navigationController?.navigationItem.titleView?.backgroundColor = UIColor.redColor()
 
           self.locationManager.delegate = self
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "updateLocation", name: "updateWeather", object: nil)
+
+        CBarButtonItem.setTitleTextAttributes([
+            NSForegroundColorAttributeName : UIColor(red: (245/255), green: (245/255), blue: (245/255), alpha: 1)],
+            forState: UIControlState.Normal)
+
+
+        FBarButtonItem.setTitleTextAttributes([
+            NSForegroundColorAttributeName : UIColor(red: (245/255), green: (245/255), blue: (245/255), alpha: 1)],
+            forState: UIControlState.Normal)
 
 
 
@@ -219,8 +229,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
                 }else{
                     self.fetchColdQuote()
                 }
-
-
 
                 
             }
@@ -392,8 +400,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
             if self.cities.count == 0 {
                  //var ThecurrentLocation = City()
-                let cityInfo = CityInfo()
-                cityInfo.createCity(city.name!, cityLat: locValue.latitude, cityLong: locValue.longitude, cityAtIndex: 0, isCurrentLocation: true)
+        
+                self.coreDataStack.createCity(city.name!, cityLat: locValue.latitude, cityLong: locValue.longitude, cityAtIndex: 0, isCurrentLocation: true)
                 self.setName(locValue.latitude, long: locValue.longitude)
 
                 self.setWeather(locValue.latitude, long: locValue.longitude)

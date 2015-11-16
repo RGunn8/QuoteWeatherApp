@@ -54,5 +54,26 @@ class CoreDataStack: NSObject {
         managedObjectContext.persistentStoreCoordinator = self.persistentStoreCoordinator
         return managedObjectContext
     }()
+
+    func createCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber, isCurrentLocation:Bool) {
+
+        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:self.managedObjectContext)
+        let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
+
+        city.setValue(cityName, forKey: "cityName")
+        city.setValue(cityLat, forKey: "cityLat")
+        city.setValue(cityLong, forKey: "cityLong")
+        city.setValue(cityAtIndex, forKey: "cityAtIndex")
+        city.setValue(isCurrentLocation, forKey: "isCurrentLocation")
+
+
+        do {
+            self.saveMainContext()
+        }
+
+      
+        
+    }
+
     
 }

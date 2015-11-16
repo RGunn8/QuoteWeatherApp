@@ -22,6 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
+        UINavigationBar.appearance().barTintColor = UIColor(red: (54/255), green: (54/255), blue: (54/255), alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: (125/255), green: (122/255), blue: (122/255), alpha: 1)]
+
         let containerViewController = ContainerViewController()
         if containerViewController.respondsToSelector("setCoreDataStack:"){
             containerViewController.performSelector("setCoreDataStack:", withObject: coreDataStack)
@@ -162,7 +166,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                         coldQuotesItem.quote = item.quote
 
                         coreDataStack.saveMainContext()
-
 
                     }
 

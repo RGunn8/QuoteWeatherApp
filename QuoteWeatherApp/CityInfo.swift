@@ -34,38 +34,6 @@ class CityInfo: NSObject {
 
 
 
-//    func getCityInfo(lat:Double, long:Double, completion: (CityInfo?) -> ()) -> () {
-//
-//        let theCity = CityInfo()
-//        Alamofire.request(.GET, "http://api.openweathermap.org/data/2.5/weather", parameters: ["lat": "\(lat)", "lon":"\(long)","APPID":"b3d34aa21fbec905163da3d45d27db66"]).responseJSON {
-//
-//            (Response) in
-//            if let data: AnyObject = Response.data{
-//                let info = JSON(data)
-//            
-//                if let thename = info["name"].string{
-//                    theCity.name = thename
-//
-//                }
-//                if let coord = info["coord"].dictionaryObject{
-//                    theCity.lat = coord["lat"] as? Double
-//                    theCity.long = coord["lon"] as? Double
-//
-//                }
-//                if let id = info["id"].double{
-//                    theCity.cityID = "\(id)"
-//                }
-//                if let currentTemp = info["main"]["temp"].double{
-//                        theCity.currentTemp = currentTemp
-//                }
-//
-//            }
-//            completion(theCity)
-//
-//        }
-//
-//    }
-
     func getCityInfo(lat:Double, long:Double, completionHandler: (Result<OpenWeatherCity,NSError>) ->Void){
 
         let theParameters:[String:String] = [
@@ -116,7 +84,7 @@ class CityInfo: NSObject {
 
 
     func searchCity(search:String, completionHandler:
-        (Array<CityInfo>) -> Void) {
+        (Array<CityInfo>, NSError?) -> Void) {
         var cityResults = [CityInfo]()
             let urlEndPoint = "http://autocomplete.wunderground.com/aq"
             Alamofire.request(.GET, urlEndPoint, parameters:["query":search]).responseJSON(completionHandler: { (Response) -> Void in
@@ -152,44 +120,15 @@ class CityInfo: NSObject {
                 }
             }
 
-            completionHandler(cityResults)
+            completionHandler(cityResults, Response.result.error)
 
         
         })
     }
 
-//
-//    func theCity(lat:Double, long:Double){
-//        getCityInfo(lat, long: long, completion: { (city,error) in
-//            if let city  = city{
-//                //println("\(city.name)  \(city.cityID) \(city.lat), \(city.long) ")
-//            }else{
-//                print("somehting happen that wasn't suppose to")
-//            }
-//
-//        })
-//    }
-
-    func createCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber, isCurrentLocation:Bool) {
-
-        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:coreDataStack.managedObjectContext)
-        let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: coreDataStack.managedObjectContext)
-
-        city.setValue(cityName, forKey: "cityName")
-        city.setValue(cityLat, forKey: "cityLat")
-        city.setValue(cityLong, forKey: "cityLong")
-        city.setValue(cityAtIndex, forKey: "cityAtIndex")
-        city.setValue(isCurrentLocation, forKey: "isCurrentLocation")
 
 
-        do {
-           coreDataStack.saveMainContext()
-        }
-
-//        print("\(city)")
-
-    }
-
+   
     func returnCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber, isCurrentLocation:Bool) -> City {
 
         let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:coreDataStack.managedObjectContext)

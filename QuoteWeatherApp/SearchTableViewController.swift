@@ -19,21 +19,10 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var searchResultsCity = [CityInfo]()
     let city = CityInfo()
     var numOfCity = Int()
+    var coreDataStack = CoreDataStack()
     var delegate: SearchViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("\(numOfCity)")
-//        self.resultSearchController = ({
-//            let controller = UISearchController(searchResultsController: nil)
-//           controller.searchResultsUpdater = self
-//            controller.dimsBackgroundDuringPresentation = false
-//            controller.searchBar.sizeToFit()
-//
-//            self.tableView.tableHeaderView = controller.searchBar
-//
-//            return controller
-//        })()
-
         resultSearchController = UISearchController(searchResultsController: nil)
         // 2
         resultSearchController.searchResultsUpdater = self
@@ -64,9 +53,16 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+       let searchNumbers = NSCharacterSet(charactersInString: "0123456789")
         if (self.resultSearchController.active) {
+
             if self.resultSearchController.searchBar.text == "" || self.resultSearchController.searchBar.text == " "{
                 return 0
+            } else if ((self.resultSearchController.searchBar.text?.rangeOfCharacterFromSet(searchNumbers)) != nil) {
+              
+                return 0
+
             }else{
 
             return self.filteredTableData.count
@@ -104,7 +100,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 
         city.searchCity(searchController.searchBar.text!, completionHandler: { (city) -> () in
 
-                self.filteredTableData = city
+                self.filteredTableData = city.0
 
             //println("\(self.filteredTableData)")
             self.tableView.reloadData()
@@ -120,14 +116,12 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let selectedItem = self.filteredTableData[indexPath.row]
-//        var theCityID = String()
+
         var theCityName = String()
         var theCityLat = Double()
         var theCityLong = Double()
     
-//        if let cityID = selectedItem.cityID{
-//            theCityID = cityID
-//        }
+
         if let cityName = selectedItem.name{
              cityName
             var myArray = cityName.componentsSeparatedByCharactersInSet(NSCharacterSet (charactersInString: ",-"))
@@ -145,7 +139,7 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         }
        let newCityNumber = numOfCity + 1
 
-       city.createCity(theCityName, cityLat: theCityLat, cityLong: theCityLong, cityAtIndex: newCityNumber, isCurrentLocation: false)
+       coreDataStack.createCity(theCityName, cityLat: theCityLat, cityLong: theCityLong, cityAtIndex: newCityNumber, isCurrentLocation: false)
 
 
         delegate?.cityPicked(theCityLat, long: theCityLong, name: theCityName)
@@ -153,13 +147,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
        self.navigationController!.popViewControllerAnimated(true)
     }
 
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
 
 
 }
