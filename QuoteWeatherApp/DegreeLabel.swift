@@ -64,7 +64,7 @@ class DegreeLabel: UIView {
         layer.addSublayer(fgLayer)
 
         // Setup percent label
-       degreeLabel.font = UIFont(name: "Avenir Next", size: 34)
+       degreeLabel.font = UIFont(name: "Avenir Next", size: 45)
         degreeLabel.textColor = UIColor.whiteColor()
         degreeLabel.text = "0"
         degreeLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -82,9 +82,7 @@ class DegreeLabel: UIView {
         let percentLabelCenterY = NSLayoutConstraint(item: degreeLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: -margin)
         NSLayoutConstraint.activateConstraints([percentLabelCenterX, percentLabelCenterY])
 
-//        let captionLabelCenterX = NSLayoutConstraint(item: captionLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: -margin)
-//        let captionLabelBottomY = NSLayoutConstraint(item: captionLabel, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: -margin)
-//        NSLayoutConstraint.activateConstraints([captionLabelCenterX, captionLabelBottomY])
+
 
     }
 

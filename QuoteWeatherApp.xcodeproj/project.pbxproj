@@ -98,7 +98,7 @@
 		F7CB34371BA357B3004F6CC3 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
 		F7CB343B1BA3E4D3004F6CC3 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
 		F7CE7B0B1BF57FD400478455 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
-		F7D1D1F61B82664200722A1C /* QuoteWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuoteWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7D1D1F61B82664200722A1C /* Positive Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Positive Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7D1D1FA1B82664200722A1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F7D1D1FB1B82664200722A1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F7D1D1FE1B82664200722A1C /* QuoteWeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuoteWeatherApp.xcdatamodel; sourceTree = "<group>"; };
@@ -218,7 +218,7 @@
 		F7D1D1F71B82664200722A1C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				F7D1D1F61B82664200722A1C /* QuoteWeatherApp.app */,
+				F7D1D1F61B82664200722A1C /* Positive Weather.app */,
 				F7D1D20E1B82664200722A1C /* QuoteWeatherAppTests.xctest */,
 				F78032A11BF2EF44007540C8 /* PW Widget.appex */,
 			);
@@ -307,7 +307,7 @@
 			);
 			name = QuoteWeatherApp;
 			productName = QuoteWeatherApp;
-			productReference = F7D1D1F61B82664200722A1C /* QuoteWeatherApp.app */;
+			productReference = F7D1D1F61B82664200722A1C /* Positive Weather.app */;
 			productType = "com.apple.product-type.application";
 		};
 		F7D1D20D1B82664200722A1C /* QuoteWeatherAppTests */ = {
@@ -680,7 +680,7 @@
 				INFOPLIST_FILE = QuoteWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RyanGunn.QuoteWeatherApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Positive Weather";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
@@ -697,7 +697,7 @@
 				INFOPLIST_FILE = QuoteWeatherApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.RyanGunn.QuoteWeatherApp;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Positive Weather";
 				PROVISIONING_PROFILE = "";
 			};
 			name = Release;

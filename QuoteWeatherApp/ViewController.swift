@@ -21,6 +21,7 @@ protocol CenterViewControllerDelegate {
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var theDegreeLabel: DegreeLabel!
 
     var locationManager = CLLocationManager()
@@ -69,7 +70,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // 2
         FBarButtonItem = UIBarButtonItem(title: "F", style: UIBarButtonItemStyle.Plain, target: self, action: "FTapped:")
 
-
+        quoteLabel.adjustsFontSizeToFitWidth = true
         fetchCities()
         navigationController?.navigationItem.titleView?.backgroundColor = UIColor.redColor()
 
@@ -93,13 +94,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         if !isCurrentLocation{
         setName(lat, long: long)
 
-
         setWeather(lat, long: long)
         }
-       //println("\(isFahrenheitTemp)")
-
-        //updateLocation()
-
 
            }
 
@@ -210,7 +206,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
             self.currentFahrenheit = Int(fah)
             let cels = city.currentTemp! - 273.15
             self.currentCelsius = Int(cels)
-
+            print(city.weather)
 
             dispatch_async(dispatch_get_main_queue()){
 
@@ -316,21 +312,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         }
 
-//        do {
-//            theCities = try coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest) as? [City]
-//            if let cityArray = theCities {
-//                cities = cityArray
-//            }
-//        }catch {
-//            theCities = nil
-//
-//
-//        }
 
-//        if let fetchResults = (try? coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest)) as? [City] {
-//            cities = fetchResults
-//
-//        }
     }
 
     func fetchHotQuote() {
@@ -428,9 +410,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         }
 
         }
-
-
-
     }
 
 

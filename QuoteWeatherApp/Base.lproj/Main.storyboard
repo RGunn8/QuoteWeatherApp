@@ -9,7 +9,7 @@
         <!--ViewController-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController storyboardIdentifier="ContentViewController" title="ViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ContentViewController" title="ViewController" id="vXZ-lx-hvc" customClass="ViewController" customModule="Positive_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -33,19 +33,6 @@
                                 </items>
                                 <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </toolbar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdL-WI-z6D" customClass="DegreeLabel" customModule="QuoteWeatherApp" customModuleProvider="target">
-                                <rect key="frame" x="65" y="141" width="470" height="201"/>
-                                <animations/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
-                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="fgColor">
-                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City" textAlignment="center" lineBreakMode="characterWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ugx-pP-pia">
                                 <rect key="frame" x="20" y="74" width="560" height="45"/>
                                 <animations/>
@@ -53,19 +40,19 @@
                                 <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-iN-jEq">
-                                <rect key="frame" x="0.0" y="367" width="600" height="110"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" axis="vertical" alignment="center" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="nDM-iN-jEq">
+                                <rect key="frame" x="0.0" y="396" width="600" height="84"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sQP-YD-fwL">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="12"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="3"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="12" id="crn-MQ-9Qn"/>
+                                            <constraint firstAttribute="height" constant="3" id="crn-MQ-9Qn"/>
                                         </constraints>
                                     </view>
-                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Xda-NL-bX0">
-                                        <rect key="frame" x="165" y="22" width="270" height="66"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="740" verticalCompressionResistancePriority="740" distribution="equalSpacing" alignment="center" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Xda-NL-bX0">
+                                        <rect key="frame" x="165" y="9" width="270" height="66"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="gIJ-Mk-TC6">
                                                 <rect key="frame" x="0.0" y="1" width="34" height="65"/>
@@ -171,11 +158,11 @@
                                         <animations/>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YMQ-8M-ptg">
-                                        <rect key="frame" x="0.0" y="98" width="600" height="12"/>
+                                        <rect key="frame" x="0.0" y="81" width="600" height="3"/>
                                         <animations/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="12" id="kx6-tm-Lb5"/>
+                                            <constraint firstAttribute="height" constant="3" id="kx6-tm-Lb5"/>
                                         </constraints>
                                     </view>
                                 </subviews>
@@ -186,14 +173,32 @@
                                     <constraint firstAttribute="trailing" secondItem="YMQ-8M-ptg" secondAttribute="trailing" id="XY2-Zj-f9d"/>
                                     <constraint firstItem="YMQ-8M-ptg" firstAttribute="leading" secondItem="nDM-iN-jEq" secondAttribute="leading" id="zdP-as-2tE"/>
                                 </constraints>
+                                <variation key="heightClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="Xda-NL-bX0"/>
+                                    </mask>
+                                </variation>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&quot;Power of Postivity&quot;" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Umd-un-JVC">
-                                <rect key="frame" x="40" y="523" width="520" height="23"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="240" verticalHuggingPriority="240" text="&quot;Power of Postivity&quot;" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Umd-un-JVC">
+                                <rect key="frame" x="40" y="526" width="520" height="20"/>
                                 <animations/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
                                 <color key="textColor" red="0.63137254901960782" green="0.792156862745098" blue="0.87058823529411766" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdL-WI-z6D" customClass="DegreeLabel" customModule="Positive_Weather" customModuleProvider="target">
+                                <rect key="frame" x="30" y="141" width="540" height="230"/>
+                                <animations/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bgColor">
+                                        <color key="value" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="fgColor">
+                                        <color key="value" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
@@ -205,26 +210,87 @@
                             <constraint firstItem="2vO-OV-6eJ" firstAttribute="top" secondItem="Umd-un-JVC" secondAttribute="bottom" constant="10" id="4bE-RX-ezq">
                                 <variation key="widthClass=compact" constant="37"/>
                             </constraint>
-                            <constraint firstItem="kdL-WI-z6D" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="45" id="BZm-XT-UMG"/>
+                            <constraint firstItem="2vO-OV-6eJ" firstAttribute="top" secondItem="Umd-un-JVC" secondAttribute="bottom" constant="2" id="96u-7w-Ajg"/>
+                            <constraint firstItem="kdL-WI-z6D" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="BZm-XT-UMG"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="2vO-OV-6eJ" secondAttribute="bottom" id="J8W-uZ-3oO"/>
                             <constraint firstItem="2vO-OV-6eJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="OOf-Gf-yXq"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="kdL-WI-z6D" secondAttribute="trailing" constant="45" id="T0Y-L5-bR6"/>
+                            <constraint firstItem="Umd-un-JVC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="5" id="Pxn-4m-ydj"/>
+                            <constraint firstItem="nDM-iN-jEq" firstAttribute="top" secondItem="ugx-pP-pia" secondAttribute="bottom" constant="55" id="RKu-cT-0qh"/>
+                            <constraint firstItem="Umd-un-JVC" firstAttribute="top" secondItem="nDM-iN-jEq" secondAttribute="bottom" constant="5" id="SfO-th-wJI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kdL-WI-z6D" secondAttribute="trailing" constant="10" id="T0Y-L5-bR6"/>
                             <constraint firstAttribute="trailing" secondItem="nDM-iN-jEq" secondAttribute="trailing" id="Tvv-Ah-Qgy"/>
+                            <constraint firstAttribute="trailing" secondItem="Umd-un-JVC" secondAttribute="trailing" constant="5" id="Vft-as-9Re"/>
                             <constraint firstItem="Umd-un-JVC" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="20" id="XiW-kF-3Gg">
                                 <variation key="widthClass=compact" constant="-13"/>
                             </constraint>
+                            <constraint firstItem="nDM-iN-jEq" firstAttribute="top" secondItem="kdL-WI-z6D" secondAttribute="bottom" constant="5" id="cqx-5E-6YD"/>
+                            <constraint firstItem="ugx-pP-pia" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="8" id="dlH-KN-57K">
+                                <variation key="heightClass=compact" constant="78"/>
+                            </constraint>
                             <constraint firstAttribute="trailing" secondItem="ugx-pP-pia" secondAttribute="trailing" constant="20" id="e2m-r9-zHT"/>
                             <constraint firstAttribute="trailingMargin" secondItem="2vO-OV-6eJ" secondAttribute="trailing" constant="-20" id="eEp-GO-aFy"/>
+                            <constraint firstAttribute="trailing" secondItem="kdL-WI-z6D" secondAttribute="trailing" constant="190" id="gy1-iQ-08o">
+                                <variation key="heightClass=compact" constant="180"/>
+                            </constraint>
                             <constraint firstItem="nDM-iN-jEq" firstAttribute="top" secondItem="kdL-WI-z6D" secondAttribute="bottom" constant="25" id="hwi-7A-tgm">
                                 <variation key="widthClass=compact" constant="-11"/>
                             </constraint>
                             <constraint firstItem="ugx-pP-pia" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" constant="20" id="kUX-hw-df5"/>
+                            <constraint firstItem="kdL-WI-z6D" firstAttribute="leading" secondItem="ugx-pP-pia" secondAttribute="trailing" constant="20" id="lZ3-In-JYv">
+                                <variation key="heightClass=compact" constant="90"/>
+                            </constraint>
+                            <constraint firstItem="ugx-pP-pia" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" id="tbe-8Q-DFq"/>
                             <constraint firstItem="kdL-WI-z6D" firstAttribute="top" secondItem="ugx-pP-pia" secondAttribute="bottom" constant="22" id="v9a-cN-Nvk"/>
                             <constraint firstItem="Umd-un-JVC" firstAttribute="top" secondItem="nDM-iN-jEq" secondAttribute="bottom" constant="46" id="vbT-cf-D32">
                                 <variation key="widthClass=compact" constant="36"/>
                             </constraint>
+                            <constraint firstItem="kdL-WI-z6D" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="35" id="weC-Uu-1jV"/>
                             <constraint firstItem="ugx-pP-pia" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="ytG-vQ-Y9V"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dlH-KN-57K"/>
+                                <exclude reference="tbe-8Q-DFq"/>
+                                <exclude reference="gy1-iQ-08o"/>
+                                <exclude reference="lZ3-In-JYv"/>
+                                <exclude reference="weC-Uu-1jV"/>
+                                <exclude reference="RKu-cT-0qh"/>
+                                <exclude reference="cqx-5E-6YD"/>
+                                <exclude reference="Pxn-4m-ydj"/>
+                                <exclude reference="SfO-th-wJI"/>
+                                <exclude reference="Vft-as-9Re"/>
+                                <exclude reference="96u-7w-Ajg"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <include reference="nDM-iN-jEq"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="dlH-KN-57K"/>
+                                <exclude reference="e2m-r9-zHT"/>
+                                <exclude reference="kUX-hw-df5"/>
+                                <include reference="tbe-8Q-DFq"/>
+                                <exclude reference="ytG-vQ-Y9V"/>
+                                <exclude reference="BZm-XT-UMG"/>
+                                <exclude reference="T0Y-L5-bR6"/>
+                                <include reference="gy1-iQ-08o"/>
+                                <include reference="lZ3-In-JYv"/>
+                                <exclude reference="v9a-cN-Nvk"/>
+                                <include reference="weC-Uu-1jV"/>
+                                <include reference="RKu-cT-0qh"/>
+                                <include reference="cqx-5E-6YD"/>
+                                <exclude reference="hwi-7A-tgm"/>
+                                <exclude reference="0sR-sU-HUh"/>
+                                <include reference="Pxn-4m-ydj"/>
+                                <include reference="SfO-th-wJI"/>
+                                <include reference="Vft-as-9Re"/>
+                                <exclude reference="XiW-kF-3Gg"/>
+                                <exclude reference="vbT-cf-D32"/>
+                                <exclude reference="4bE-RX-ezq"/>
+                                <include reference="96u-7w-Ajg"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Postive Weather" id="Jh5-b2-QEW">
                         <barButtonItem key="rightBarButtonItem" title="Cities" id="Rmp-Xb-XkW">
@@ -253,12 +319,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2268" y="385"/>
+            <point key="canvasLocation" x="2268" y="384"/>
         </scene>
         <!--YourCities-->
         <scene sceneID="Axk-3k-gtw">
             <objects>
-                <tableViewController storyboardIdentifier="YourCities" title="YourCities" id="FIs-ak-1oh" customClass="YourCitiesTableViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="YourCities" title="YourCities" id="FIs-ak-1oh" customClass="YourCitiesTableViewController" customModule="Positive_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="aFU-Dv-aDr">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -266,7 +332,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <color key="separatorColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellID" id="iT8-bl-BEf" customClass="CityCell" customModule="QuoteWeatherApp" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellID" id="iT8-bl-BEf" customClass="CityCell" customModule="Positive_Weather" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="86" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iT8-bl-BEf" id="3kS-nF-q42">
@@ -331,7 +397,7 @@
         <!--Your Cities View Controller-->
         <scene sceneID="J9j-31-Lwc">
             <objects>
-                <viewController storyboardIdentifier="YourCitesVC" id="pY5-a9-ACe" customClass="YourCitiesViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="YourCitesVC" id="pY5-a9-ACe" customClass="YourCitiesViewController" customModule="Positive_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dqV-w2-Lik"/>
                         <viewControllerLayoutGuide type="bottom" id="zUE-zV-2dA"/>
@@ -345,7 +411,7 @@
                                 <animations/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellID" id="3gD-lb-mxY" customClass="CityCell" customModule="QuoteWeatherApp" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MyCellID" id="3gD-lb-mxY" customClass="CityCell" customModule="Positive_Weather" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="486" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3gD-lb-mxY" id="j1J-0r-vcC">
@@ -412,7 +478,7 @@
         <!--Search Cities-->
         <scene sceneID="EPE-fy-hsp">
             <objects>
-                <tableViewController storyboardIdentifier="SearchTableViewController" id="dZR-xi-nzl" customClass="SearchTableViewController" customModule="QuoteWeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SearchTableViewController" id="dZR-xi-nzl" customClass="SearchTableViewController" customModule="Positive_Weather" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Qyn-SJ-fkt">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
