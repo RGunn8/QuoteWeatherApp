@@ -199,6 +199,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="2me-HM-xQd">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <animations/>
+                            </activityIndicatorView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.16862745098039217" green="0.16862745098039217" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
@@ -210,7 +214,9 @@
                             <constraint firstItem="2vO-OV-6eJ" firstAttribute="top" secondItem="Umd-un-JVC" secondAttribute="bottom" constant="10" id="4bE-RX-ezq">
                                 <variation key="widthClass=compact" constant="37"/>
                             </constraint>
+                            <constraint firstItem="2me-HM-xQd" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="4xI-7D-eao"/>
                             <constraint firstItem="2vO-OV-6eJ" firstAttribute="top" secondItem="Umd-un-JVC" secondAttribute="bottom" constant="2" id="96u-7w-Ajg"/>
+                            <constraint firstItem="2me-HM-xQd" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="AGG-ei-cRj"/>
                             <constraint firstItem="kdL-WI-z6D" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="10" id="BZm-XT-UMG"/>
                             <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="2vO-OV-6eJ" secondAttribute="bottom" id="J8W-uZ-3oO"/>
                             <constraint firstItem="2vO-OV-6eJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leadingMargin" constant="-20" id="OOf-Gf-yXq"/>
@@ -313,6 +319,7 @@
                         <outlet property="dayThreeLabel" destination="Da6-RB-iJf" id="hy3-z5-qvu"/>
                         <outlet property="dayTwoDegreeLabel" destination="oSw-aj-4Ts" id="9WW-Av-G61"/>
                         <outlet property="dayTwoLabel" destination="n16-ki-5u6" id="X7E-Ql-k1C"/>
+                        <outlet property="indicator" destination="2me-HM-xQd" id="aPW-7O-oGx"/>
                         <outlet property="quoteLabel" destination="Umd-un-JVC" id="lAV-ox-leP"/>
                         <outlet property="theDegreeLabel" destination="kdL-WI-z6D" id="wks-d5-wG6"/>
                     </connections>

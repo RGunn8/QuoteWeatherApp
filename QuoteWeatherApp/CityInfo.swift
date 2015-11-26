@@ -52,7 +52,7 @@ class CityInfo: NSObject {
     }
 
 
-    func getFiveDay(lat:Double, long:Double , completionHandler: (Array<Int>?, Array<String>?) ->Void) {
+    func getFiveDay(lat:Double, long:Double , completionHandler: (Array<Int>?, Array<String>?,NSError?) ->Void) {
 
         let cityFiveEndPoint = "http://api.openweathermap.org/data/2.5/forecast/daily"
         var weeklyArray = [Int]()
@@ -78,7 +78,7 @@ class CityInfo: NSObject {
                 }
 
             }
-            completionHandler(weeklyArray, weeklyDayArray)
+            completionHandler(weeklyArray, weeklyDayArray, Response.result.error)
         }
     }
 

@@ -66,7 +66,7 @@ class DegreeLabel: UIView {
         // Setup percent label
        degreeLabel.font = UIFont(name: "Avenir Next", size: 45)
         degreeLabel.textColor = UIColor.whiteColor()
-        degreeLabel.text = "0"
+        degreeLabel.text = "0°"
         degreeLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(degreeLabel)
 
@@ -120,7 +120,8 @@ class DegreeLabel: UIView {
 
     func animate() {
 
-        degreeLabel.text = String(format: "%.0f", curValue)
+        let currentValueString = String(format: "%.0f", curValue)
+        degreeLabel.text = "\(currentValueString)°"
 
         var fromValue = fgLayer.strokeEnd
         let toValue = curValue / range

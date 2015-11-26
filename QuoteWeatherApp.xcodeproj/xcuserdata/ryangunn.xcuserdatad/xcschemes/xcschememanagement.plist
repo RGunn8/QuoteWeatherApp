@@ -4,10 +4,25 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Glance - Postive Weather.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>6</integer>
+		</dict>
+		<key>Notification - Postive Weather.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
 		<key>PW Widget.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>5</integer>
+		</dict>
+		<key>Postive Weather.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
 		</dict>
 		<key>QuoteWeatherApp.xcscheme</key>
 		<dict>
@@ -17,6 +32,11 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>F72589D81C023E42008F9099</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>F78032A01BF2EF44007540C8</key>
 		<dict>
 			<key>primary</key>

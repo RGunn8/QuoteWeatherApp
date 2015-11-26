@@ -16,14 +16,6 @@
 		F701F8B81BE6FFE90088ECFB /* Cold.csv in Resources */ = {isa = PBXBuildFile; fileRef = F701F8B71BE6FFE90088ECFB /* Cold.csv */; };
 		F74376C01B863FD9004BBCC5 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74376BF1B863FD9004BBCC5 /* SearchTableViewController.swift */; };
 		F74376C41B86DCFA004BBCC5 /* YourCitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74376C31B86DCFA004BBCC5 /* YourCitiesTableViewController.swift */; };
-		F78032A31BF2EF44007540C8 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78032A21BF2EF44007540C8 /* NotificationCenter.framework */; };
-		F78032A61BF2EF44007540C8 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F78032A51BF2EF44007540C8 /* TodayViewController.swift */; };
-		F78032A91BF2EF44007540C8 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F78032A71BF2EF44007540C8 /* MainInterface.storyboard */; };
-		F78032AD1BF2EF44007540C8 /* PW Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = F78032A11BF2EF44007540C8 /* PW Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		F78032B71BF2F691007540C8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78032B41BF2F691007540C8 /* Alamofire.framework */; };
-		F78032B81BF2F691007540C8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78032B51BF2F691007540C8 /* Pods.framework */; };
-		F78032B91BF2F691007540C8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F78032B61BF2F691007540C8 /* SwiftyJSON.framework */; };
-		F78032BB1BF2F877007540C8 /* QuoteWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D1FD1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld */; };
 		F7C872371BE6999A0036C37C /* YourCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C872361BE6999A0036C37C /* YourCitiesViewController.swift */; };
 		F7CAA5BA1B97723E00FD748E /* DegreeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CAA5B91B97723E00FD748E /* DegreeLabel.swift */; };
 		F7CB34381BA357B3004F6CC3 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB34371BA357B3004F6CC3 /* ContainerViewController.swift */; };
@@ -41,13 +33,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		F78032AB1BF2EF44007540C8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F7D1D1EE1B82664200722A1C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F78032A01BF2EF44007540C8;
-			remoteInfo = "PW Widget";
-		};
 		F7D1D20F1B82664200722A1C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F7D1D1EE1B82664200722A1C /* Project object */;
@@ -58,13 +43,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		F72589FF1C023E43008F9099 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		F78032B11BF2EF44007540C8 /* Embed App Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				F78032AD1BF2EF44007540C8 /* PW Widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -81,9 +75,18 @@
 		F701F8AE1BE6EC3E0088ECFB /* HotQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotQuotes.swift; sourceTree = "<group>"; };
 		F701F8B51BE6F8340088ECFB /* Hot.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hot.csv; sourceTree = "<group>"; };
 		F701F8B71BE6FFE90088ECFB /* Cold.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cold.csv; sourceTree = "<group>"; };
+		F72589DC1C023E42008F9099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F72589DE1C023E42008F9099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F72589E01C023E42008F9099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F72589EB1C023E42008F9099 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		F72589EC1C023E42008F9099 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		F72589EE1C023E42008F9099 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		F72589F01C023E42008F9099 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		F72589F21C023E42008F9099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F72589F41C023E42008F9099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7258A031C02709A008F9099 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		F74376BF1B863FD9004BBCC5 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
 		F74376C31B86DCFA004BBCC5 /* YourCitiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourCitiesTableViewController.swift; sourceTree = "<group>"; };
-		F78032A11BF2EF44007540C8 /* PW Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "PW Widget.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F78032A21BF2EF44007540C8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		F78032A51BF2EF44007540C8 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		F78032A81BF2EF44007540C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
@@ -114,17 +117,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F780329E1BF2EF44007540C8 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F78032B71BF2F691007540C8 /* Alamofire.framework in Frameworks */,
-				F78032B81BF2F691007540C8 /* Pods.framework in Frameworks */,
-				F78032B91BF2F691007540C8 /* SwiftyJSON.framework in Frameworks */,
-				F78032A31BF2EF44007540C8 /* NotificationCenter.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F7D1D1F31B82664200722A1C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -155,6 +147,7 @@
 		29319921EF5B6C3D79FEEA7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F7258A031C02709A008F9099 /* SwiftyJSON.framework */,
 				F78032B41BF2F691007540C8 /* Alamofire.framework */,
 				F78032B51BF2F691007540C8 /* Pods.framework */,
 				F78032B61BF2F691007540C8 /* SwiftyJSON.framework */,
@@ -162,6 +155,37 @@
 				F78032A21BF2EF44007540C8 /* NotificationCenter.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F72589DA1C023E42008F9099 /* Postive Weather */ = {
+			isa = PBXGroup;
+			children = (
+				F72589DB1C023E42008F9099 /* Interface.storyboard */,
+				F72589DE1C023E42008F9099 /* Assets.xcassets */,
+				F72589E01C023E42008F9099 /* Info.plist */,
+			);
+			path = "Postive Weather";
+			sourceTree = "<group>";
+		};
+		F72589E91C023E42008F9099 /* Postive Weather Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F72589EC1C023E42008F9099 /* InterfaceController.swift */,
+				F72589EE1C023E42008F9099 /* ExtensionDelegate.swift */,
+				F72589F01C023E42008F9099 /* NotificationController.swift */,
+				F72589F21C023E42008F9099 /* Assets.xcassets */,
+				F72589F41C023E42008F9099 /* Info.plist */,
+				F72589EA1C023E42008F9099 /* Supporting Files */,
+			);
+			path = "Postive Weather Extension";
+			sourceTree = "<group>";
+		};
+		F72589EA1C023E42008F9099 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F72589EB1C023E42008F9099 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		F78032A41BF2EF44007540C8 /* PW Widget */ = {
@@ -209,6 +233,8 @@
 				F7D1D1F81B82664200722A1C /* QuoteWeatherApp */,
 				F7D1D2111B82664200722A1C /* QuoteWeatherAppTests */,
 				F78032A41BF2EF44007540C8 /* PW Widget */,
+				F72589DA1C023E42008F9099 /* Postive Weather */,
+				F72589E91C023E42008F9099 /* Postive Weather Extension */,
 				F7D1D1F71B82664200722A1C /* Products */,
 				1CD41168F6E7F87C3697120A /* Pods */,
 				29319921EF5B6C3D79FEEA7A /* Frameworks */,
@@ -220,7 +246,6 @@
 			children = (
 				F7D1D1F61B82664200722A1C /* Positive Weather.app */,
 				F7D1D20E1B82664200722A1C /* QuoteWeatherAppTests.xctest */,
-				F78032A11BF2EF44007540C8 /* PW Widget.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -271,23 +296,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F78032A01BF2EF44007540C8 /* PW Widget */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = F78032B01BF2EF44007540C8 /* Build configuration list for PBXNativeTarget "PW Widget" */;
-			buildPhases = (
-				F780329D1BF2EF44007540C8 /* Sources */,
-				F780329E1BF2EF44007540C8 /* Frameworks */,
-				F780329F1BF2EF44007540C8 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "PW Widget";
-			productName = "PW Widget";
-			productReference = F78032A11BF2EF44007540C8 /* PW Widget.appex */;
-			productType = "com.apple.product-type.app-extension";
-		};
 		F7D1D1F51B82664200722A1C /* QuoteWeatherApp */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = F7D1D2181B82664200722A1C /* Build configuration list for PBXNativeTarget "QuoteWeatherApp" */;
@@ -299,11 +307,11 @@
 				121C86E050F14E89E6B18B06 /* Embed Pods Frameworks */,
 				A462B90F19CB4C2787AE9057 /* Copy Pods Resources */,
 				F78032B11BF2EF44007540C8 /* Embed App Extensions */,
+				F72589FF1C023E43008F9099 /* Embed Watch Content */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				F78032AC1BF2EF44007540C8 /* PBXTargetDependency */,
 			);
 			name = QuoteWeatherApp;
 			productName = QuoteWeatherApp;
@@ -339,15 +347,6 @@
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Ryan  Gunn";
 				TargetAttributes = {
-					F78032A01BF2EF44007540C8 = {
-						CreatedOnToolsVersion = 7.1;
-						DevelopmentTeam = Z45ZUG2EW7;
-						SystemCapabilities = {
-							com.apple.ApplicationGroups.iOS = {
-								enabled = 1;
-							};
-						};
-					};
 					F7D1D1F51B82664200722A1C = {
 						CreatedOnToolsVersion = 6.4;
 						DevelopmentTeam = Z45ZUG2EW7;
@@ -378,20 +377,11 @@
 			targets = (
 				F7D1D1F51B82664200722A1C /* QuoteWeatherApp */,
 				F7D1D20D1B82664200722A1C /* QuoteWeatherAppTests */,
-				F78032A01BF2EF44007540C8 /* PW Widget */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F780329F1BF2EF44007540C8 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F78032A91BF2EF44007540C8 /* MainInterface.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F7D1D1F41B82664200722A1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -462,15 +452,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F780329D1BF2EF44007540C8 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F78032A61BF2EF44007540C8 /* TodayViewController.swift in Sources */,
-				F78032BB1BF2F877007540C8 /* QuoteWeatherApp.xcdatamodeld in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		F7D1D1F21B82664200722A1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -505,11 +486,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		F78032AC1BF2EF44007540C8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F78032A01BF2EF44007540C8 /* PW Widget */;
-			targetProxy = F78032AB1BF2EF44007540C8 /* PBXContainerItemProxy */;
-		};
 		F7D1D2101B82664200722A1C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F7D1D1F51B82664200722A1C /* QuoteWeatherApp */;
@@ -518,6 +494,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		F72589DB1C023E42008F9099 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F72589DC1C023E42008F9099 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
 		F78032A71BF2EF44007540C8 /* MainInterface.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -545,47 +529,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F78032AE1BF2EF44007540C8 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "PW Widget/PW Widget.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
-				INFOPLIST_FILE = "PW Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.RyanGunn.QuoteWeatherApp.PW-Widget";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Debug;
-		};
-		F78032AF1BF2EF44007540C8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_ENTITLEMENTS = "PW Widget/PW Widget.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/build/Debug-iphoneos",
-				);
-				INFOPLIST_FILE = "PW Widget/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.RyanGunn.QuoteWeatherApp.PW-Widget";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
 		F7D1D2161B82664200722A1C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -714,7 +657,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuoteWeatherApp.app/QuoteWeatherApp";
+				TEST_HOST = "";
 			};
 			name = Debug;
 		};
@@ -726,22 +669,12 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/QuoteWeatherApp.app/QuoteWeatherApp";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F78032B01BF2EF44007540C8 /* Build configuration list for PBXNativeTarget "PW Widget" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F78032AE1BF2EF44007540C8 /* Debug */,
-				F78032AF1BF2EF44007540C8 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F7D1D1F11B82664200722A1C /* Build configuration list for PBXProject "QuoteWeatherApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

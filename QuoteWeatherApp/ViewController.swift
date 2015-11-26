@@ -21,7 +21,6 @@ protocol CenterViewControllerDelegate {
 class ViewController: UIViewController, CLLocationManagerDelegate {
 
     
-    @IBOutlet var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var theDegreeLabel: DegreeLabel!
 
     var locationManager = CLLocationManager()
@@ -105,13 +104,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         if isCelsius{
             self.theDegreeLabel.curValue = CGFloat(self.currentCelsius)
+            if self.currentCelsius < 0 {
+                self.theDegreeLabel.curValue = 0
+            }
 
         }else{
             self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
-        }
 
-        if self.currentCelsius < 0 || self.currentFahrenheit < 0 {
-            self.theDegreeLabel.curValue = 0
+            if self.currentFahrenheit < 0 {
+                self.theDegreeLabel.curValue = 0
+            }
+            
         }
 
     }
@@ -121,19 +124,19 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
         if isCelsius {
             self.theDegreeLabel.curValue = CGFloat(self.currentCelsius)
-            self.dayOneDegreeLabel.text = "\(self.celsiusTemp[1])"
-            self.dayTwoDegreeLabel.text = "\(self.celsiusTemp[2])"
-            self.dayThreeDegreeLabel.text = "\(self.celsiusTemp[3])"
-            self.dayFourDegreeLabel.text = "\(self.celsiusTemp[4])"
-            self.dayFiveDegreeLabel.text = "\(self.celsiusTemp[5])"
+            self.dayOneDegreeLabel.text = "\(self.celsiusTemp[1])°"
+            self.dayTwoDegreeLabel.text = "\(self.celsiusTemp[2])°"
+            self.dayThreeDegreeLabel.text = "\(self.celsiusTemp[3])°"
+            self.dayFourDegreeLabel.text = "\(self.celsiusTemp[4])°"
+            self.dayFiveDegreeLabel.text = "\(self.celsiusTemp[5])°"
 
         }else{
             self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
-            self.dayOneDegreeLabel.text = "\(self.fahrenheitTemp[1])"
-            self.dayTwoDegreeLabel.text = "\(self.fahrenheitTemp[2])"
-            self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])"
-            self.dayFourDegreeLabel.text = "\(self.fahrenheitTemp[4])"
-            self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])"
+            self.dayOneDegreeLabel.text = "\(self.fahrenheitTemp[1])°"
+            self.dayTwoDegreeLabel.text = "\(self.fahrenheitTemp[2])°"
+            self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])°"
+            self.dayFourDegreeLabel.text = "\(self.fahrenheitTemp[4])°"
+            self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])°"
         }
 
     }
@@ -143,11 +146,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         self.navigationItem.leftBarButtonItem = CBarButtonItem
         //self.viewControllerFarenheitTemp(true, index: 0)
         self.theDegreeLabel.curValue = CGFloat(self.currentFahrenheit)
-        self.dayOneDegreeLabel.text = "\(self.fahrenheitTemp[1])"
-        self.dayTwoDegreeLabel.text = "\(self.fahrenheitTemp[2])"
-        self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])"
-        self.dayFourDegreeLabel.text = "\(self.fahrenheitTemp[4])"
-        self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])"
+        self.dayOneDegreeLabel.text = "\(self.fahrenheitTemp[1])°"
+        self.dayTwoDegreeLabel.text = "\(self.fahrenheitTemp[2])°"
+        self.dayThreeDegreeLabel.text = "\(self.fahrenheitTemp[3])°"
+        self.dayFourDegreeLabel.text = "\(self.fahrenheitTemp[4])°"
+        self.dayFiveDegreeLabel.text = "\(self.fahrenheitTemp[5])°"
 
         let defaults = NSUserDefaults.standardUserDefaults()
 //        let isCelsius = defaults.boolForKey("isCelsius")
@@ -160,11 +163,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     func CTapped(sender:UIButton) {
         //println("c pressed")
         self.theDegreeLabel.curValue = CGFloat(self.currentCelsius)
-        self.dayOneDegreeLabel.text = "\(self.celsiusTemp[1])"
-        self.dayTwoDegreeLabel.text = "\(self.celsiusTemp[2])"
-        self.dayThreeDegreeLabel.text = "\(self.celsiusTemp[3])"
-        self.dayFourDegreeLabel.text = "\(self.celsiusTemp[4])"
-        self.dayFiveDegreeLabel.text = "\(self.celsiusTemp[5])"
+        self.dayOneDegreeLabel.text = "\(self.celsiusTemp[1])°"
+        self.dayTwoDegreeLabel.text = "\(self.celsiusTemp[2])°"
+        self.dayThreeDegreeLabel.text = "\(self.celsiusTemp[3])°"
+        self.dayFourDegreeLabel.text = "\(self.celsiusTemp[4])°"
+        self.dayFiveDegreeLabel.text = "\(self.celsiusTemp[5])°"
 
         self.navigationItem.leftBarButtonItem = FBarButtonItem
         //self.viewControllerFarenheitTemp(false, index: 0)
@@ -191,16 +194,50 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
     }
 
     func setName(lat:Double, long:Double) {
+       indicator.startAnimating()
         CityInfo.sharedInstance.getCityInfo(lat, long: long, completionHandler:  {(result) -> Void in
 
             guard result.error == nil else {
-                print("Error has occur")
+                let alertController = UIAlertController(title: "Error", message: "An Error has Occured, \(result.error!.localizedDescription)", preferredStyle: .Alert)
+
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+                    // ...
+                }
+                alertController.addAction(cancelAction)
+
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+
+                }
+                alertController.addAction(OKAction)
+
+                self.presentViewController(alertController, animated: true) {
+                    // ...
+                }
+
+                self.indicator.stopAnimating()
                 return
             }
             guard let city = result.value else {
-                print("Error on result callded")
+                let alertController = UIAlertController(title: "Error", message: "An Error has Occured, coulnd't fetch the weather", preferredStyle: .Alert)
+
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel) { (action) in
+                    // ...
+                }
+                alertController.addAction(cancelAction)
+
+                let OKAction = UIAlertAction(title: "OK", style: .Default) { (action) in
+
+                }
+                alertController.addAction(OKAction)
+
+                self.presentViewController(alertController, animated: true) {
+                    // ...
+                }
+
                 return
             }
+
+            self.indicator.stopAnimating()
 
             let fah = city.currentTemp! * (9/5) - 459.67
             self.currentFahrenheit = Int(fah)
@@ -235,12 +272,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
 
     }
 
- 
-
-
-    func setWeather(lat:Double, long:Double){
+     func setWeather(lat:Double, long:Double){
    
-        cityInfo.getFiveDay(lat, long: long) { (temp, dates ) -> () in
+        cityInfo.getFiveDay(lat, long: long) { (temp, dates, error ) -> () in
+
+            if error != nil{
+
+                return
+            }
+
 
                 if let temp = temp{
                    self.fahrenheitTemp.removeAll(keepCapacity: true)
