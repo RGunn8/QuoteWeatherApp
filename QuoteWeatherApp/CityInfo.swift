@@ -32,10 +32,7 @@ class CityInfo: NSObject {
 
     }
 
-
-
     func getCityInfo(lat:Double, long:Double, completionHandler: (Result<OpenWeatherCity,NSError>) ->Void){
-
         let theParameters:[String:String] = [
             "lat": "\(lat)",
             "lon": "\(long)",
@@ -44,13 +41,11 @@ class CityInfo: NSObject {
         let cityEndPoint = "http://api.openweathermap.org/data/2.5/weather"
 
         alamofireManager.request(.GET, cityEndPoint, parameters:theParameters).responseObject({ (response:Response<OpenWeatherCity,NSError>) in
-
             completionHandler(response.result)
 
         })
         
     }
-
 
     func getFiveDay(lat:Double, long:Double , completionHandler: (Array<Int>?, Array<String>?,NSError?) ->Void) {
 
@@ -98,10 +93,7 @@ class CityInfo: NSObject {
                 let info = JSON(data)
                 if let results = info["RESULTS"].array{
                     for city in results{
-
                         let theCity = CityInfo()
-
-
                         if let lat = city["lat"].string{
                             theCity.lat = (lat as NSString).doubleValue
                         }
@@ -112,8 +104,6 @@ class CityInfo: NSObject {
                         if let name = city["name"].string{
                             theCity.name = name
                         }
-
-
                         
                         cityResults.append(theCity)
                     }

@@ -15,7 +15,7 @@ enum SlideOutState {
     case RightPanelExpanded
 }
 
-class ContainerViewController: UIViewController, CLLocationManagerDelegate {
+class ContainerViewController: UIViewController{
     var centerNavigationController:UINavigationController!
     var centerViewController:ViewController!
     var coreDataStack: CoreDataStack!
@@ -30,23 +30,22 @@ class ContainerViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setCenterViewController()
+
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"plusButtonPressed", object: nil)
+
+    }
+
+    func setCenterViewController() {
         centerViewController = UIStoryboard.centerViewController()
         centerViewController.coreDataStack = coreDataStack
         centerViewController.delegate = self
-
-
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
 
         centerNavigationController.didMoveToParentViewController(self)
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"plusButtonPressed", object: nil)
-
-//        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanGesture:")
-//        centerNavigationController.view.addGestureRecognizer(panGestureRecognizer)
-
-        // Do any additional setup after loading the view.
 
     }
 
@@ -54,46 +53,12 @@ class ContainerViewController: UIViewController, CLLocationManagerDelegate {
         let searchTVC = UIStoryboard.searchController()
         searchTVC?.delegate = centerViewController
         self.centerNavigationController.pushViewController(searchTVC!, animated: true)
-        print("tapped")
     }
-
 
 }
 
-//extension ContainerViewController: UIGestureRecognizerDelegate {
-//    // MARK: Gesture recognizer
-//
-//    func handlePanGesture(recognizer: UIPanGestureRecognizer) {
-//        let gestureIsDraggingFromLeftToRight = (recognizer.velocityInView(view).x > 0)
-//
-//        switch(recognizer.state) {
-//        case .Began:
-//            if (currentState == .RightCollapsed) {
-//                if (!gestureIsDraggingFromLeftToRight) {
-//                    addRightPanelViewController()
-//                }
-//                showShadowForCenterViewController(true)
-//            }
-//        case .Changed:
-//            recognizer.view!.center.x = recognizer.view!.center.x + recognizer.translationInView(view).x
-//            recognizer.setTranslation(CGPointZero, inView: view)
-//        case .Ended:
-//            if (rightViewController != nil) {
-//                let hasMovedGreaterThanHalfway = recognizer.view!.center.x < 0
-//                animateRightPanel(shouldExpand: hasMovedGreaterThanHalfway)
-//            }
-//        default:
-//            break
-//        }
-//    }
-//
-//    
-//}
-
-
     private extension UIStoryboard {
         class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
-
       
         class func rightViewController() -> YourCitiesViewController? {
             return mainStoryboard().instantiateViewControllerWithIdentifier("YourCitesVC") as? YourCitiesViewController
@@ -142,9 +107,6 @@ extension ContainerViewController: CenterViewControllerDelegate {
             break
         }
     }
-
-
-    
 
     func animateRightPanel(shouldExpand shouldExpand: Bool) {
         if (shouldExpand) {

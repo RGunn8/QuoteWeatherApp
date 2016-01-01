@@ -22,15 +22,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
-        UINavigationBar.appearance().barTintColor = UIColor(red: (54/255), green: (54/255), blue: (54/255), alpha: 1)
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: (125/255), green: (122/255), blue: (122/255), alpha: 1)]
-
         let containerViewController = ContainerViewController()
         if containerViewController.respondsToSelector("setCoreDataStack:"){
             containerViewController.performSelector("setCoreDataStack:", withObject: coreDataStack)
         }
 
+        setNavBarColor()
         window!.rootViewController = containerViewController
         window!.makeKeyAndVisible()
 
@@ -51,11 +48,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         }
 
 
-        
         return true
     }
 
 
+    func setNavBarColor() {
+        UINavigationBar.appearance().barTintColor = UIColor(red: (54/255), green: (54/255), blue: (54/255), alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: (125/255), green: (122/255), blue: (122/255), alpha: 1)]
+    }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

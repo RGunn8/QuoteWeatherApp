@@ -23,12 +23,14 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     var delegate: SearchViewControllerDelegate?
     override func viewDidLoad() {
         super.viewDidLoad()
+        setresultSearchController()
+    }
+
+
+    func setresultSearchController() {
         resultSearchController = UISearchController(searchResultsController: nil)
-        // 2
         resultSearchController.searchResultsUpdater = self
-        // 3
         resultSearchController.hidesNavigationBarDuringPresentation = false
-        // 4
         resultSearchController.dimsBackgroundDuringPresentation = false
         // 5
         resultSearchController.searchBar.searchBarStyle = UISearchBarStyle.Prominent
@@ -38,10 +40,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         self.tableView.tableHeaderView = resultSearchController.searchBar
         definesPresentationContext = true
 
-          self.tableView.reloadData()
+        self.tableView.reloadData()
     }
-
- 
 
 
 
@@ -77,13 +77,8 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) 
 
-        // 3
         if (self.resultSearchController.active) {
-
-
             let cityAtIndex:CityInfo = self.filteredTableData[indexPath.row]
-
-
             cell.textLabel?.text = cityAtIndex.name
 
             return cell
@@ -105,7 +100,6 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
             //println("\(self.filteredTableData)")
             self.tableView.reloadData()
         })
-
 
         let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
         let array = (searchResultsCity as NSArray).filteredArrayUsingPredicate(searchPredicate)
