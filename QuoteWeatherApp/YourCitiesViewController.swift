@@ -9,9 +9,9 @@
 import UIKit
 import CoreData
 
-class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class YourCitiesViewController: UIViewController, UINavigationBarDelegate, UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate {
 
-    
+
     @IBOutlet var tableView: UITableView!
     @IBOutlet var navBar: UINavigationBar!
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
@@ -19,14 +19,12 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
     var numberOfCity = Int()
     var selectedCityIndex = 0
     var delegate: SidePanelViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         let navItem = navigationItem
-        let editButton = editButtonItem();
+        let editButton = editButtonItem()
         navItem.rightBarButtonItem = editButton
-
-
-
         fetchedResultController.delegate = self
         let barButtonArray = [navItem]
        navBar.items = barButtonArray
@@ -42,22 +40,21 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
         }
 
 
-        self.navBar.delegate = self; 
+        self.navBar.delegate = self
 
     }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-                
         self.tableView.reloadData()
-       
 
     }
 
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
 
 
-        if type == NSFetchedResultsChangeType.Delete{
-            print("Delete")
+        if type == NSFetchedResultsChangeType.Delete {
+
         }
     }
 
@@ -76,17 +73,6 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
 
         return fetchRequest
     }
-//    func save() {
-//        var error:NSError?
-//        do {
-//            try managedObjectContext!.save()
-//            print(error?.localizedDescription)
-//        } catch let error1 as NSError {
-//            error = error1
-//            print(error)
-//        }
-//
-//    }
 
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
@@ -101,15 +87,15 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
 
      func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
 
-        if (indexPath.section == 0) {
-            if (indexPath.row == 0) {
+        if indexPath.section == 0 {
+            if indexPath.row == 0 {
                 return false
-
             }
         }
 
         return true
     }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSection = fetchedResultController.sections?[section].numberOfObjects
         numberOfCity = numberOfRowsInSection!
@@ -118,21 +104,20 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
 
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) as! CityCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) as! CityCell // tailor:disable
 
-        let theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
-        cell.configureForCity(theCity)
-
-        print(theCity.cityName)
-        // Configure the cell...
+        if let city = fetchedResultController.objectAtIndexPath(indexPath) as? City {
+             cell.configureForCity(city)
+        }
 
         return cell
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        let theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
-        delegate?.citySelected(theCity)
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+
+        if let city = fetchedResultController.objectAtIndexPath(indexPath) as? City {
+               delegate?.citySelected(city)
+        }
 
     }
 
@@ -140,43 +125,23 @@ class YourCitiesViewController: UIViewController, UINavigationBarDelegate,UITabl
      func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 
 
-        if(editingStyle == .Delete ) {
+        if editingStyle == .Delete {
             // Find the LogItem object the user is trying to delete
-            let deleteAlarms:City = fetchedResultController.objectAtIndexPath(indexPath) as! City
+            if let cityToBeDlete = fetchedResultController.objectAtIndexPath(indexPath) as? City {
+                coreDataStack.managedObjectContext.deleteObject(cityToBeDlete)
 
-
-            // Delete it from the managedObjectContext
-            coreDataStack.managedObjectContext.deleteObject(deleteAlarms)
-
-
-            // Refresh the table view to indicate that it's deleted
-            //tableView.reloadData()
-
-            
-
-
-            do {
-               coreDataStack.saveMainContext()
+                do {
+                   try coreDataStack.managedObjectContext.save()
+                } catch let error as NSError {
+                    print(error)
+                }
             }
-            //println("\(deleteAlarms.on)")
-           
-
-            let error = NSErrorPointer()
-            do {
-                try fetchedResultController.performFetch()
-            } catch let error1 as NSError {
-                error.memory = error1
-            }
-
-
             tableView.reloadData()
-
-            
         }
 
     }
 
-    
+
 
 
 }
@@ -185,16 +150,18 @@ class CityCell: UITableViewCell {
 
 
     @IBOutlet var cityLabel: UILabel!
-    func configureForCity(city:City){
+
+    func configureForCity(city: City) {
         cityLabel.text = city.cityName
-        //print(city.cityName)
     }
 
 
 }
 
-extension YourCitiesViewController : UIBarPositioningDelegate {
+extension YourCitiesViewController: UIBarPositioningDelegate {
+
     func positionForBar(bar: UIBarPositioning) -> UIBarPosition {
         return UIBarPosition.TopAttached
     }
+
 }

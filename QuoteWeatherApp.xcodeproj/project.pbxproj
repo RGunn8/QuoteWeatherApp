@@ -1,1755 +1,740 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-	<key>archiveVersion</key>
-	<string>1</string>
-	<key>classes</key>
-	<dict/>
-	<key>objectVersion</key>
-	<string>46</string>
-	<key>objects</key>
-	<dict>
-		<key>121C86E050F14E89E6B18B06</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Embed Pods Frameworks</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>1CD41168F6E7F87C3697120A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>6F8C06DB8B670245A8990E33</string>
-				<string>C36D4B4AEF16CDC9EF675B9F</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Pods</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>29319921EF5B6C3D79FEEA7A</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7258A031C02709A008F9099</string>
-				<string>F78032B41BF2F691007540C8</string>
-				<string>F78032B51BF2F691007540C8</string>
-				<string>F78032B61BF2F691007540C8</string>
-				<string>3711F7B8CE8BA82B9BAC25F2</string>
-				<string>F78032A21BF2EF44007540C8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Frameworks</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>3711F7B8CE8BA82B9BAC25F2</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.framework</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Pods.framework</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>6F8C06DB8B670245A8990E33</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.debug.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.debug.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>A462B90F19CB4C2787AE9057</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Copy Pods Resources</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh"
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>AF046EF629990FD879247146</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Check Pods Manifest.lock</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/sh</string>
-			<key>shellScript</key>
-			<string>diff "${PODS_ROOT}/../Podfile.lock" "${PODS_ROOT}/Manifest.lock" &gt; /dev/null
-if [[ $? != 0 ]] ; then
-    cat &lt;&lt; EOM
-error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.
-EOM
-    exit 1
-fi
-</string>
-			<key>showEnvVarsInLog</key>
-			<string>0</string>
-		</dict>
-		<key>B38F94F27B8FCEB02508BC70</key>
-		<dict>
-			<key>fileRef</key>
-			<string>3711F7B8CE8BA82B9BAC25F2</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>C36D4B4AEF16CDC9EF675B9F</key>
-		<dict>
-			<key>includeInIndex</key>
-			<string>1</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xcconfig</string>
-			<key>name</key>
-			<string>Pods.release.xcconfig</string>
-			<key>path</key>
-			<string>Pods/Target Support Files/Pods/Pods.release.xcconfig</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F701F8AB1BE6EC3E0088ECFB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ColdQuotes+CoreDataProperties.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F701F8AC1BE6EC3E0088ECFB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ColdQuotes.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F701F8AD1BE6EC3E0088ECFB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>HotQuotes+CoreDataProperties.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F701F8AE1BE6EC3E0088ECFB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>HotQuotes.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F701F8AF1BE6EC3E0088ECFB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F701F8AB1BE6EC3E0088ECFB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F701F8B01BE6EC3E0088ECFB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F701F8AC1BE6EC3E0088ECFB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F701F8B11BE6EC3E0088ECFB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F701F8AD1BE6EC3E0088ECFB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F701F8B21BE6EC3E0088ECFB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F701F8AE1BE6EC3E0088ECFB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F701F8B51BE6F8340088ECFB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Hot.csv</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F701F8B61BE6F8340088ECFB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F701F8B51BE6F8340088ECFB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F701F8B71BE6FFE90088ECFB</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>Cold.csv</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F701F8B81BE6FFE90088ECFB</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F701F8B71BE6FFE90088ECFB</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F72589DA1C023E42008F9099</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F72589DB1C023E42008F9099</string>
-				<string>F72589DE1C023E42008F9099</string>
-				<string>F72589E01C023E42008F9099</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Postive Weather</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589DB1C023E42008F9099</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F72589DC1C023E42008F9099</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Interface.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589DC1C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Interface.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589DE1C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Assets.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589E01C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589E91C023E42008F9099</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F72589EC1C023E42008F9099</string>
-				<string>F72589EE1C023E42008F9099</string>
-				<string>F72589F01C023E42008F9099</string>
-				<string>F72589F21C023E42008F9099</string>
-				<string>F72589F41C023E42008F9099</string>
-				<string>F72589EA1C023E42008F9099</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>Postive Weather Extension</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589EA1C023E42008F9099</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F72589EB1C023E42008F9099</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589EB1C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text</string>
-			<key>path</key>
-			<string>PushNotificationPayload.apns</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589EC1C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>InterfaceController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589EE1C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ExtensionDelegate.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589F01C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>NotificationController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589F21C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Assets.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589F41C023E42008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F72589FF1C023E43008F9099</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>dstPath</key>
-			<string>$(CONTENTS_FOLDER_PATH)/Watch</string>
-			<key>dstSubfolderSpec</key>
-			<string>16</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXCopyFilesBuildPhase</string>
-			<key>name</key>
-			<string>Embed Watch Content</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F7258A031C02709A008F9099</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>SwiftyJSON.framework</string>
-			<key>path</key>
-			<string>Pods/../build/Debug-iphoneos/SwiftyJSON.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F74376BF1B863FD9004BBCC5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>SearchTableViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F74376C01B863FD9004BBCC5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F74376BF1B863FD9004BBCC5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F74376C31B86DCFA004BBCC5</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>YourCitiesTableViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F74376C41B86DCFA004BBCC5</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F74376C31B86DCFA004BBCC5</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F78032A21BF2EF44007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>NotificationCenter.framework</string>
-			<key>path</key>
-			<string>System/Library/Frameworks/NotificationCenter.framework</string>
-			<key>sourceTree</key>
-			<string>SDKROOT</string>
-		</dict>
-		<key>F78032A41BF2EF44007540C8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F78032B21BF2F2BA007540C8</string>
-				<string>F78032A51BF2EF44007540C8</string>
-				<string>F78032A71BF2EF44007540C8</string>
-				<string>F78032AA1BF2EF44007540C8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>PW Widget</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032A51BF2EF44007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>TodayViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032A71BF2EF44007540C8</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F78032A81BF2EF44007540C8</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>MainInterface.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032A81BF2EF44007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/MainInterface.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032AA1BF2EF44007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032B11BF2EF44007540C8</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>dstPath</key>
-			<string></string>
-			<key>dstSubfolderSpec</key>
-			<string>13</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXCopyFilesBuildPhase</string>
-			<key>name</key>
-			<string>Embed App Extensions</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F78032B21BF2F2BA007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xml</string>
-			<key>path</key>
-			<string>PW Widget.entitlements</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032B31BF2F30E007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.xml</string>
-			<key>path</key>
-			<string>QuoteWeatherApp.entitlements</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032B41BF2F691007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Alamofire.framework</string>
-			<key>path</key>
-			<string>Pods/../build/Debug-iphoneos/Alamofire.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032B51BF2F691007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>Pods.framework</string>
-			<key>path</key>
-			<string>Pods/../build/Debug-iphoneos/Pods.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F78032B61BF2F691007540C8</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.framework</string>
-			<key>name</key>
-			<string>SwiftyJSON.framework</string>
-			<key>path</key>
-			<string>Pods/../build/Debug-iphoneos/SwiftyJSON.framework</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7C872361BE6999A0036C37C</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>YourCitiesViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7C872371BE6999A0036C37C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7C872361BE6999A0036C37C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7CAA5B91B97723E00FD748E</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>DegreeLabel.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7CAA5BA1B97723E00FD748E</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7CAA5B91B97723E00FD748E</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7CB34371BA357B3004F6CC3</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ContainerViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7CB34381BA357B3004F6CC3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7CB34371BA357B3004F6CC3</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7CB343B1BA3E4D3004F6CC3</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>City.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7CB343C1BA3E4D3004F6CC3</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7CB343B1BA3E4D3004F6CC3</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7CE13581B89224F001E16FA</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7C872361BE6999A0036C37C</string>
-				<string>F7D1D2001B82664200722A1C</string>
-				<string>F7CB34371BA357B3004F6CC3</string>
-				<string>F74376C31B86DCFA004BBCC5</string>
-				<string>F74376BF1B863FD9004BBCC5</string>
-				<string>F7CAA5B91B97723E00FD748E</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Controllers</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7CE13591B892258001E16FA</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F701F8AB1BE6EC3E0088ECFB</string>
-				<string>F701F8AC1BE6EC3E0088ECFB</string>
-				<string>F701F8AD1BE6EC3E0088ECFB</string>
-				<string>F701F8AE1BE6EC3E0088ECFB</string>
-				<string>F7CB343B1BA3E4D3004F6CC3</string>
-				<string>F7D1D2221B830BB700722A1C</string>
-				<string>F7EA21B61BE31EA4005312FA</string>
-				<string>F7CE7B0B1BF57FD400478455</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Models</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7CE7B0B1BF57FD400478455</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>name</key>
-			<string>CoreDataStack.swift</string>
-			<key>path</key>
-			<string>../CoreDataStack.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7CE7B0C1BF57FD400478455</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7CE7B0B1BF57FD400478455</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7D1D1ED1B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7D1D1F81B82664200722A1C</string>
-				<string>F7D1D2111B82664200722A1C</string>
-				<string>F78032A41BF2EF44007540C8</string>
-				<string>F72589DA1C023E42008F9099</string>
-				<string>F72589E91C023E42008F9099</string>
-				<string>F7D1D1F71B82664200722A1C</string>
-				<string>1CD41168F6E7F87C3697120A</string>
-				<string>29319921EF5B6C3D79FEEA7A</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D1EE1B82664200722A1C</key>
-		<dict>
-			<key>attributes</key>
-			<dict>
-				<key>LastSwiftMigration</key>
-				<string>0700</string>
-				<key>LastSwiftUpdateCheck</key>
-				<string>0710</string>
-				<key>LastUpgradeCheck</key>
-				<string>0700</string>
-				<key>ORGANIZATIONNAME</key>
-				<string>Ryan  Gunn</string>
-				<key>TargetAttributes</key>
-				<dict>
-					<key>F7D1D1F51B82664200722A1C</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.4</string>
-						<key>DevelopmentTeam</key>
-						<string>Z45ZUG2EW7</string>
-						<key>SystemCapabilities</key>
-						<dict>
-							<key>com.apple.ApplicationGroups.iOS</key>
-							<dict>
-								<key>enabled</key>
-								<string>1</string>
-							</dict>
-						</dict>
-					</dict>
-					<key>F7D1D20D1B82664200722A1C</key>
-					<dict>
-						<key>CreatedOnToolsVersion</key>
-						<string>6.4</string>
-						<key>TestTargetID</key>
-						<string>F7D1D1F51B82664200722A1C</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>buildConfigurationList</key>
-			<string>F7D1D1F11B82664200722A1C</string>
-			<key>compatibilityVersion</key>
-			<string>Xcode 3.2</string>
-			<key>developmentRegion</key>
-			<string>English</string>
-			<key>hasScannedForEncodings</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXProject</string>
-			<key>knownRegions</key>
-			<array>
-				<string>en</string>
-				<string>Base</string>
-			</array>
-			<key>mainGroup</key>
-			<string>F7D1D1ED1B82664200722A1C</string>
-			<key>productRefGroup</key>
-			<string>F7D1D1F71B82664200722A1C</string>
-			<key>projectDirPath</key>
-			<string></string>
-			<key>projectRoot</key>
-			<string></string>
-			<key>targets</key>
-			<array>
-				<string>F7D1D1F51B82664200722A1C</string>
-				<string>F7D1D20D1B82664200722A1C</string>
-			</array>
-		</dict>
-		<key>F7D1D1F11B82664200722A1C</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>F7D1D2161B82664200722A1C</string>
-				<string>F7D1D2171B82664200722A1C</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>F7D1D1F21B82664200722A1C</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F701F8B11BE6EC3E0088ECFB</string>
-				<string>F7D1D2011B82664200722A1C</string>
-				<string>F74376C01B863FD9004BBCC5</string>
-				<string>F701F8B01BE6EC3E0088ECFB</string>
-				<string>F7CB34381BA357B3004F6CC3</string>
-				<string>F7D1D2231B830BB700722A1C</string>
-				<string>F701F8B21BE6EC3E0088ECFB</string>
-				<string>F7D1D1FC1B82664200722A1C</string>
-				<string>F701F8AF1BE6EC3E0088ECFB</string>
-				<string>F74376C41B86DCFA004BBCC5</string>
-				<string>F7EA21B71BE31EA4005312FA</string>
-				<string>F7CB343C1BA3E4D3004F6CC3</string>
-				<string>F7CE7B0C1BF57FD400478455</string>
-				<string>F7C872371BE6999A0036C37C</string>
-				<string>F7CAA5BA1B97723E00FD748E</string>
-				<string>F7D1D1FF1B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F7D1D1F31B82664200722A1C</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>B38F94F27B8FCEB02508BC70</string>
-			</array>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F7D1D1F41B82664200722A1C</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F7D1D2041B82664200722A1C</string>
-				<string>F701F8B61BE6F8340088ECFB</string>
-				<string>F7D1D2091B82664200722A1C</string>
-				<string>F701F8B81BE6FFE90088ECFB</string>
-				<string>F7D1D2061B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F7D1D1F51B82664200722A1C</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>F7D1D2181B82664200722A1C</string>
-			<key>buildPhases</key>
-			<array>
-				<string>AF046EF629990FD879247146</string>
-				<string>F7D1D1F21B82664200722A1C</string>
-				<string>F7D1D1F31B82664200722A1C</string>
-				<string>F7D1D1F41B82664200722A1C</string>
-				<string>121C86E050F14E89E6B18B06</string>
-				<string>A462B90F19CB4C2787AE9057</string>
-				<string>F78032B11BF2EF44007540C8</string>
-				<string>F72589FF1C023E43008F9099</string>
-				<string>SWIFCLEANCUSTOMRUNSCRIPT</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>QuoteWeatherApp</string>
-			<key>productName</key>
-			<string>QuoteWeatherApp</string>
-			<key>productReference</key>
-			<string>F7D1D1F61B82664200722A1C</string>
-			<key>productType</key>
-			<string>com.apple.product-type.application</string>
-		</dict>
-		<key>F7D1D1F61B82664200722A1C</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.application</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>Positive Weather.app</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>F7D1D1F71B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7D1D1F61B82664200722A1C</string>
-				<string>F7D1D20E1B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Products</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D1F81B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F78032B31BF2F30E007540C8</string>
-				<string>F7D1D1FB1B82664200722A1C</string>
-				<string>F7D1D2021B82664200722A1C</string>
-				<string>F7CE13581B89224F001E16FA</string>
-				<string>F7CE13591B892258001E16FA</string>
-				<string>F7D1D2051B82664200722A1C</string>
-				<string>F7D1D2071B82664200722A1C</string>
-				<string>F7D1D1FD1B82664200722A1C</string>
-				<string>F701F8B71BE6FFE90088ECFB</string>
-				<string>F701F8B51BE6F8340088ECFB</string>
-				<string>F7D1D1F91B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>QuoteWeatherApp</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D1F91B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7D1D1FA1B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D1FA1B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D1FB1B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>AppDelegate.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D1FC1B82664200722A1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7D1D1FB1B82664200722A1C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7D1D1FD1B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7D1D1FE1B82664200722A1C</string>
-			</array>
-			<key>currentVersion</key>
-			<string>F7D1D1FE1B82664200722A1C</string>
-			<key>isa</key>
-			<string>XCVersionGroup</string>
-			<key>path</key>
-			<string>QuoteWeatherApp.xcdatamodeld</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-			<key>versionGroupType</key>
-			<string>wrapper.xcdatamodel</string>
-		</dict>
-		<key>F7D1D1FE1B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>wrapper.xcdatamodel</string>
-			<key>path</key>
-			<string>QuoteWeatherApp.xcdatamodel</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D1FF1B82664200722A1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7D1D1FD1B82664200722A1C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7D1D2001B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>ViewController.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2011B82664200722A1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7D1D2001B82664200722A1C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7D1D2021B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7D1D2031B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2031B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.storyboard</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/Main.storyboard</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2041B82664200722A1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7D1D2021B82664200722A1C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7D1D2051B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>folder.assetcatalog</string>
-			<key>path</key>
-			<string>Images.xcassets</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2061B82664200722A1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7D1D2051B82664200722A1C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7D1D2071B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7D1D2081B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXVariantGroup</string>
-			<key>name</key>
-			<string>LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2081B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>file.xib</string>
-			<key>name</key>
-			<string>Base</string>
-			<key>path</key>
-			<string>Base.lproj/LaunchScreen.xib</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2091B82664200722A1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7D1D2071B82664200722A1C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7D1D20A1B82664200722A1C</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array>
-				<string>F7D1D2151B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXSourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F7D1D20B1B82664200722A1C</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXFrameworksBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F7D1D20C1B82664200722A1C</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXResourcesBuildPhase</string>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-		</dict>
-		<key>F7D1D20D1B82664200722A1C</key>
-		<dict>
-			<key>buildConfigurationList</key>
-			<string>F7D1D21B1B82664200722A1C</string>
-			<key>buildPhases</key>
-			<array>
-				<string>F7D1D20A1B82664200722A1C</string>
-				<string>F7D1D20B1B82664200722A1C</string>
-				<string>F7D1D20C1B82664200722A1C</string>
-			</array>
-			<key>buildRules</key>
-			<array/>
-			<key>dependencies</key>
-			<array>
-				<string>F7D1D2101B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXNativeTarget</string>
-			<key>name</key>
-			<string>QuoteWeatherAppTests</string>
-			<key>productName</key>
-			<string>QuoteWeatherAppTests</string>
-			<key>productReference</key>
-			<string>F7D1D20E1B82664200722A1C</string>
-			<key>productType</key>
-			<string>com.apple.product-type.bundle.unit-test</string>
-		</dict>
-		<key>F7D1D20E1B82664200722A1C</key>
-		<dict>
-			<key>explicitFileType</key>
-			<string>wrapper.cfbundle</string>
-			<key>includeInIndex</key>
-			<string>0</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>path</key>
-			<string>QuoteWeatherAppTests.xctest</string>
-			<key>sourceTree</key>
-			<string>BUILT_PRODUCTS_DIR</string>
-		</dict>
-		<key>F7D1D20F1B82664200722A1C</key>
-		<dict>
-			<key>containerPortal</key>
-			<string>F7D1D1EE1B82664200722A1C</string>
-			<key>isa</key>
-			<string>PBXContainerItemProxy</string>
-			<key>proxyType</key>
-			<string>1</string>
-			<key>remoteGlobalIDString</key>
-			<string>F7D1D1F51B82664200722A1C</string>
-			<key>remoteInfo</key>
-			<string>QuoteWeatherApp</string>
-		</dict>
-		<key>F7D1D2101B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXTargetDependency</string>
-			<key>target</key>
-			<string>F7D1D1F51B82664200722A1C</string>
-			<key>targetProxy</key>
-			<string>F7D1D20F1B82664200722A1C</string>
-		</dict>
-		<key>F7D1D2111B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7D1D2141B82664200722A1C</string>
-				<string>F7D1D2121B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>path</key>
-			<string>QuoteWeatherAppTests</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2121B82664200722A1C</key>
-		<dict>
-			<key>children</key>
-			<array>
-				<string>F7D1D2131B82664200722A1C</string>
-			</array>
-			<key>isa</key>
-			<string>PBXGroup</string>
-			<key>name</key>
-			<string>Supporting Files</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2131B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>text.plist.xml</string>
-			<key>path</key>
-			<string>Info.plist</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2141B82664200722A1C</key>
-		<dict>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>QuoteWeatherAppTests.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2151B82664200722A1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7D1D2141B82664200722A1C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7D1D2161B82664200722A1C</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>ENABLE_TESTABILITY</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_DYNAMIC_NO_PIC</key>
-				<string>NO</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_OPTIMIZATION_LEVEL</key>
-				<string>0</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>GCC_SYMBOLS_PRIVATE_EXTERN</key>
-				<string>NO</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>YES</string>
-				<key>ONLY_ACTIVE_ARCH</key>
-				<string>YES</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>SWIFT_OPTIMIZATION_LEVEL</key>
-				<string>-Onone</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>F7D1D2171B82664200722A1C</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>ALWAYS_SEARCH_USER_PATHS</key>
-				<string>NO</string>
-				<key>CLANG_CXX_LANGUAGE_STANDARD</key>
-				<string>gnu++0x</string>
-				<key>CLANG_CXX_LIBRARY</key>
-				<string>libc++</string>
-				<key>CLANG_ENABLE_MODULES</key>
-				<string>YES</string>
-				<key>CLANG_ENABLE_OBJC_ARC</key>
-				<string>YES</string>
-				<key>CLANG_WARN_BOOL_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_CONSTANT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_DIRECT_OBJC_ISA_USAGE</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_EMPTY_BODY</key>
-				<string>YES</string>
-				<key>CLANG_WARN_ENUM_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_INT_CONVERSION</key>
-				<string>YES</string>
-				<key>CLANG_WARN_OBJC_ROOT_CLASS</key>
-				<string>YES_ERROR</string>
-				<key>CLANG_WARN_UNREACHABLE_CODE</key>
-				<string>YES</string>
-				<key>CLANG_WARN__DUPLICATE_METHOD_MATCH</key>
-				<string>YES</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>COPY_PHASE_STRIP</key>
-				<string>NO</string>
-				<key>DEBUG_INFORMATION_FORMAT</key>
-				<string>dwarf-with-dsym</string>
-				<key>ENABLE_NS_ASSERTIONS</key>
-				<string>NO</string>
-				<key>ENABLE_STRICT_OBJC_MSGSEND</key>
-				<string>YES</string>
-				<key>GCC_C_LANGUAGE_STANDARD</key>
-				<string>gnu99</string>
-				<key>GCC_NO_COMMON_BLOCKS</key>
-				<string>YES</string>
-				<key>GCC_WARN_64_TO_32_BIT_CONVERSION</key>
-				<string>YES</string>
-				<key>GCC_WARN_ABOUT_RETURN_TYPE</key>
-				<string>YES_ERROR</string>
-				<key>GCC_WARN_UNDECLARED_SELECTOR</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNINITIALIZED_AUTOS</key>
-				<string>YES_AGGRESSIVE</string>
-				<key>GCC_WARN_UNUSED_FUNCTION</key>
-				<string>YES</string>
-				<key>GCC_WARN_UNUSED_VARIABLE</key>
-				<string>YES</string>
-				<key>IPHONEOS_DEPLOYMENT_TARGET</key>
-				<string>9.0</string>
-				<key>MTL_ENABLE_DEBUG_INFO</key>
-				<string>NO</string>
-				<key>SDKROOT</key>
-				<string>iphoneos</string>
-				<key>VALIDATE_PRODUCT</key>
-				<string>YES</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>F7D1D2181B82664200722A1C</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>F7D1D2191B82664200722A1C</string>
-				<string>F7D1D21A1B82664200722A1C</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>F7D1D2191B82664200722A1C</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>6F8C06DB8B670245A8990E33</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>QuoteWeatherApp/QuoteWeatherApp.entitlements</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>QuoteWeatherApp/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.RyanGunn.QuoteWeatherApp</string>
-				<key>PRODUCT_NAME</key>
-				<string>Positive Weather</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>F7D1D21A1B82664200722A1C</key>
-		<dict>
-			<key>baseConfigurationReference</key>
-			<string>C36D4B4AEF16CDC9EF675B9F</string>
-			<key>buildSettings</key>
-			<dict>
-				<key>ASSETCATALOG_COMPILER_APPICON_NAME</key>
-				<string>AppIcon</string>
-				<key>CODE_SIGN_ENTITLEMENTS</key>
-				<string>QuoteWeatherApp/QuoteWeatherApp.entitlements</string>
-				<key>CODE_SIGN_IDENTITY</key>
-				<string>iPhone Developer</string>
-				<key>CODE_SIGN_IDENTITY[sdk=iphoneos*]</key>
-				<string>iPhone Developer</string>
-				<key>EMBEDDED_CONTENT_CONTAINS_SWIFT</key>
-				<string>YES</string>
-				<key>INFOPLIST_FILE</key>
-				<string>QuoteWeatherApp/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>com.RyanGunn.QuoteWeatherApp</string>
-				<key>PRODUCT_NAME</key>
-				<string>Positive Weather</string>
-				<key>PROVISIONING_PROFILE</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>F7D1D21B1B82664200722A1C</key>
-		<dict>
-			<key>buildConfigurations</key>
-			<array>
-				<string>F7D1D21C1B82664200722A1C</string>
-				<string>F7D1D21D1B82664200722A1C</string>
-			</array>
-			<key>defaultConfigurationIsVisible</key>
-			<string>0</string>
-			<key>defaultConfigurationName</key>
-			<string>Release</string>
-			<key>isa</key>
-			<string>XCConfigurationList</string>
-		</dict>
-		<key>F7D1D21C1B82664200722A1C</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>GCC_PREPROCESSOR_DEFINITIONS</key>
-				<array>
-					<string>DEBUG=1</string>
-					<string>$(inherited)</string>
-				</array>
-				<key>INFOPLIST_FILE</key>
-				<string>QuoteWeatherAppTests/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-				<key>TEST_HOST</key>
-				<string></string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Debug</string>
-		</dict>
-		<key>F7D1D21D1B82664200722A1C</key>
-		<dict>
-			<key>buildSettings</key>
-			<dict>
-				<key>BUNDLE_LOADER</key>
-				<string>$(TEST_HOST)</string>
-				<key>INFOPLIST_FILE</key>
-				<string>QuoteWeatherAppTests/Info.plist</string>
-				<key>LD_RUNPATH_SEARCH_PATHS</key>
-				<string>$(inherited) @executable_path/Frameworks @loader_path/Frameworks</string>
-				<key>PRODUCT_BUNDLE_IDENTIFIER</key>
-				<string>Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)</string>
-				<key>PRODUCT_NAME</key>
-				<string>$(TARGET_NAME)</string>
-			</dict>
-			<key>isa</key>
-			<string>XCBuildConfiguration</string>
-			<key>name</key>
-			<string>Release</string>
-		</dict>
-		<key>F7D1D2221B830BB700722A1C</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>CityInfo.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7D1D2231B830BB700722A1C</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7D1D2221B830BB700722A1C</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>F7EA21B61BE31EA4005312FA</key>
-		<dict>
-			<key>fileEncoding</key>
-			<string>4</string>
-			<key>isa</key>
-			<string>PBXFileReference</string>
-			<key>lastKnownFileType</key>
-			<string>sourcecode.swift</string>
-			<key>path</key>
-			<string>OpenWeatherCity.swift</string>
-			<key>sourceTree</key>
-			<string>&lt;group&gt;</string>
-		</dict>
-		<key>F7EA21B71BE31EA4005312FA</key>
-		<dict>
-			<key>fileRef</key>
-			<string>F7EA21B61BE31EA4005312FA</string>
-			<key>isa</key>
-			<string>PBXBuildFile</string>
-		</dict>
-		<key>SWIFCLEANCUSTOMRUNSCRIPT</key>
-		<dict>
-			<key>buildActionMask</key>
-			<string>2147483647</string>
-			<key>files</key>
-			<array/>
-			<key>inputPaths</key>
-			<array/>
-			<key>isa</key>
-			<string>PBXShellScriptBuildPhase</string>
-			<key>name</key>
-			<string>Swift-Clean Run Script</string>
-			<key>outputPaths</key>
-			<array/>
-			<key>runOnlyForDeploymentPostprocessing</key>
-			<string>0</string>
-			<key>shellPath</key>
-			<string>/bin/bash</string>
-			<key>shellScript</key>
-			<string>if [[ -z ${SKIP_SWIFTCLEAN} || ${SKIP_SWIFTCLEAN} != 1 ]]; then
-if [[ -d "${LOCAL_APPS_DIR}/Swift-Clean.app" ]]; then 
-"${LOCAL_APPS_DIR}"/Swift-Clean.app/Contents/Resources/SwiftClean.app/Contents/MacOS/SwiftClean "${SRCROOT}"?@autoFix 
-else
-echo "warning: You have to install and set up Swift-Clean to use its features!" 
-fi
-fi</string>
-		</dict>
-	</dict>
-	<key>rootObject</key>
-	<string>F7D1D1EE1B82664200722A1C</string>
-</dict>
-</plist>
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B38F94F27B8FCEB02508BC70 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3711F7B8CE8BA82B9BAC25F2 /* Pods.framework */; };
+		F701F8AF1BE6EC3E0088ECFB /* ColdQuotes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F701F8AB1BE6EC3E0088ECFB /* ColdQuotes+CoreDataProperties.swift */; };
+		F701F8B01BE6EC3E0088ECFB /* ColdQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F701F8AC1BE6EC3E0088ECFB /* ColdQuotes.swift */; };
+		F701F8B11BE6EC3E0088ECFB /* HotQuotes+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = F701F8AD1BE6EC3E0088ECFB /* HotQuotes+CoreDataProperties.swift */; };
+		F701F8B21BE6EC3E0088ECFB /* HotQuotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = F701F8AE1BE6EC3E0088ECFB /* HotQuotes.swift */; };
+		F701F8B61BE6F8340088ECFB /* Hot.csv in Resources */ = {isa = PBXBuildFile; fileRef = F701F8B51BE6F8340088ECFB /* Hot.csv */; };
+		F701F8B81BE6FFE90088ECFB /* Cold.csv in Resources */ = {isa = PBXBuildFile; fileRef = F701F8B71BE6FFE90088ECFB /* Cold.csv */; };
+		F735050C1C365C2F00BFBF7A /* CoreDataProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F735050B1C365C2F00BFBF7A /* CoreDataProtocol.swift */; };
+		F74376C01B863FD9004BBCC5 /* SearchTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74376BF1B863FD9004BBCC5 /* SearchTableViewController.swift */; };
+		F74376C41B86DCFA004BBCC5 /* YourCitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F74376C31B86DCFA004BBCC5 /* YourCitiesTableViewController.swift */; };
+		F7C872371BE6999A0036C37C /* YourCitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C872361BE6999A0036C37C /* YourCitiesViewController.swift */; };
+		F7CAA5BA1B97723E00FD748E /* DegreeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CAA5B91B97723E00FD748E /* DegreeLabel.swift */; };
+		F7CB34381BA357B3004F6CC3 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB34371BA357B3004F6CC3 /* ContainerViewController.swift */; };
+		F7CB343C1BA3E4D3004F6CC3 /* City.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CB343B1BA3E4D3004F6CC3 /* City.swift */; };
+		F7CE7B0C1BF57FD400478455 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7CE7B0B1BF57FD400478455 /* CoreDataStack.swift */; };
+		F7D1D1FC1B82664200722A1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D1FB1B82664200722A1C /* AppDelegate.swift */; };
+		F7D1D1FF1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D1FD1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld */; };
+		F7D1D2011B82664200722A1C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D2001B82664200722A1C /* ViewController.swift */; };
+		F7D1D2041B82664200722A1C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7D1D2021B82664200722A1C /* Main.storyboard */; };
+		F7D1D2061B82664200722A1C /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7D1D2051B82664200722A1C /* Images.xcassets */; };
+		F7D1D2091B82664200722A1C /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = F7D1D2071B82664200722A1C /* LaunchScreen.xib */; };
+		F7D1D2151B82664200722A1C /* QuoteWeatherAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D2141B82664200722A1C /* QuoteWeatherAppTests.swift */; };
+		F7D1D2231B830BB700722A1C /* CityInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7D1D2221B830BB700722A1C /* CityInfo.swift */; };
+		F7EA21B71BE31EA4005312FA /* OpenWeatherCity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7EA21B61BE31EA4005312FA /* OpenWeatherCity.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F7D1D20F1B82664200722A1C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7D1D1EE1B82664200722A1C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F7D1D1F51B82664200722A1C;
+			remoteInfo = QuoteWeatherApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F72589FF1C023E43008F9099 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F78032B11BF2EF44007540C8 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		3711F7B8CE8BA82B9BAC25F2 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6F8C06DB8B670245A8990E33 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C36D4B4AEF16CDC9EF675B9F /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		F701F8AB1BE6EC3E0088ECFB /* ColdQuotes+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ColdQuotes+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F701F8AC1BE6EC3E0088ECFB /* ColdQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColdQuotes.swift; sourceTree = "<group>"; };
+		F701F8AD1BE6EC3E0088ECFB /* HotQuotes+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HotQuotes+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		F701F8AE1BE6EC3E0088ECFB /* HotQuotes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotQuotes.swift; sourceTree = "<group>"; };
+		F701F8B51BE6F8340088ECFB /* Hot.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hot.csv; sourceTree = "<group>"; };
+		F701F8B71BE6FFE90088ECFB /* Cold.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Cold.csv; sourceTree = "<group>"; };
+		F72589DC1C023E42008F9099 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		F72589DE1C023E42008F9099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F72589E01C023E42008F9099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F72589EB1C023E42008F9099 /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		F72589EC1C023E42008F9099 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		F72589EE1C023E42008F9099 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		F72589F01C023E42008F9099 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		F72589F21C023E42008F9099 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F72589F41C023E42008F9099 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7258A031C02709A008F9099 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		F735050B1C365C2F00BFBF7A /* CoreDataProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataProtocol.swift; sourceTree = "<group>"; };
+		F74376BF1B863FD9004BBCC5 /* SearchTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewController.swift; sourceTree = "<group>"; };
+		F74376C31B86DCFA004BBCC5 /* YourCitiesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourCitiesTableViewController.swift; sourceTree = "<group>"; };
+		F78032A21BF2EF44007540C8 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
+		F78032A51BF2EF44007540C8 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		F78032A81BF2EF44007540C8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		F78032AA1BF2EF44007540C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F78032B21BF2F2BA007540C8 /* PW Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "PW Widget.entitlements"; sourceTree = "<group>"; };
+		F78032B31BF2F30E007540C8 /* QuoteWeatherApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = QuoteWeatherApp.entitlements; sourceTree = "<group>"; };
+		F78032B41BF2F691007540C8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "Pods/../build/Debug-iphoneos/Alamofire.framework"; sourceTree = "<group>"; };
+		F78032B51BF2F691007540C8 /* Pods.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods.framework; path = "Pods/../build/Debug-iphoneos/Pods.framework"; sourceTree = "<group>"; };
+		F78032B61BF2F691007540C8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "Pods/../build/Debug-iphoneos/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		F7C872361BE6999A0036C37C /* YourCitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YourCitiesViewController.swift; sourceTree = "<group>"; };
+		F7CAA5B91B97723E00FD748E /* DegreeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DegreeLabel.swift; sourceTree = "<group>"; };
+		F7CB34371BA357B3004F6CC3 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		F7CB343B1BA3E4D3004F6CC3 /* City.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = City.swift; sourceTree = "<group>"; };
+		F7CE7B0B1BF57FD400478455 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../CoreDataStack.swift; sourceTree = "<group>"; };
+		F7D1D1F61B82664200722A1C /* Positive Weather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Positive Weather.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7D1D1FA1B82664200722A1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7D1D1FB1B82664200722A1C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F7D1D1FE1B82664200722A1C /* QuoteWeatherApp.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = QuoteWeatherApp.xcdatamodel; sourceTree = "<group>"; };
+		F7D1D2001B82664200722A1C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F7D1D2031B82664200722A1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F7D1D2051B82664200722A1C /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F7D1D2081B82664200722A1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		F7D1D20E1B82664200722A1C /* QuoteWeatherAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = QuoteWeatherAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7D1D2131B82664200722A1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F7D1D2141B82664200722A1C /* QuoteWeatherAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuoteWeatherAppTests.swift; sourceTree = "<group>"; };
+		F7D1D2221B830BB700722A1C /* CityInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CityInfo.swift; sourceTree = "<group>"; };
+		F7EA21B61BE31EA4005312FA /* OpenWeatherCity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenWeatherCity.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F7D1D1F31B82664200722A1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B38F94F27B8FCEB02508BC70 /* Pods.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7D1D20B1B82664200722A1C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1CD41168F6E7F87C3697120A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				6F8C06DB8B670245A8990E33 /* Pods.debug.xcconfig */,
+				C36D4B4AEF16CDC9EF675B9F /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		29319921EF5B6C3D79FEEA7A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7258A031C02709A008F9099 /* SwiftyJSON.framework */,
+				F78032B41BF2F691007540C8 /* Alamofire.framework */,
+				F78032B51BF2F691007540C8 /* Pods.framework */,
+				F78032B61BF2F691007540C8 /* SwiftyJSON.framework */,
+				3711F7B8CE8BA82B9BAC25F2 /* Pods.framework */,
+				F78032A21BF2EF44007540C8 /* NotificationCenter.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F72589DA1C023E42008F9099 /* Postive Weather */ = {
+			isa = PBXGroup;
+			children = (
+				F72589DB1C023E42008F9099 /* Interface.storyboard */,
+				F72589DE1C023E42008F9099 /* Assets.xcassets */,
+				F72589E01C023E42008F9099 /* Info.plist */,
+			);
+			path = "Postive Weather";
+			sourceTree = "<group>";
+		};
+		F72589E91C023E42008F9099 /* Postive Weather Extension */ = {
+			isa = PBXGroup;
+			children = (
+				F72589EC1C023E42008F9099 /* InterfaceController.swift */,
+				F72589EE1C023E42008F9099 /* ExtensionDelegate.swift */,
+				F72589F01C023E42008F9099 /* NotificationController.swift */,
+				F72589F21C023E42008F9099 /* Assets.xcassets */,
+				F72589F41C023E42008F9099 /* Info.plist */,
+				F72589EA1C023E42008F9099 /* Supporting Files */,
+			);
+			path = "Postive Weather Extension";
+			sourceTree = "<group>";
+		};
+		F72589EA1C023E42008F9099 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F72589EB1C023E42008F9099 /* PushNotificationPayload.apns */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F78032A41BF2EF44007540C8 /* PW Widget */ = {
+			isa = PBXGroup;
+			children = (
+				F78032B21BF2F2BA007540C8 /* PW Widget.entitlements */,
+				F78032A51BF2EF44007540C8 /* TodayViewController.swift */,
+				F78032A71BF2EF44007540C8 /* MainInterface.storyboard */,
+				F78032AA1BF2EF44007540C8 /* Info.plist */,
+			);
+			path = "PW Widget";
+			sourceTree = "<group>";
+		};
+		F7CE13581B89224F001E16FA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F7C872361BE6999A0036C37C /* YourCitiesViewController.swift */,
+				F7D1D2001B82664200722A1C /* ViewController.swift */,
+				F7CB34371BA357B3004F6CC3 /* ContainerViewController.swift */,
+				F74376C31B86DCFA004BBCC5 /* YourCitiesTableViewController.swift */,
+				F74376BF1B863FD9004BBCC5 /* SearchTableViewController.swift */,
+				F7CAA5B91B97723E00FD748E /* DegreeLabel.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		F7CE13591B892258001E16FA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F701F8AB1BE6EC3E0088ECFB /* ColdQuotes+CoreDataProperties.swift */,
+				F701F8AC1BE6EC3E0088ECFB /* ColdQuotes.swift */,
+				F701F8AD1BE6EC3E0088ECFB /* HotQuotes+CoreDataProperties.swift */,
+				F701F8AE1BE6EC3E0088ECFB /* HotQuotes.swift */,
+				F7CB343B1BA3E4D3004F6CC3 /* City.swift */,
+				F7D1D2221B830BB700722A1C /* CityInfo.swift */,
+				F735050B1C365C2F00BFBF7A /* CoreDataProtocol.swift */,
+				F7EA21B61BE31EA4005312FA /* OpenWeatherCity.swift */,
+				F7CE7B0B1BF57FD400478455 /* CoreDataStack.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		F7D1D1ED1B82664200722A1C = {
+			isa = PBXGroup;
+			children = (
+				F7D1D1F81B82664200722A1C /* QuoteWeatherApp */,
+				F7D1D2111B82664200722A1C /* QuoteWeatherAppTests */,
+				F78032A41BF2EF44007540C8 /* PW Widget */,
+				F72589DA1C023E42008F9099 /* Postive Weather */,
+				F72589E91C023E42008F9099 /* Postive Weather Extension */,
+				F7D1D1F71B82664200722A1C /* Products */,
+				1CD41168F6E7F87C3697120A /* Pods */,
+				29319921EF5B6C3D79FEEA7A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F7D1D1F71B82664200722A1C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7D1D1F61B82664200722A1C /* Positive Weather.app */,
+				F7D1D20E1B82664200722A1C /* QuoteWeatherAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7D1D1F81B82664200722A1C /* QuoteWeatherApp */ = {
+			isa = PBXGroup;
+			children = (
+				F78032B31BF2F30E007540C8 /* QuoteWeatherApp.entitlements */,
+				F7D1D1FB1B82664200722A1C /* AppDelegate.swift */,
+				F7D1D2021B82664200722A1C /* Main.storyboard */,
+				F7CE13581B89224F001E16FA /* Controllers */,
+				F7CE13591B892258001E16FA /* Models */,
+				F7D1D2051B82664200722A1C /* Images.xcassets */,
+				F7D1D2071B82664200722A1C /* LaunchScreen.xib */,
+				F7D1D1FD1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld */,
+				F701F8B71BE6FFE90088ECFB /* Cold.csv */,
+				F701F8B51BE6F8340088ECFB /* Hot.csv */,
+				F7D1D1F91B82664200722A1C /* Supporting Files */,
+			);
+			path = QuoteWeatherApp;
+			sourceTree = "<group>";
+		};
+		F7D1D1F91B82664200722A1C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F7D1D1FA1B82664200722A1C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F7D1D2111B82664200722A1C /* QuoteWeatherAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				F7D1D2141B82664200722A1C /* QuoteWeatherAppTests.swift */,
+				F7D1D2121B82664200722A1C /* Supporting Files */,
+			);
+			path = QuoteWeatherAppTests;
+			sourceTree = "<group>";
+		};
+		F7D1D2121B82664200722A1C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F7D1D2131B82664200722A1C /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F7D1D1F51B82664200722A1C /* QuoteWeatherApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7D1D2181B82664200722A1C /* Build configuration list for PBXNativeTarget "QuoteWeatherApp" */;
+			buildPhases = (
+				AF046EF629990FD879247146 /* Check Pods Manifest.lock */,
+				F7D1D1F21B82664200722A1C /* Sources */,
+				F7D1D1F31B82664200722A1C /* Frameworks */,
+				F7D1D1F41B82664200722A1C /* Resources */,
+				121C86E050F14E89E6B18B06 /* Embed Pods Frameworks */,
+				A462B90F19CB4C2787AE9057 /* Copy Pods Resources */,
+				F78032B11BF2EF44007540C8 /* Embed App Extensions */,
+				F72589FF1C023E43008F9099 /* Embed Watch Content */,
+				3C958AE1FC76ADE16BA9D6D9 /* Tailor */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QuoteWeatherApp;
+			productName = QuoteWeatherApp;
+			productReference = F7D1D1F61B82664200722A1C /* Positive Weather.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F7D1D20D1B82664200722A1C /* QuoteWeatherAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7D1D21B1B82664200722A1C /* Build configuration list for PBXNativeTarget "QuoteWeatherAppTests" */;
+			buildPhases = (
+				F7D1D20A1B82664200722A1C /* Sources */,
+				F7D1D20B1B82664200722A1C /* Frameworks */,
+				F7D1D20C1B82664200722A1C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F7D1D2101B82664200722A1C /* PBXTargetDependency */,
+			);
+			name = QuoteWeatherAppTests;
+			productName = QuoteWeatherAppTests;
+			productReference = F7D1D20E1B82664200722A1C /* QuoteWeatherAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F7D1D1EE1B82664200722A1C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 0700;
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Ryan  Gunn";
+				TargetAttributes = {
+					F7D1D1F51B82664200722A1C = {
+						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = Z45ZUG2EW7;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
+					};
+					F7D1D20D1B82664200722A1C = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = F7D1D1F51B82664200722A1C;
+					};
+				};
+			};
+			buildConfigurationList = F7D1D1F11B82664200722A1C /* Build configuration list for PBXProject "QuoteWeatherApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F7D1D1ED1B82664200722A1C;
+			productRefGroup = F7D1D1F71B82664200722A1C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F7D1D1F51B82664200722A1C /* QuoteWeatherApp */,
+				F7D1D20D1B82664200722A1C /* QuoteWeatherAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F7D1D1F41B82664200722A1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7D1D2041B82664200722A1C /* Main.storyboard in Resources */,
+				F701F8B61BE6F8340088ECFB /* Hot.csv in Resources */,
+				F7D1D2091B82664200722A1C /* LaunchScreen.xib in Resources */,
+				F701F8B81BE6FFE90088ECFB /* Cold.csv in Resources */,
+				F7D1D2061B82664200722A1C /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7D1D20C1B82664200722A1C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		121C86E050F14E89E6B18B06 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3C958AE1FC76ADE16BA9D6D9 /* Tailor */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 8;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = Tailor;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+			shellPath = /bin/sh;
+			shellScript = "if hash tailor 2>/dev/null; then\n  tailor\nelse\n  echo \"warning: Please install Tailor from https://tailor.sh\"\nfi";
+		};
+		A462B90F19CB4C2787AE9057 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF046EF629990FD879247146 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7D1D1F21B82664200722A1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F701F8B11BE6EC3E0088ECFB /* HotQuotes+CoreDataProperties.swift in Sources */,
+				F7D1D2011B82664200722A1C /* ViewController.swift in Sources */,
+				F735050C1C365C2F00BFBF7A /* CoreDataProtocol.swift in Sources */,
+				F74376C01B863FD9004BBCC5 /* SearchTableViewController.swift in Sources */,
+				F701F8B01BE6EC3E0088ECFB /* ColdQuotes.swift in Sources */,
+				F7CB34381BA357B3004F6CC3 /* ContainerViewController.swift in Sources */,
+				F7D1D2231B830BB700722A1C /* CityInfo.swift in Sources */,
+				F701F8B21BE6EC3E0088ECFB /* HotQuotes.swift in Sources */,
+				F7D1D1FC1B82664200722A1C /* AppDelegate.swift in Sources */,
+				F701F8AF1BE6EC3E0088ECFB /* ColdQuotes+CoreDataProperties.swift in Sources */,
+				F74376C41B86DCFA004BBCC5 /* YourCitiesTableViewController.swift in Sources */,
+				F7EA21B71BE31EA4005312FA /* OpenWeatherCity.swift in Sources */,
+				F7CB343C1BA3E4D3004F6CC3 /* City.swift in Sources */,
+				F7CE7B0C1BF57FD400478455 /* CoreDataStack.swift in Sources */,
+				F7C872371BE6999A0036C37C /* YourCitiesViewController.swift in Sources */,
+				F7CAA5BA1B97723E00FD748E /* DegreeLabel.swift in Sources */,
+				F7D1D1FF1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F7D1D20A1B82664200722A1C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7D1D2151B82664200722A1C /* QuoteWeatherAppTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F7D1D2101B82664200722A1C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F7D1D1F51B82664200722A1C /* QuoteWeatherApp */;
+			targetProxy = F7D1D20F1B82664200722A1C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F72589DB1C023E42008F9099 /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F72589DC1C023E42008F9099 /* Base */,
+			);
+			name = Interface.storyboard;
+			sourceTree = "<group>";
+		};
+		F78032A71BF2EF44007540C8 /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F78032A81BF2EF44007540C8 /* Base */,
+			);
+			name = MainInterface.storyboard;
+			sourceTree = "<group>";
+		};
+		F7D1D2021B82664200722A1C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7D1D2031B82664200722A1C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F7D1D2071B82664200722A1C /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7D1D2081B82664200722A1C /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F7D1D2161B82664200722A1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F7D1D2171B82664200722A1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F7D1D2191B82664200722A1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6F8C06DB8B670245A8990E33 /* Pods.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuoteWeatherApp/QuoteWeatherApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = QuoteWeatherApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.RyanGunn.QuoteWeatherApp;
+				PRODUCT_NAME = "Positive Weather";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Debug;
+		};
+		F7D1D21A1B82664200722A1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = C36D4B4AEF16CDC9EF675B9F /* Pods.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = QuoteWeatherApp/QuoteWeatherApp.entitlements;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				INFOPLIST_FILE = QuoteWeatherApp/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.RyanGunn.QuoteWeatherApp;
+				PRODUCT_NAME = "Positive Weather";
+				PROVISIONING_PROFILE = "";
+			};
+			name = Release;
+		};
+		F7D1D21C1B82664200722A1C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = QuoteWeatherAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "";
+			};
+			name = Debug;
+		};
+		F7D1D21D1B82664200722A1C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = QuoteWeatherAppTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "Ryan-Gunn.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7D1D1F11B82664200722A1C /* Build configuration list for PBXProject "QuoteWeatherApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7D1D2161B82664200722A1C /* Debug */,
+				F7D1D2171B82664200722A1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7D1D2181B82664200722A1C /* Build configuration list for PBXNativeTarget "QuoteWeatherApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7D1D2191B82664200722A1C /* Debug */,
+				F7D1D21A1B82664200722A1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7D1D21B1B82664200722A1C /* Build configuration list for PBXNativeTarget "QuoteWeatherAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7D1D21C1B82664200722A1C /* Debug */,
+				F7D1D21D1B82664200722A1C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		F7D1D1FD1B82664200722A1C /* QuoteWeatherApp.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				F7D1D1FE1B82664200722A1C /* QuoteWeatherApp.xcdatamodel */,
+			);
+			currentVersion = F7D1D1FE1B82664200722A1C /* QuoteWeatherApp.xcdatamodel */;
+			path = QuoteWeatherApp.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = F7D1D1EE1B82664200722A1C /* Project object */;
+}

@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable 
+@IBDesignable
 class DegreeLabel: UIView {
 
     let bgLayer = CAShapeLayer()
@@ -70,14 +70,6 @@ class DegreeLabel: UIView {
         degreeLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(degreeLabel)
 
-        // Setup caption label
-//        captionLabel.font = UIFont(name: "Avenir Next", size: 26)
-//        captionLabel.text = "Chapters Read"
-//        captionLabel.textColor = UIColor.whiteColor()
-//        captionLabel.setTranslatesAutoresizingMaskIntoConstraints(false)
-//        addSubview(captionLabel)
-
-        // Setup constraints
         let percentLabelCenterX = NSLayoutConstraint(item: degreeLabel, attribute: .CenterX, relatedBy: .Equal, toItem: self, attribute: .CenterX, multiplier: 1.0, constant: 0)
         let percentLabelCenterY = NSLayoutConstraint(item: degreeLabel, attribute: .CenterY, relatedBy: .Equal, toItem: self, attribute: .CenterY, multiplier: 1.0, constant: -margin)
         NSLayoutConstraint.activateConstraints([percentLabelCenterX, percentLabelCenterY])
@@ -96,11 +88,12 @@ class DegreeLabel: UIView {
         setupShapeLayer(bgLayer)
         setupShapeLayer(fgLayer)
     }
-    func DegreesToRadians (value:CGFloat) -> CGFloat {
+
+    func degreesToRadians (value: CGFloat) -> CGFloat {
         return value * CGFloat(M_PI) / 180.0
     }
 
-    func RadiansToDegrees (value:CGFloat) -> CGFloat {
+    func radiansToDegrees (value: CGFloat) -> CGFloat {
         return value * 180.0 / CGFloat(M_PI)
     }
 
@@ -110,8 +103,8 @@ class DegreeLabel: UIView {
 
         let center = degreeLabel.center
         let radius = CGFloat(CGRectGetWidth(self.bounds) * 0.35)
-        let startAngle = DegreesToRadians(135.0)
-        let endAngle = DegreesToRadians(45.0)
+        let startAngle = degreesToRadians(135.0)
+        let endAngle = degreesToRadians(45.0)
 
         let path = UIBezierPath(arcCenter: center, radius: radius, startAngle: startAngle, endAngle: endAngle, clockwise: true)
         shapeLayer.path = path.CGPath
@@ -127,7 +120,6 @@ class DegreeLabel: UIView {
         let toValue = curValue / range
         fromValue = fgLayer.presentationLayer()!.strokeEnd
         let pctChange = abs(fromValue - toValue)
-       
         // 1
         let animation = CABasicAnimation(keyPath: "strokeEnd")
         animation.fromValue = fromValue
@@ -137,12 +129,10 @@ class DegreeLabel: UIView {
         // 3
         fgLayer.removeAnimationForKey("stroke")
         fgLayer.addAnimation(animation, forKey: "stroke")
-        
         CATransaction.begin()
         CATransaction.setDisableActions(true)
         fgLayer.strokeEnd = toValue
         CATransaction.commit()
-        
     }
 
 }

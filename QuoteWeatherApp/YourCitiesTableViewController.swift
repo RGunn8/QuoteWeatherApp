@@ -17,10 +17,11 @@ protocol SidePanelViewControllerDelegate {
 
 class YourCitiesTableViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     var fetchedResultController: NSFetchedResultsController = NSFetchedResultsController()
-    var coreDataStack:CoreDataStack!
+    var coreDataStack: CoreDataStack!
     var numberOfCity = Int()
     var selectedCityIndex = 0
     var delegate: SidePanelViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -36,6 +37,7 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
 
 
     }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         fetchedResultController = getFetchedResultController()
@@ -64,6 +66,7 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
 
         return fetchRequest
     }
+
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         tableView.reloadData()
     }
@@ -79,6 +82,7 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         return true
     }
+
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let numberOfRowsInSection = fetchedResultController.sections?[section].numberOfObjects
         numberOfCity = numberOfRowsInSection!
@@ -87,19 +91,21 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
 
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) as! CityCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) as! CityCell // tailor:disable
 
-         let theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
-        cell.configureForCity(theCity)
+        if let city = fetchedResultController.objectAtIndexPath(indexPath) as? City {
+            cell.configureForCity(city)
+        }
+
         // Configure the cell...
 
         return cell
     }
 
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-     {
-        let theCity = fetchedResultController.objectAtIndexPath(indexPath) as! City
-        delegate?.citySelected(theCity)
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let city = fetchedResultController.objectAtIndexPath(indexPath) as? City {
+            delegate?.citySelected(city)
+        }
 
     }
 
@@ -107,15 +113,11 @@ class YourCitiesTableViewController: UITableViewController, NSFetchedResultsCont
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
 
 
-            // Find the LogItem object the user is trying to delete
-            let deleteCity:City = fetchedResultController.objectAtIndexPath(indexPath) as! City
+        if let cityToBeDelete = fetchedResultController.objectAtIndexPath(indexPath) as? City {
+              coreDataStack.managedObjectContext.deleteObject(cityToBeDelete)
+              coreDataStack.saveMainContext()
+        }
 
-
-            // Delete it from the managedObjectContext
-           coreDataStack.managedObjectContext.deleteObject(deleteCity)
-            do {
-               coreDataStack.saveMainContext()
-            }             //tableView.reloadData()
-          }
+    }
 
 }

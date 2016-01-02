@@ -9,23 +9,23 @@
 import UIKit
 @objc
 protocol SearchViewControllerDelegate {
-    func cityPicked(lat:Double, long:Double, name:String)
+    func cityPicked(lat: Double, long: Double, name: String)
 }
 
 class SearchTableViewController: UITableViewController, UISearchResultsUpdating {
 
     var filteredTableData = [CityInfo]()
-    var resultSearchController:UISearchController!
+    var resultSearchController: UISearchController!
     var searchResultsCity = [CityInfo]()
     let city = CityInfo()
     var numOfCity = Int()
     var coreDataStack = CoreDataStack()
     var delegate: SearchViewControllerDelegate?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setresultSearchController()
     }
-
 
     func setresultSearchController() {
         resultSearchController = UISearchController(searchResultsController: nil)
@@ -55,15 +55,14 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
        let searchNumbers = NSCharacterSet(charactersInString: "0123456789")
-        if (self.resultSearchController.active) {
+        if self.resultSearchController.active {
 
-            if self.resultSearchController.searchBar.text == "" || self.resultSearchController.searchBar.text == " "{
+            if self.resultSearchController.searchBar.text == "" || self.resultSearchController.searchBar.text == " " {
                 return 0
-            } else if ((self.resultSearchController.searchBar.text?.rangeOfCharacterFromSet(searchNumbers)) != nil) {
-              
+            } else if self.resultSearchController.searchBar.text?.rangeOfCharacterFromSet(searchNumbers) != nil {
                 return 0
 
-            }else{
+            }else {
 
             return self.filteredTableData.count
             }
@@ -73,37 +72,35 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         }
     }
 
-
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath) 
+        let cell = tableView.dequeueReusableCellWithIdentifier("MyCellID", forIndexPath: indexPath)
 
-        if (self.resultSearchController.active) {
-            let cityAtIndex:CityInfo = self.filteredTableData[indexPath.row]
+        if self.resultSearchController.active {
+            let cityAtIndex: CityInfo = self.filteredTableData[indexPath.row]
             cell.textLabel?.text = cityAtIndex.name
 
             return cell
-        }
-        else {
+        } else {
             cell.textLabel?.text = ""
 
             return cell
-        }    }
+        }
+    }
 
 
-    func updateSearchResultsForSearchController(searchController: UISearchController)
-    {
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
 
         city.searchCity(searchController.searchBar.text!, completionHandler: { (city) -> () in
-
-                self.filteredTableData = city.0
-
-            //println("\(self.filteredTableData)")
-            self.tableView.reloadData()
+        self.filteredTableData = city.0
+        self.tableView.reloadData()
         })
 
         let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (searchResultsCity as NSArray).filteredArrayUsingPredicate(searchPredicate)
-        filteredTableData = array as! [CityInfo]
+        let searchResultsCityNSarray = (searchResultsCity as NSArray).filteredArrayUsingPredicate(searchPredicate)
+        if let searchTableData = searchResultsCityNSarray as? [CityInfo] {
+            filteredTableData = searchTableData
+        }
+
 
 
     }
@@ -114,28 +111,24 @@ class SearchTableViewController: UITableViewController, UISearchResultsUpdating 
         var theCityName = String()
         var theCityLat = Double()
         var theCityLong = Double()
-    
 
-        if let cityName = selectedItem.name{
+        if let cityName = selectedItem.name {
              cityName
             var myArray = cityName.componentsSeparatedByCharactersInSet(NSCharacterSet (charactersInString: ",-"))
-          
             let theCity = myArray[0]
            theCityName  = theCity
         }
 
-        if let citylat = selectedItem.lat{
+        if let citylat = selectedItem.lat {
             theCityLat = citylat
         }
 
-        if let cityLong = selectedItem.long{
+        if let cityLong = selectedItem.long {
             theCityLong = cityLong
         }
        let newCityNumber = numOfCity + 1
 
        coreDataStack.createCity(theCityName, cityLat: theCityLat, cityLong: theCityLong, cityAtIndex: newCityNumber, isCurrentLocation: false)
-
-
         delegate?.cityPicked(theCityLat, long: theCityLong, name: theCityName)
 
        self.navigationController!.popViewControllerAnimated(true)

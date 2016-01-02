@@ -17,22 +17,21 @@ public protocol ResponseJSONObjectSerializable {
 class OpenWeatherCity: NSObject, ResponseJSONObjectSerializable {
     var weeklyTempArray = [Int]()
     var weeklyDate = [String]()
-    var name:String?
-    var long:Double?
-    var lat:Double?
-    var currentTemp:Double?
-    var weather:String?
+    var name: String?
+    var long: Double?
+    var lat: Double?
+    var currentTemp: Double?
+    var weather: String?
 
-    required init? (json:JSON){
+    required init? (json: JSON) {
         self.name = json["name"].string
         self.currentTemp = json["main"]["temp"].double
         self.lat = json["coord"]["lat"].double
         self.long = json["coord"]["lon"].double
 
-        for result in json["weather"].arrayValue{
+        for result in json["weather"].arrayValue {
             self.weather = result["main"].string
         }
-        //        self.weather = json["weather"]["description"].string
     }
 
 
@@ -40,6 +39,7 @@ class OpenWeatherCity: NSObject, ResponseJSONObjectSerializable {
 }
 
 extension Alamofire.Request {
+
     public func responseObject<T: ResponseJSONObjectSerializable>(completionHandler: Response<T, NSError> -> Void) -> Self {
         let responseSerializer = ResponseSerializer<T, NSError> { request, response, data, error in
             guard error == nil else {
@@ -51,8 +51,8 @@ extension Alamofire.Request {
                 return .Failure(error)
             }
 
-            let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let result = JSONResponseSerializer.serializeResponse(request, response, responseData, error)
+            let jSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let result = jSONResponseSerializer.serializeResponse(request, response, responseData, error)
 
             if result.isSuccess {
                 if let value = result.value {
@@ -80,8 +80,8 @@ extension Alamofire.Request {
                 return .Failure(error)
             }
 
-            let JSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
-            let result = JSONResponseSerializer.serializeResponse(request, response, responseData, error)
+            let jSONResponseSerializer = Request.JSONResponseSerializer(options: .AllowFragments)
+            let result = jSONResponseSerializer.serializeResponse(request, response, responseData, error)
 
             switch result {
             case .Success(let value):
@@ -100,5 +100,5 @@ extension Alamofire.Request {
 
         return response(responseSerializer: responseSerializer, completionHandler: completionHandler)
     }
-    
+
 }

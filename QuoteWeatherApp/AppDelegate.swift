@@ -23,14 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
 
         let containerViewController = ContainerViewController()
-        if containerViewController.respondsToSelector("setCoreDataStack:"){
+        if containerViewController.respondsToSelector("setCoreDataStack:") {
             containerViewController.performSelector("setCoreDataStack:", withObject: coreDataStack)
         }
 
         setNavBarColor()
         window!.rootViewController = containerViewController
         window!.makeKeyAndVisible()
-
 
         let defaults = NSUserDefaults.standardUserDefaults()
         let isPreloaded = defaults.boolForKey("isPreloadedCold")
@@ -55,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func setNavBarColor() {
         UINavigationBar.appearance().barTintColor = UIColor(red: (54/255), green: (54/255), blue: (54/255), alpha: 1)
         UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName : UIColor(red: (125/255), green: (122/255), blue: (122/255), alpha: 1)]
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: UIColor(red: (125/255), green: (122/255), blue: (122/255), alpha: 1)]
     }
 
     func applicationWillResignActive(application: UIApplication) {
@@ -83,26 +82,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
 
-    func parseCSV (contentsOfURL: NSURL, encoding: NSStringEncoding) throws -> [(type:String, quote:String)] {
-        var error: NSError! = NSError(domain: "Migrator", code: 0, userInfo: nil)
+    func parseCSV (contentsOfURL: NSURL, encoding: NSStringEncoding) throws -> [(type: String, quote: String)] {
+        var error: NSError = NSError(domain: "Migrator", code: 0, userInfo: nil)
         // Load the CSV file and parse it
         let delimiter = ","
-        var items:[(type:String, quote:String)]?
+        var items: [(type: String, quote: String)]?
 
         do {
             let content = try String(contentsOfURL: contentsOfURL, encoding: encoding)
             items = []
-            let lines:[String] = content.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()) as [String]
+            let lines: [String] = content.componentsSeparatedByCharactersInSet(NSCharacterSet.newlineCharacterSet()) as [String]
 
             for line in lines {
-                var values:[String] = []
+                var values: [String] = []
                 if line != "" {
                     // For a line with double quotes
                     // we use NSScanner to perform the parsing
                     if line.rangeOfString("\"") != nil {
-                        var textToScan:String = line
-                        var value:NSString?
-                        var textScanner:NSScanner = NSScanner(string: textToScan)
+                        var textToScan: String = line
+                        var value: NSString?
+                        var textScanner: NSScanner = NSScanner(string: textToScan)
                         while textScanner.string != "" {
 
                             if (textScanner.string as NSString).substringToIndex(1) == "\"" {
@@ -114,7 +113,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                             }
 
                             // Store the value into the values array
-                            values.append(value as! String)
+                            values.append(value as! String) // tailor:disable
 
                             // Retrieve the unscanned remainder of the string
                             if textScanner.scanLocation < textScanner.string.characters.count {
@@ -127,7 +126,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
 
                         // For a line without double quotes, we can simply separate the string
                         // by using the delimiter (e.g. comma)
-                    } else  {
+                    } else {
                         values = line.componentsSeparatedByString(delimiter)
                     }
 
@@ -161,12 +160,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
                 // Preload the menu items
 
                     for item in items {
-                        let coldQuotesItem = NSEntityDescription.insertNewObjectForEntityForName("ColdQuotes", inManagedObjectContext: coreDataStack.managedObjectContext) as! ColdQuotes
+                        if let coldQuotesItem = NSEntityDescription.insertNewObjectForEntityForName("ColdQuotes", inManagedObjectContext: coreDataStack.managedObjectContext) as? ColdQuotes {
+                            coldQuotesItem.type = item.type
+                            coldQuotesItem.quote = item.quote
 
-                        coldQuotesItem.type = item.type
-                        coldQuotesItem.quote = item.quote
-
-                        coreDataStack.saveMainContext()
+                            coreDataStack.saveMainContext()
+                        }
 
                     }
 
@@ -177,49 +176,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     }
 
     func removeDataCold () {
-        // Remove the existing items
 
             let fetchRequest = NSFetchRequest(entityName: "ColdQuotes")
 
-            do{
-                let questionItems = (try! coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest)) as! [ColdQuotes]
-
-                for question in questionItems {
-                    coreDataStack.managedObjectContext.deleteObject(question)
+            do {
+                if let coldQuoteItems = try coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest) as? [ColdQuotes] {
+                    for coldQuotes in coldQuoteItems {
+                        coreDataStack.managedObjectContext.deleteObject(coldQuotes)
+                    }
                 }
-                
                 try coreDataStack.managedObjectContext.save()
-                
+
             }
-            catch{
+            catch {
                 print(error)
             }
-            
-            
-
     }
 
 
     func preloadDataHot () {
-        // Retrieve data from the source file
+
         if let contentsOfURL = NSBundle.mainBundle().URLForResource("Hot", withExtension: "csv") {
 
-            // Remove all the menu items before preloading
             removeDataHot()
-
 
             do {
                 let items = try parseCSV(contentsOfURL, encoding: NSUTF8StringEncoding)
-                // Preload the menu items
 
                     for item in items {
-                        let hotQuotesItem = NSEntityDescription.insertNewObjectForEntityForName("HotQuotes", inManagedObjectContext: coreDataStack.managedObjectContext) as! HotQuotes
+                        if let hotQuote = NSEntityDescription.insertNewObjectForEntityForName("HotQuotes", inManagedObjectContext: coreDataStack.managedObjectContext) as? HotQuotes {
+                            hotQuote.type = item.type
+                            hotQuote.quote = item.quote
 
-                        hotQuotesItem.type = item.type
-                        hotQuotesItem.quote = item.quote
+                            coreDataStack.saveMainContext()
 
-                         coreDataStack.saveMainContext()
-
+                        }
 
                     }
 
@@ -235,23 +226,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
             let fetchRequest = NSFetchRequest(entityName: "HotQuotes")
 
             do{
-                let questionItems = (try! coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest)) as! [HotQuotes]
-
-                for question in questionItems {
-                    coreDataStack.managedObjectContext.deleteObject(question)
+                if let hotQuotesItems = try coreDataStack.managedObjectContext.executeFetchRequest(fetchRequest) as? [HotQuotes] {
+                    for hotQuotes in hotQuotesItems {
+                          coreDataStack.managedObjectContext.deleteObject(hotQuotes)
+                    }
                 }
 
-                coreDataStack.saveMainContext()
-                
-            }
-//            catch{
-//                print(error)
-//            }
+            coreDataStack.saveMainContext()
 
-            
+            }
+
+            catch let error as NSError {
+                print(error.description)
+            }
+
+
 
     }
 
 
 }
-

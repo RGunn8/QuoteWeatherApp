@@ -15,9 +15,9 @@ enum SlideOutState {
     case RightPanelExpanded
 }
 
-class ContainerViewController: UIViewController{
-    var centerNavigationController:UINavigationController!
-    var centerViewController:ViewController!
+class ContainerViewController: UIViewController {
+    var centerNavigationController: UINavigationController!
+    var centerViewController: ViewController!
     var coreDataStack: CoreDataStack!
     var currentState: SlideOutState = .RightCollapsed {
         didSet {
@@ -27,12 +27,12 @@ class ContainerViewController: UIViewController{
     }
     let centerPanelExpandedOffset: CGFloat = 100
     var rightViewController: YourCitiesViewController?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setCenterViewController()
 
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name:"plusButtonPressed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "methodOfReceivedNotification:", name: "plusButtonPressed", object: nil)
 
     }
 
@@ -43,13 +43,10 @@ class ContainerViewController: UIViewController{
         centerNavigationController = UINavigationController(rootViewController: centerViewController)
         view.addSubview(centerNavigationController.view)
         addChildViewController(centerNavigationController)
-
         centerNavigationController.didMoveToParentViewController(self)
-
-
     }
 
-    func methodOfReceivedNotification(notification: NSNotification){
+    func methodOfReceivedNotification(notification: NSNotification) {
         let searchTVC = UIStoryboard.searchController()
         searchTVC?.delegate = centerViewController
         self.centerNavigationController.pushViewController(searchTVC!, animated: true)
@@ -58,8 +55,10 @@ class ContainerViewController: UIViewController{
 }
 
     private extension UIStoryboard {
-        class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle()) }
-      
+
+        class func mainStoryboard() -> UIStoryboard { return UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        }
+
         class func rightViewController() -> YourCitiesViewController? {
             return mainStoryboard().instantiateViewControllerWithIdentifier("YourCitesVC") as? YourCitiesViewController
         }
@@ -71,14 +70,14 @@ class ContainerViewController: UIViewController{
         class func searchController() -> SearchTableViewController? {
             return mainStoryboard().instantiateViewControllerWithIdentifier("SearchTableViewController") as? SearchTableViewController
         }
-        
+
     }
 
 extension ContainerViewController: CenterViewControllerDelegate {
 
 
     func toggleRightPanel() {
-        let notAlreadyExpanded = (currentState != .RightPanelExpanded)
+        let notAlreadyExpanded = currentState != .RightPanelExpanded
 
         if notAlreadyExpanded {
             addRightPanelViewController()
@@ -89,7 +88,7 @@ extension ContainerViewController: CenterViewControllerDelegate {
 
 
     func addRightPanelViewController() {
-        if (rightViewController == nil) {
+        if rightViewController == nil {
             rightViewController = UIStoryboard.rightViewController()
             rightViewController?.coreDataStack = coreDataStack
             // rightViewController!.animals = Animal.allDogs()
@@ -98,8 +97,9 @@ extension ContainerViewController: CenterViewControllerDelegate {
         }
 
     }
+
     func collapseSidePanels() {
-        switch (currentState) {
+        switch currentState {
         case .RightPanelExpanded:
             toggleRightPanel()
 
@@ -109,7 +109,7 @@ extension ContainerViewController: CenterViewControllerDelegate {
     }
 
     func animateRightPanel(shouldExpand shouldExpand: Bool) {
-        if (shouldExpand) {
+        if shouldExpand {
             currentState = .RightPanelExpanded
 
             animateCenterPanelXPosition(targetPosition: -CGRectGetWidth(centerNavigationController.view.frame) + centerPanelExpandedOffset)
@@ -118,14 +118,14 @@ extension ContainerViewController: CenterViewControllerDelegate {
                 self.currentState = .RightCollapsed
 
                 self.rightViewController!.view.removeFromSuperview()
-                self.rightViewController = nil;
+                self.rightViewController = nil
             }
         }
 
     }
 
     func showShadowForCenterViewController(shouldShowShadow: Bool) {
-        if (shouldShowShadow) {
+        if shouldShowShadow {
             centerNavigationController.view.layer.shadowOpacity = 0.8
         } else {
             centerNavigationController.view.layer.shadowOpacity = 0.0
@@ -150,9 +150,5 @@ extension ContainerViewController: CenterViewControllerDelegate {
             self.centerNavigationController.view.frame.origin.x = targetPosition
             }, completion: completion)
     }
-    
 
-    
 }
-
-

@@ -55,9 +55,9 @@ class CoreDataStack: NSObject {
         return managedObjectContext
     }()
 
-    func createCity(cityName:String, cityLat:Double,cityLong:Double, cityAtIndex:NSNumber, isCurrentLocation:Bool) {
+    func createCity(cityName: String, cityLat: Double,cityLong: Double, cityAtIndex: NSNumber, isCurrentLocation: Bool) {
 
-        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext:self.managedObjectContext)
+        let entity = NSEntityDescription.entityForName("City", inManagedObjectContext: self.managedObjectContext)
         let city = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: self.managedObjectContext)
 
         city.setValue(cityName, forKey: "cityName")
@@ -70,10 +70,5 @@ class CoreDataStack: NSObject {
         do {
             self.saveMainContext()
         }
-
-      
-        
     }
-
-    
 }
