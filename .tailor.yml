@@ -1,0 +1,5 @@
+include:
+    - QuoteWeatherApp         # Inspect all Swift files under "Source/"
+exclude:
+    - '**Tests.swift'   # Ignore Swift files that end in "Tests"
+    - QuoteWeatherApp1/Pods       # Ignore Swift files under "Source/Pods/"

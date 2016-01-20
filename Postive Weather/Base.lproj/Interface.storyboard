@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder.WatchKit.Storyboard" version="3.0" toolsVersion="9060" systemVersion="15B42" targetRuntime="watchKit" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="AgC-eL-Hgc">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBWatchKitPlugin" version="9019"/>
+    </dependencies>
+    <scenes>
+        <!--Interface Controller-->
+        <scene sceneID="aou-V4-d1y">
+            <objects>
+                <controller id="AgC-eL-Hgc" customClass="InterfaceController" customModule="Postive_Weather" customModuleProvider="target">
+                    <items>
+                        <label alignment="center" text="City" textAlignment="center" id="eZE-5y-zpX"/>
+                        <group width="120" height="106" alignment="center" radius="60" id="j5d-sl-uOG">
+                            <items>
+                                <label alignment="center" verticalAlignment="center" text="Loading . . ." textAlignment="center" id="wFg-np-TRr">
+                                    <color key="textColor" red="0.88235294119999996" green="0.1529411765" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                </label>
+                            </items>
+                            <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                        </group>
+                        <label alignment="center" text="Name" id="ySa-Ca-Ps1"/>
+                    </items>
+                    <connections>
+                        <outlet property="nameLabel" destination="eZE-5y-zpX" id="3xF-T7-z7G"/>
+                        <outlet property="tempLabel" destination="wFg-np-TRr" id="s8R-uJ-JLN"/>
+                        <outlet property="weatherLabel" destination="ySa-Ca-Ps1" id="Xf3-3V-ULK"/>
+                    </connections>
+                </controller>
+            </objects>
+            <point key="canvasLocation" x="220" y="344.5"/>
+        </scene>
+    </scenes>
+</document>
